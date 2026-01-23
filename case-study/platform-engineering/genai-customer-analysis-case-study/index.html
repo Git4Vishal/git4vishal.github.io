@@ -1,0 +1,922 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.27.3 by Michael Rose
+  Copyright 2013-2025 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Case Study: Production GenAI Platform Processing 2M+ Monthly Customer Interactions - Home</title>
+<meta name="description" content="How I architected a production GenAI platform processing 2M+ monthly call transcripts with 85% accuracy, delivering $1.2M annual retention value through serverless architecture and unsupervised pattern discovery.">
+
+
+  <meta name="author" content="Vishal Sharma">
+  
+  <meta property="article:author" content="Vishal Sharma">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Home">
+<meta property="og:title" content="Case Study: Production GenAI Platform Processing 2M+ Monthly Customer Interactions">
+<meta property="og:url" content="https://git4vishal.github.io/case-study/platform-engineering/genai-customer-analysis-case-study/">
+
+
+  <meta property="og:description" content="How I architected a production GenAI platform processing 2M+ monthly call transcripts with 85% accuracy, delivering $1.2M annual retention value through serverless architecture and unsupervised pattern discovery.">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2026-01-21T12:00:00-06:00">
+
+
+
+
+
+
+<link rel="canonical" href="https://git4vishal.github.io/case-study/platform-engineering/genai-customer-analysis-case-study/">
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Home Feed">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+  
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css"></noscript>
+
+
+
+    <!-- Mermaid JS for diagram rendering -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded', function() {
+    // Convert kramdown code blocks to mermaid divs
+    document.querySelectorAll('code.language-mermaid').forEach(function(code) {
+      const pre = code.parentElement;
+      const div = document.createElement('div');
+      div.className = 'mermaid';
+      div.textContent = code.textContent;
+      pre.replaceWith(div);
+    });
+
+    // Initialize Mermaid
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: 'dark',
+      securityLevel: 'loose'
+    });
+  });
+</script>
+
+  </head>
+
+  <body class="layout--single" dir="ltr">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Home
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a
+                href="/about/"
+                
+                
+              >About</a>
+            </li><li class="masthead__menu-item">
+              <a
+                href="/projects/"
+                
+                
+              >Projects</a>
+            </li><li class="masthead__menu-item">
+              <a
+                href="/blog/"
+                
+                
+              >Blogs</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="https://git4vishal.github.io/">
+        <img src="/assets/images/bio-photo.jpg" alt="Vishal Sharma" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="https://git4vishal.github.io/" itemprop="url">Vishal Sharma</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>Enterprise Data &amp; AI Platform Leader</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">Frisco, Texas</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="https://www.linkedin.com/in/sharma-vishal/" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
+          
+        
+          
+            <li><a href="https://github.com/git4vishal" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+            <li><a href="https://x.com/twitt4vishal" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:email4vishal@gmail.com" rel="me" class="u-email">
+            <meta itemprop="email" content="email4vishal@gmail.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Case Study: Production GenAI Platform Processing 2M+ Monthly Customer Interactions">
+    <meta itemprop="description" content="How I architected a production GenAI platform processing 2M+ monthly call transcripts with 85% accuracy, delivering $1.2M annual retention value through serverless architecture and unsupervised pattern discovery.">
+    <meta itemprop="datePublished" content="2026-01-21T12:00:00-06:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">
+            <a href="https://git4vishal.github.io/case-study/platform-engineering/genai-customer-analysis-case-study/" itemprop="url">Case Study: Production GenAI Platform Processing 2M+ Monthly Customer Interactions
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          5 minute read
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <p>I recently architected and deployed a production-grade GenAI platform for a large telecommunications provider that transformed how they extract insights from customer interactions. The system processes <strong>2M+ monthly call transcripts</strong> (85-90K daily) with <strong>85% accuracy</strong>, delivering <strong>$1.2M annual retention value</strong> through automated intent classification and unsupervised pattern discovery.</p>
+
+<h2 id="the-business-challenge">The Business Challenge</h2>
+
+<p>Customer service was handling <strong>over 2 million calls per month</strong>, but there was no systematic way to turn those conversations into actionable insights. The company was missing early signals around:</p>
+
+<ul>
+  <li><strong>Disconnect intent</strong> - High-risk customers not identified until too late</li>
+  <li><strong>Competitive threats</strong> - Competitor mentions and comparison shopping</li>
+  <li><strong>Recurring product issues</strong> - Equipment failures, service quality problems</li>
+  <li><strong>Billing disputes</strong> - Rate changes, promotional pricing confusion</li>
+</ul>
+
+<p><strong>The problem:</strong> Manual review covered &lt;5% of calls, keyword matching was brittle (48 hardcoded terms), and insights arrived weeks too late for proactive intervention.</p>
+
+<h2 id="the-solution-serverless-zero-touch-architecture">The Solution: Serverless, Zero-Touch Architecture</h2>
+
+<p>I designed a multi-phase GenAI system with serverless orchestration and rigorous evaluation frameworks:</p>
+
+<h3 id="phase-1-zero-shot-classification">Phase 1: Zero-Shot Classification</h3>
+
+<p><strong>Rapid time-to-production:</strong></p>
+<ul>
+  <li><strong>Zero-shot Gemini 2.0 Flash</strong> for adaptive intent classification</li>
+  <li><strong>24 multi-label intent categories</strong> + explicit “unknown” handling</li>
+  <li><strong>Structured JSON output</strong> with confidence scores and evidence quotes</li>
+  <li><strong>Result:</strong> <strong>6 weeks to production</strong> with <strong>85% accuracy</strong></li>
+</ul>
+
+<p><strong>Why zero-shot first?</strong></p>
+<ul>
+  <li>No labeled training data available initially</li>
+  <li>Faster time-to-value (weeks vs. months for fine-tuning)</li>
+  <li>Generated high-confidence labels for future training dataset</li>
+  <li>Flexibility to iterate on prompt engineering</li>
+</ul>
+
+<h3 id="phase-2-unsupervised-pattern-discovery">Phase 2: Unsupervised Pattern Discovery</h3>
+
+<p><strong>Finding the unknown unknowns:</strong></p>
+<ul>
+  <li><strong>UMAP + HDBSCAN clustering</strong> on low-confidence and “unknown” transcripts</li>
+  <li><strong>LLM theme extraction</strong> to label discovered clusters</li>
+  <li><strong>Discovered 12 previously unknown customer issues</strong>, including:
+    <ul>
+      <li>Equipment swap frustration and delays</li>
+      <li>Service transfer delays between addresses</li>
+      <li>Smart home device compatibility issues</li>
+      <li>International calling plan confusion</li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>Business Impact:</strong></p>
+<ul>
+  <li><strong>$1.2M annual retention value</strong> through proactive intervention</li>
+  <li><strong>Top 10 systemic issues</strong> surfaced that were invisible before</li>
+  <li><strong>Early detection advantage:</strong> Issues identified weeks before manual review backlog</li>
+</ul>
+
+<h3 id="phase-3-fine-tuning-in-progress">Phase 3: Fine-Tuning (In Progress)</h3>
+
+<p><strong>Pushing accuracy from 85% to 95%:</strong></p>
+<ul>
+  <li>Leveraging high-confidence Phase 1 labels as training data</li>
+  <li>LoRA fine-tuning for parameter-efficient model adaptation</li>
+  <li>Hybrid cascade pattern: keyword → fine-tuned model → zero-shot fallback</li>
+  <li>A/B testing infrastructure for confident deployment</li>
+</ul>
+
+<p><strong>Status:</strong> Design completed and development initiated at project departure</p>
+
+<h2 id="multi-cloud-integration">Multi-Cloud Integration</h2>
+
+<p><strong>The challenge:</strong> 85-90K daily call recordings stored in third-party Verint platform (AWS S3), requiring processing in GCP Vertex AI</p>
+
+<p><strong>The solution:</strong> Serverless, zero-touch orchestration</p>
+
+<pre><code class="language-mermaid">graph TD
+    A[Cloud Scheduler] --&gt; B[Cloud Run&lt;br/&gt;Transfer Service]
+    B --&gt; C[GCS Staging Bucket&lt;br/&gt;85-90K daily recordings]
+    C --&gt; D[Vertex AI Pipelines&lt;br/&gt;Kubeflow Orchestration]
+    D --&gt; E1[Gemini 2.5 Flash&lt;br/&gt;Transcription]
+    D --&gt; E2[Cloud DLP&lt;br/&gt;PII Redaction 18 types]
+    D --&gt; E3[Vertex Embeddings&lt;br/&gt;768D vectors]
+    D --&gt; E4[Gemini 2.0 Flash&lt;br/&gt;Intent Classification]
+    E1 --&gt; F[Storage Layer]
+    E2 --&gt; F
+    E3 --&gt; F
+    E4 --&gt; F
+    F --&gt; G1[PostgreSQL + PGVector&lt;br/&gt;HNSW Vector Search]
+    F --&gt; G2[BigQuery&lt;br/&gt;Analytics Warehouse&lt;br/&gt;70+ fields]
+    G1 --&gt; H[3 Business Organizations]
+    G2 --&gt; H
+    H --&gt; I1[Customer Experience&lt;br/&gt;Proactive Retention]
+    H --&gt; I2[Data Science&lt;br/&gt;Predictive Features]
+    H --&gt; I3[Product&lt;br/&gt;Strategic Insights]
+</code></pre>
+
+<p><strong>Results:</strong></p>
+<ul>
+  <li><strong>Zero-touch operation:</strong> Fully automated pipeline</li>
+  <li><strong>&lt;4 hour latency:</strong> From recording to classification</li>
+  <li><strong>Multi-region processing:</strong> 7 GCP regions for parallelism</li>
+  <li><strong>POC to production:</strong> 4-week validation → 8-week deployment</li>
+</ul>
+
+<h2 id="evaluation-framework--observability">Evaluation Framework &amp; Observability</h2>
+
+<p><strong>How we determined 85% accuracy:</strong></p>
+
+<ol>
+  <li><strong>Human-labeled test set:</strong> 500 transcripts manually labeled by domain experts (inter-rater reliability &gt; 0.80)</li>
+  <li><strong>Multi-metric evaluation:</strong> Precision, recall, F1-score, confusion matrix per category</li>
+  <li><strong>Weekly automated evaluation:</strong> Statistical significance testing, alerts on &gt;2% accuracy drop</li>
+  <li><strong>Confidence calibration:</strong> Ensuring confidence scores reflect true accuracy</li>
+</ol>
+
+<p><strong>Monitoring &amp; drift detection:</strong></p>
+<ul>
+  <li>Real-time dashboards: throughput, latency, error rates, confidence distributions</li>
+  <li><strong>Drift detection:</strong> Embedding distribution shift (KL divergence), weekly accuracy tracking</li>
+  <li><strong>Result:</strong> Detected drift <strong>2 weeks before user complaints</strong> during product launch</li>
+</ul>
+
+<h2 id="multi-organization-adoption">Multi-Organization Adoption</h2>
+
+<p>The platform was fully adopted by <strong>3 business organizations:</strong></p>
+
+<p><strong>Customer Experience:</strong></p>
+<ul>
+  <li>Proactive retention campaigns targeting high-risk customers</li>
+  <li>Agent training based on common pain points</li>
+  <li>Quality monitoring and sentiment tracking</li>
+</ul>
+
+<p><strong>Data Science:</strong></p>
+<ul>
+  <li>Intent classifications as pre-built features for predictive models</li>
+  <li>Churn prediction accuracy improved 12%</li>
+  <li>Faster model development with ready-to-use features</li>
+</ul>
+
+<p><strong>Product Teams:</strong></p>
+<ul>
+  <li>Data-driven feature prioritization and roadmap decisions</li>
+  <li>Market intelligence from competitor mentions</li>
+  <li>Policy improvements based on confusion patterns</li>
+</ul>
+
+<h2 id="key-technical-challenges">Key Technical Challenges</h2>
+
+<p><strong>1. PII Redaction at Scale</strong></p>
+<ul>
+  <li><strong>Problem:</strong> Cloud DLP 600 requests/minute limit with 85-90K daily transcripts</li>
+  <li><strong>Solution:</strong> Async batch processing (500 transcripts/batch), thread pool executor with rate limiting, exponential backoff, 7-region distribution</li>
+  <li><strong>Result:</strong> Processing time reduced from 3 hours to 45 minutes</li>
+</ul>
+
+<p><strong>2. Vector Search Performance</strong></p>
+<ul>
+  <li><strong>Problem:</strong> 100K+ vectors, need &lt;100ms query time</li>
+  <li><strong>Solution:</strong> pgvector with HNSW index, table partitioning by date and intent category, pre-filter on metadata (date, intent) before vector search</li>
+  <li><strong>Result:</strong> 12ms average query time (95th percentile: 45ms)</li>
+</ul>
+
+<p><strong>3. Model Drift Detection</strong></p>
+<ul>
+  <li><strong>Problem:</strong> Customer language evolves, model performance degrades</li>
+  <li><strong>Solution:</strong> Hold-out test set (500 human-labeled examples), weekly auto-evaluation, statistical tests with alert thresholds</li>
+  <li><strong>Result:</strong> Detected drift 2 weeks before user complaints</li>
+</ul>
+
+<h2 id="the-numbers">The Numbers</h2>
+
+<p><strong>Scale &amp; Performance:</strong></p>
+<ul>
+  <li><strong>2M+ monthly transcripts</strong> processed (85-90K daily)</li>
+  <li><strong>85% classification accuracy</strong> - Production-ready and trustworthy</li>
+  <li><strong>&lt;4 hour latency</strong> - From recording to classification</li>
+  <li><strong>100% coverage</strong> - Every call analyzed vs. previous &lt;5% manual sample</li>
+</ul>
+
+<p><strong>Business Impact:</strong></p>
+<ul>
+  <li><strong>$1.2M annual retention value</strong> through early issue detection</li>
+  <li><strong>12 new intent categories</strong> discovered via unsupervised clustering</li>
+  <li><strong>Top 10 systemic issues</strong> driving churn now visible to leadership</li>
+  <li><strong>3 organizations</strong> using insights for retention, modeling, strategy</li>
+</ul>
+
+<p><strong>Delivery Speed:</strong></p>
+<ul>
+  <li><strong>POC validation:</strong> 4 weeks</li>
+  <li><strong>Phase 1 to production:</strong> 6 weeks (zero-shot classification)</li>
+  <li><strong>Phase 2 deployed:</strong> Unsupervised discovery operational</li>
+  <li><strong>Phase 3 initiated:</strong> Fine-tuning in progress at departure</li>
+</ul>
+
+<h2 id="key-lessons">Key Lessons</h2>
+
+<p><strong>What Worked:</strong></p>
+<ol>
+  <li><strong>Zero-shot first</strong> - Don’t wait for labeled data; deploy fast, iterate</li>
+  <li><strong>Rigorous evaluation</strong> - 500-transcript test set built trust with stakeholders</li>
+  <li><strong>Serverless architecture</strong> - Zero-touch operation, scales automatically</li>
+  <li><strong>Multi-organization adoption</strong> - Built for reusability across teams</li>
+  <li><strong>Drift detection</strong> - Caught issues before user complaints</li>
+</ol>
+
+<p><strong>What We’d Do Differently:</strong></p>
+<ol>
+  <li><strong>Monitoring from Day 1</strong> - Not Month 6 (observability is foundational)</li>
+  <li><strong>Smaller initial scope</strong> - Ship Phase 1 faster, iterate based on feedback</li>
+  <li><strong>Versioned taxonomy</strong> - Schema changes broke downstream systems 3x</li>
+</ol>
+
+<h2 id="why-this-matters">Why This Matters</h2>
+
+<p>This project demonstrates critical patterns for <strong>production-grade GenAI systems</strong>:</p>
+
+<ol>
+  <li><strong>Rapid POC-to-production</strong> - 4-week POC validation → 6-week deployment, not months</li>
+  <li><strong>Business-first architecture</strong> - Every technical decision tied to $1.2M retention value</li>
+  <li><strong>Evaluation rigor</strong> - 500-transcript test set, weekly monitoring, drift detection</li>
+  <li><strong>Multi-cloud integration</strong> - Seamless AWS (Verint) to GCP orchestration</li>
+  <li><strong>Operational maturity</strong> - Zero-touch automation, monitoring, compliance (Cloud DLP)</li>
+  <li><strong>Unsupervised discovery</strong> - Surface patterns manual review would miss</li>
+  <li><strong>Cross-functional value</strong> - Insights used by CX, Data Science, and Product teams</li>
+</ol>
+
+<p>The combination of <strong>zero-shot LLMs</strong> (rapid deployment) with <strong>unsupervised ML</strong> (pattern discovery) and <strong>serverless infrastructure</strong> (scalability) creates systems that deliver both speed-to-market and production-grade reliability.</p>
+
+<hr />
+
+<h2 id="want-the-full-technical-details">Want the Full Technical Details?</h2>
+
+<p>For the complete case study including architecture diagrams, detailed technical challenges, evaluation methodologies, and implementation recommendations:</p>
+
+<p><a href="/projects/genai-customer-analysis-platform/" class="btn btn--primary"><strong>→ Read the Full Case Study</strong></a></p>
+
+<hr />
+
+<p><strong>Tags:</strong> GenAI, LLM, Platform Engineering, Machine Learning, MLOps, Case Study, ROI, Multi-Cloud, Vertex AI, Gemini</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#case-study" class="page__taxonomy-item p-category" rel="tag">Case Study</a><span class="sep">, </span>
+    
+      <a href="/tags/#genai" class="page__taxonomy-item p-category" rel="tag">GenAI</a><span class="sep">, </span>
+    
+      <a href="/tags/#llm" class="page__taxonomy-item p-category" rel="tag">LLM</a><span class="sep">, </span>
+    
+      <a href="/tags/#machine-learning" class="page__taxonomy-item p-category" rel="tag">Machine Learning</a><span class="sep">, </span>
+    
+      <a href="/tags/#mlops" class="page__taxonomy-item p-category" rel="tag">MLOps</a><span class="sep">, </span>
+    
+      <a href="/tags/#multi-cloud" class="page__taxonomy-item p-category" rel="tag">Multi-Cloud</a><span class="sep">, </span>
+    
+      <a href="/tags/#platform-engineering" class="page__taxonomy-item p-category" rel="tag">Platform Engineering</a><span class="sep">, </span>
+    
+      <a href="/tags/#roi" class="page__taxonomy-item p-category" rel="tag">ROI</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#case-study" class="page__taxonomy-item p-category" rel="tag">case-study</a><span class="sep">, </span>
+    
+      <a href="/categories/#platform-engineering" class="page__taxonomy-item p-category" rel="tag">platform-engineering</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2026-01-21T12:00:00-06:00">January 21, 2026</time></p>
+
+      </footer>
+
+      
+
+      
+  <nav class="pagination">
+    
+      <a href="/genai/architecture/production-grade-rag-systems/" class="pagination--pager" title="Building Production-Grade RAG Systems: Architecture and Best Practices">Previous</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">Next</a>
+    
+  </nav>
+
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    
+<div class="page__related">
+  
+  <h2 class="page__related-title">You May Also Enjoy</h2>
+  <div class="grid__wrapper">
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/genai/architecture/production-grade-rag-systems/" rel="permalink">Building Production-Grade RAG Systems: Architecture and Best Practices
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          9 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Lessons learned from building and scaling RAG systems in enterprise environments—moving from proof-of-concept demos to production-grade systems that handle m...</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/evaluation/testing/evaluating-llm-applications/" rel="permalink">Evaluating LLM Applications: Beyond Vibes and Into Data
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          10 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Rigorous evaluation is what separates prototypes from production LLM systems. Learn the frameworks, metrics, and best practices for measuring what matters in...</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/governance/strategy/ai-governance-framework/" rel="permalink">Building an AI Governance Framework for Enterprise GenAI Adoption
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          8 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">As enterprises rush to adopt GenAI, many overlook a critical question: How do we govern these systems responsibly?
+</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/optimization/cost/llm-cost-optimization/" rel="permalink">LLM Cost Optimization: Cutting Your AI Bill by 70% Without Sacrificing Quality
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          9 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">When we first deployed our RAG system to production, our LLM costs were $12,000/month for 50,000 queries. Six months later, we’re handling 200,000 queries at...</p>
+  </article>
+</div>
+
+    
+  </div>
+</div>
+
+  
+  
+</div>
+
+      
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';" role="search">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        
+
+<center>
+<div class="page__footer-follow">
+    <ul class="social-icons">
+        
+
+        <b>Contact: </b>
+        
+        
+        
+        <li><a href="https://www.linkedin.com/in/sharma-vishal/" rel="nofollow noopener noreferrer"><i
+                class="fas fa-fw fa-link" aria-hidden="true"></i> LinkedIn</a></li>
+        
+        
+        
+        <li><a href="https://github.com/git4vishal" rel="nofollow noopener noreferrer"><i
+                class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+        
+        
+        <li><a href="https://x.com/twitt4vishal" rel="nofollow noopener noreferrer"><i
+                class="fab fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
+        
+        
+        
+        <li><a href="mailto:email4vishal@gmail.com" rel="nofollow noopener noreferrer"><i
+                class="fab fa-fw fa-envelope" aria-hidden="true"></i> Email</a></li>
+        
+        
+        
+
+        
+        <li>
+            <a href="/feed.xml"><i
+                    class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+        
+    </ul>
+</div>
+
+
+<div class="page__footer-copyright">&copy;
+    
+    
+        2025 -
+    
+    2026
+    <a href="https://git4vishal.github.io">
+        Vishal Sharma | Enterprise Data &amp; AI Platform Leader
+    </a>.
+<!--    Powered by -->
+<!--    <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> -->
+<!--    &amp; -->
+<!--    <a href="https://mademistakes.com/work/jekyll-themes/minimal-mistakes/" rel="nofollow">Minimal Mistakes</a>.-->
+</div>
+</center>
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+
+
+  </body>
+</html>

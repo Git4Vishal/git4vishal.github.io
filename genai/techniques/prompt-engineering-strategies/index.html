@@ -1,0 +1,1281 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.27.3 by Michael Rose
+  Copyright 2013-2025 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Prompt Engineering: From Basics to Advanced Strategies - Home</title>
+<meta name="description" content="Prompt engineering is often dismissed as “just writing good instructions.” While that’s part of it, effective prompt engineering is a skill that combines psychology, linguistics, and empirical experimentation.">
+
+
+  <meta name="author" content="Vishal Sharma">
+  
+  <meta property="article:author" content="Vishal Sharma">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Home">
+<meta property="og:title" content="Prompt Engineering: From Basics to Advanced Strategies">
+<meta property="og:url" content="https://git4vishal.github.io/genai/techniques/prompt-engineering-strategies/">
+
+
+  <meta property="og:description" content="Prompt engineering is often dismissed as “just writing good instructions.” While that’s part of it, effective prompt engineering is a skill that combines psychology, linguistics, and empirical experimentation.">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2025-11-30T12:00:00-06:00">
+
+
+
+
+
+
+<link rel="canonical" href="https://git4vishal.github.io/genai/techniques/prompt-engineering-strategies/">
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Home Feed">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+  
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css"></noscript>
+
+
+
+    <!-- Mermaid JS for diagram rendering -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded', function() {
+    // Convert kramdown code blocks to mermaid divs
+    document.querySelectorAll('code.language-mermaid').forEach(function(code) {
+      const pre = code.parentElement;
+      const div = document.createElement('div');
+      div.className = 'mermaid';
+      div.textContent = code.textContent;
+      pre.replaceWith(div);
+    });
+
+    // Initialize Mermaid
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: 'dark',
+      securityLevel: 'loose'
+    });
+  });
+</script>
+
+  </head>
+
+  <body class="layout--single" dir="ltr">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Home
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a
+                href="/about/"
+                
+                
+              >About</a>
+            </li><li class="masthead__menu-item">
+              <a
+                href="/projects/"
+                
+                
+              >Projects</a>
+            </li><li class="masthead__menu-item">
+              <a
+                href="/blog/"
+                
+                
+              >Blogs</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="https://git4vishal.github.io/">
+        <img src="/assets/images/bio-photo.jpg" alt="Vishal Sharma" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="https://git4vishal.github.io/" itemprop="url">Vishal Sharma</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>Enterprise Data &amp; AI Platform Leader</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">Frisco, Texas</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="https://www.linkedin.com/in/sharma-vishal/" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
+          
+        
+          
+            <li><a href="https://github.com/git4vishal" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+            <li><a href="https://x.com/twitt4vishal" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:email4vishal@gmail.com" rel="me" class="u-email">
+            <meta itemprop="email" content="email4vishal@gmail.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Prompt Engineering: From Basics to Advanced Strategies">
+    <meta itemprop="description" content="Prompt engineering is often dismissed as “just writing good instructions.” While that’s part of it, effective prompt engineering is a skill that combines psychology, linguistics, and empirical experimentation.">
+    <meta itemprop="datePublished" content="2025-11-30T12:00:00-06:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">
+            <a href="https://git4vishal.github.io/genai/techniques/prompt-engineering-strategies/" itemprop="url">Prompt Engineering: From Basics to Advanced Strategies
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          9 minute read
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <p>Prompt engineering is often dismissed as “just writing good instructions.” While that’s part of it, effective prompt engineering is a skill that combines psychology, linguistics, and empirical experimentation.</p>
+
+<p>After writing thousands of prompts for production systems, I’ve developed strategies that consistently improve output quality. Here’s what I’ve learned.</p>
+
+<h2 id="the-prompt-engineering-mental-model">The Prompt Engineering Mental Model</h2>
+
+<p>Think of prompting as <strong>programming in natural language</strong>. You’re:</p>
+<ul>
+  <li>Defining the task (like a function signature)</li>
+  <li>Providing context (like parameters)</li>
+  <li>Setting constraints (like type checking)</li>
+  <li>Specifying output format (like return types)</li>
+</ul>
+
+<p>The LLM is your interpreter, but it’s probabilistic and context-sensitive.</p>
+
+<h2 id="foundational-techniques">Foundational Techniques</h2>
+
+<h3 id="1-be-specific-and-explicit">1. Be Specific and Explicit</h3>
+
+<p><strong>Bad:</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Summarize this document.
+</code></pre></div></div>
+
+<p><strong>Good:</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Summarize the following technical document in 3-5 bullet points, focusing on:
+1. Main technical contributions
+2. Key findings or results
+3. Practical applications
+
+Keep each bullet point under 50 words. Use technical terminology where appropriate.
+
+Document:
+{document_text}
+</code></pre></div></div>
+
+<p><strong>Why it works:</strong> Removes ambiguity, sets clear expectations, defines success criteria.</p>
+
+<h3 id="2-provide-examples-few-shot-learning">2. Provide Examples (Few-Shot Learning)</h3>
+
+<p><strong>Zero-Shot:</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Extract action items from this meeting transcript.
+</code></pre></div></div>
+
+<p><strong>Few-Shot:</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Extract action items from meeting transcripts. Format each as: [Person] needs to [action] by [deadline].
+
+Examples:
+Input: "John, can you send the report by Friday?"
+Output: [John] needs to [send the report] by [Friday]
+
+Input: "Sarah mentioned she'll follow up with the client next week"
+Output: [Sarah] needs to [follow up with client] by [next week]
+
+Now extract from this transcript:
+{transcript}
+</code></pre></div></div>
+
+<p><strong>Why it works:</strong> Shows the LLM exactly what “good” looks like. Establishes format and tone.</p>
+
+<h3 id="3-chain-of-thought-cot">3. Chain of Thought (CoT)</h3>
+
+<p><strong>Without CoT:</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Is this contract clause enforceable under California law?
+</code></pre></div></div>
+
+<p><strong>With CoT:</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Analyze whether this contract clause is enforceable under California law.
+
+Step 1: Identify the key elements of the clause
+Step 2: Determine relevant California statutes and case law
+Step 3: Apply the legal principles to the clause
+Step 4: Provide your conclusion with reasoning
+
+Contract clause:
+{clause_text}
+</code></pre></div></div>
+
+<p><strong>Why it works:</strong> Encourages reasoning rather than pattern matching. Improves accuracy on complex tasks.</p>
+
+<h3 id="4-role-assignment">4. Role Assignment</h3>
+
+<p><strong>Without Role:</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Explain quantum computing.
+</code></pre></div></div>
+
+<p><strong>With Role:</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>You are a senior technical educator who specializes in making complex topics accessible.
+
+Explain quantum computing to a software engineer who is familiar with classical computing concepts but has no physics background. Use analogies to programming concepts where helpful.
+</code></pre></div></div>
+
+<p><strong>Why it works:</strong> Sets the right tone, knowledge level, and communication style.</p>
+
+<h2 id="advanced-techniques">Advanced Techniques</h2>
+
+<h3 id="5-self-consistency">5. Self-Consistency</h3>
+
+<p>Run the same prompt multiple times with <code class="language-plaintext highlighter-rouge">temperature &gt; 0</code> and aggregate results.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">self_consistent_answer</span><span class="p">(</span><span class="n">question</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">answers</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">llm</span><span class="p">.</span><span class="nf">complete</span><span class="p">(</span>
+            <span class="sa">f</span><span class="sh">"</span><span class="s">Answer this question: </span><span class="si">{</span><span class="n">question</span><span class="si">}</span><span class="sh">"</span><span class="p">,</span>
+            <span class="n">temperature</span><span class="o">=</span><span class="mf">0.7</span>
+        <span class="p">)</span>
+        <span class="n">answers</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+
+    <span class="c1"># Use LLM to synthesize the most consistent answer
+</span>    <span class="n">synthesis_prompt</span> <span class="o">=</span> <span class="sa">f</span><span class="sh">"""</span><span class="s">
+    Here are </span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s"> different answers to the same question:
+
+    </span><span class="si">{</span><span class="nf">format_answers</span><span class="p">(</span><span class="n">answers</span><span class="p">)</span><span class="si">}</span><span class="s">
+
+    Identify the most consistent answer or synthesize the best answer from these responses.
+    </span><span class="sh">"""</span>
+
+    <span class="k">return</span> <span class="n">llm</span><span class="p">.</span><span class="nf">complete</span><span class="p">(</span><span class="n">synthesis_prompt</span><span class="p">,</span> <span class="n">temperature</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><strong>When to use:</strong> High-stakes decisions, complex reasoning tasks, when you need confidence estimation.</p>
+
+<h3 id="6-tree-of-thoughts">6. Tree of Thoughts</h3>
+
+<p>Explore multiple reasoning paths simultaneously.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">prompt</span> <span class="o">=</span> <span class="sh">"""</span><span class="s">
+Problem: {problem}
+
+Generate 3 different approaches to solve this problem:
+
+Approach 1:
+[Description of first approach]
+Pros:
+Cons:
+
+Approach 2:
+[Description of second approach]
+Pros:
+Cons:
+
+Approach 3:
+[Description of third approach]
+Pros:
+Cons:
+
+Based on the analysis, which approach is best and why?
+</span><span class="sh">"""</span>
+</code></pre></div></div>
+
+<p><strong>When to use:</strong> Open-ended problems, architectural decisions, strategy planning.</p>
+
+<h3 id="7-constitutional-ai--self-critique">7. Constitutional AI / Self-Critique</h3>
+
+<p>Have the LLM critique and refine its own output.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># First draft
+</span><span class="n">initial_prompt</span> <span class="o">=</span> <span class="sh">"""</span><span class="s">
+Write a technical blog post about {topic}.
+</span><span class="sh">"""</span>
+
+<span class="n">draft</span> <span class="o">=</span> <span class="n">llm</span><span class="p">.</span><span class="nf">complete</span><span class="p">(</span><span class="n">initial_prompt</span><span class="p">)</span>
+
+<span class="c1"># Self-critique
+</span><span class="n">critique_prompt</span> <span class="o">=</span> <span class="sa">f</span><span class="sh">"""</span><span class="s">
+You wrote this blog post:
+
+</span><span class="si">{</span><span class="n">draft</span><span class="si">}</span><span class="s">
+
+Critique it according to these criteria:
+1. Technical accuracy
+2. Clarity for the target audience
+3. Logical flow
+4. Missing important points
+
+Provide specific suggestions for improvement.
+</span><span class="sh">"""</span>
+
+<span class="n">critique</span> <span class="o">=</span> <span class="n">llm</span><span class="p">.</span><span class="nf">complete</span><span class="p">(</span><span class="n">critique_prompt</span><span class="p">)</span>
+
+<span class="c1"># Revision
+</span><span class="n">revision_prompt</span> <span class="o">=</span> <span class="sa">f</span><span class="sh">"""</span><span class="s">
+Original blog post:
+</span><span class="si">{</span><span class="n">draft</span><span class="si">}</span><span class="s">
+
+Critique:
+</span><span class="si">{</span><span class="n">critique</span><span class="si">}</span><span class="s">
+
+Revise the blog post addressing the critique.
+</span><span class="sh">"""</span>
+
+<span class="n">final</span> <span class="o">=</span> <span class="n">llm</span><span class="p">.</span><span class="nf">complete</span><span class="p">(</span><span class="n">revision_prompt</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><strong>When to use:</strong> Content generation, code review, any task where quality matters more than speed.</p>
+
+<h3 id="8-prompt-chaining">8. Prompt Chaining</h3>
+
+<p>Break complex tasks into sequential steps.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Step 1: Extract information
+</span><span class="n">extract_prompt</span> <span class="o">=</span> <span class="sh">"""</span><span class="s">
+Extract all customer complaints from this support ticket:
+{ticket}
+
+List each complaint clearly.
+</span><span class="sh">"""</span>
+<span class="n">complaints</span> <span class="o">=</span> <span class="n">llm</span><span class="p">.</span><span class="nf">complete</span><span class="p">(</span><span class="n">extract_prompt</span><span class="p">)</span>
+
+<span class="c1"># Step 2: Categorize
+</span><span class="n">categorize_prompt</span> <span class="o">=</span> <span class="sa">f</span><span class="sh">"""</span><span class="s">
+Categorize these complaints into: Product, Service, Billing, Other
+
+Complaints:
+</span><span class="si">{</span><span class="n">complaints</span><span class="si">}</span><span class="s">
+</span><span class="sh">"""</span>
+<span class="n">categories</span> <span class="o">=</span> <span class="n">llm</span><span class="p">.</span><span class="nf">complete</span><span class="p">(</span><span class="n">categorize_prompt</span><span class="p">)</span>
+
+<span class="c1"># Step 3: Prioritize
+</span><span class="n">prioritize_prompt</span> <span class="o">=</span> <span class="sa">f</span><span class="sh">"""</span><span class="s">
+Prioritize these categorized complaints by severity and urgency:
+
+</span><span class="si">{</span><span class="n">categories</span><span class="si">}</span><span class="s">
+
+For each, assign priority: High, Medium, Low
+</span><span class="sh">"""</span>
+<span class="n">priorities</span> <span class="o">=</span> <span class="n">llm</span><span class="p">.</span><span class="nf">complete</span><span class="p">(</span><span class="n">prioritize_prompt</span><span class="p">)</span>
+
+<span class="c1"># Step 4: Generate response
+</span><span class="n">response_prompt</span> <span class="o">=</span> <span class="sa">f</span><span class="sh">"""</span><span class="s">
+Generate a professional response addressing these prioritized complaints:
+
+</span><span class="si">{</span><span class="n">priorities</span><span class="si">}</span><span class="s">
+
+Tone: Empathetic and solution-oriented
+</span><span class="sh">"""</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">llm</span><span class="p">.</span><span class="nf">complete</span><span class="p">(</span><span class="n">response_prompt</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><strong>When to use:</strong> Complex workflows, when intermediate outputs are valuable, when different steps need different prompting strategies.</p>
+
+<h2 id="rag-specific-prompting">RAG-Specific Prompting</h2>
+
+<h3 id="9-context-utilization">9. Context Utilization</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">rag_prompt</span> <span class="o">=</span> <span class="sh">"""</span><span class="s">
+Answer the question based ONLY on the provided context. Follow these rules:
+
+1. If the context contains the answer, provide it with citations
+2. If the context is relevant but doesn</span><span class="sh">'</span><span class="s">t fully answer, say what you can answer
+3. If the context is not relevant, say </span><span class="sh">"</span><span class="s">I don</span><span class="sh">'</span><span class="s">t have enough information to answer this question</span><span class="sh">"</span><span class="s">
+4. Never use information not present in the context
+5. Cite sources using [Source: X] format
+
+Context:
+{context}
+
+Question: {question}
+
+Answer:
+</span><span class="sh">"""</span>
+</code></pre></div></div>
+
+<p><strong>Key elements:</strong></p>
+<ul>
+  <li>Explicit instruction to use only provided context</li>
+  <li>Handling of edge cases (partial info, no info)</li>
+  <li>Citation requirements</li>
+  <li>Clear prohibitions (no external knowledge)</li>
+</ul>
+
+<h3 id="10-multi-document-reasoning">10. Multi-Document Reasoning</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">prompt</span> <span class="o">=</span> <span class="sh">"""</span><span class="s">
+You are given information from multiple documents. Some information may be contradictory.
+
+Documents:
+[Doc 1 - Sales Report Q1]:
+{doc1}
+
+[Doc 2 - Sales Report Q2]:
+{doc2}
+
+[Doc 3 - Marketing Analysis]:
+{doc3}
+
+Question: {question}
+
+Instructions:
+1. Identify which documents are relevant to the question
+2. If documents contradict each other, note the contradiction
+3. Synthesize a coherent answer, citing specific documents
+4. If there</span><span class="sh">'</span><span class="s">s ambiguity, acknowledge it
+
+Answer:
+</span><span class="sh">"""</span>
+</code></pre></div></div>
+
+<h2 id="prompt-optimization-workflow">Prompt Optimization Workflow</h2>
+
+<h3 id="1-start-with-a-baseline">1. Start with a baseline</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">baseline_prompt</span> <span class="o">=</span> <span class="sh">"</span><span class="s">Summarize this article.</span><span class="sh">"</span>
+</code></pre></div></div>
+
+<h3 id="2-add-specificity">2. Add specificity</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">v2_prompt</span> <span class="o">=</span> <span class="sh">"</span><span class="s">Summarize this article in 100 words, focusing on key findings.</span><span class="sh">"</span>
+</code></pre></div></div>
+
+<h3 id="3-add-examples">3. Add examples</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">v3_prompt</span> <span class="o">=</span> <span class="sh">"""</span><span class="s">
+Summarize articles like this example:
+
+Input: [long article]
+Output: [concise 100-word summary highlighting key findings]
+
+Now summarize:
+{article}
+</span><span class="sh">"""</span>
+</code></pre></div></div>
+
+<h3 id="4-test-and-measure">4. Test and measure</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">test_set</span> <span class="o">=</span> <span class="nf">load_test_examples</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">prompt_version</span> <span class="ow">in</span> <span class="p">[</span><span class="n">baseline</span><span class="p">,</span> <span class="n">v2</span><span class="p">,</span> <span class="n">v3</span><span class="p">]:</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="nf">evaluate</span><span class="p">(</span><span class="n">prompt_version</span><span class="p">,</span> <span class="n">test_set</span><span class="p">)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="si">{</span><span class="n">prompt_version</span><span class="si">}</span><span class="s">: Accuracy=</span><span class="si">{</span><span class="n">results</span><span class="p">.</span><span class="n">accuracy</span><span class="si">}</span><span class="s">, Quality=</span><span class="si">{</span><span class="n">results</span><span class="p">.</span><span class="n">quality</span><span class="si">}</span><span class="sh">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="5-iterate-based-on-failures">5. Iterate based on failures</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Analyze where v3 fails
+</span><span class="n">failures</span> <span class="o">=</span> <span class="p">[</span><span class="n">ex</span> <span class="k">for</span> <span class="n">ex</span> <span class="ow">in</span> <span class="n">test_set</span> <span class="k">if</span> <span class="nf">evaluate</span><span class="p">(</span><span class="n">v3</span><span class="p">,</span> <span class="n">ex</span><span class="p">).</span><span class="n">quality</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">]</span>
+
+<span class="c1"># Identify patterns
+</span><span class="k">for</span> <span class="n">failure</span> <span class="ow">in</span> <span class="n">failures</span><span class="p">:</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">Failed on: </span><span class="si">{</span><span class="n">failure</span><span class="p">.</span><span class="nb">type</span><span class="si">}</span><span class="sh">"</span><span class="p">)</span>
+    <span class="c1"># Failed on: Technical jargon-heavy articles
+</span>
+<span class="c1"># Refine prompt
+</span><span class="n">v4_prompt</span> <span class="o">=</span> <span class="sh">"""</span><span class="s">
+[Previous v3 prompt]
+
+Note: If the article contains technical terminology, include a brief explanation in parentheses.
+</span><span class="sh">"""</span>
+</code></pre></div></div>
+
+<h2 id="common-pitfalls">Common Pitfalls</h2>
+
+<h3 id="pitfall-1-over-prompting">Pitfall 1: Over-Prompting</h3>
+
+<p><strong>Bad:</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>You are an expert AI assistant with deep knowledge of all subjects. You are helpful, harmless, and honest. You always provide accurate information. You never make things up. You think carefully before responding...
+
+[200 more words of instructions]
+
+Question: What is 2+2?
+</code></pre></div></div>
+
+<p><strong>Good:</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Answer this math question accurately: What is 2+2?
+</code></pre></div></div>
+
+<p><strong>Lesson:</strong> Only include necessary instructions. More prompt ≠ better results.</p>
+
+<h3 id="pitfall-2-ambiguous-constraints">Pitfall 2: Ambiguous Constraints</h3>
+
+<p><strong>Bad:</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Write a short summary.
+</code></pre></div></div>
+
+<p><strong>Good:</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Write a summary in exactly 100 words.
+</code></pre></div></div>
+
+<p><strong>Lesson:</strong> Quantify when possible. “Short” is subjective.</p>
+
+<h3 id="pitfall-3-conflicting-instructions">Pitfall 3: Conflicting Instructions</h3>
+
+<p><strong>Bad:</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Be creative and innovative, but only use the information provided.
+</code></pre></div></div>
+
+<p><strong>Good:</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Synthesize the provided information in a clear, organized way. Use headings and bullet points for readability.
+</code></pre></div></div>
+
+<p><strong>Lesson:</strong> Don’t ask for creativity then constrain it entirely. Be consistent.</p>
+
+<h3 id="pitfall-4-assuming-context-persistence">Pitfall 4: Assuming Context Persistence</h3>
+
+<p><strong>Bad:</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># First message
+"You are a Python expert."
+
+# Second message (new API call)
+"How do I reverse a string?"
+# LLM doesn't remember it's a "Python expert"
+</code></pre></div></div>
+
+<p><strong>Good:</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Every message includes role
+"You are a Python expert. How do I reverse a string in Python?"
+</code></pre></div></div>
+
+<p><strong>Lesson:</strong> Each API call is independent. Include necessary context every time.</p>
+
+<h2 id="model-specific-considerations">Model-Specific Considerations</h2>
+
+<h3 id="gpt-4-vs-gpt-35-turbo">GPT-4 vs GPT-3.5-turbo</h3>
+
+<ul>
+  <li><strong>GPT-4</strong>: Better at following complex instructions, can handle longer contexts</li>
+  <li><strong>GPT-3.5-turbo</strong>: Needs simpler, more explicit prompts</li>
+</ul>
+
+<h3 id="claude-anthropic">Claude (Anthropic)</h3>
+
+<ul>
+  <li>Responds well to XML-style tags: <code class="language-plaintext highlighter-rouge">&lt;instructions&gt;</code>, <code class="language-plaintext highlighter-rouge">&lt;context&gt;</code>, <code class="language-plaintext highlighter-rouge">&lt;examples&gt;</code></li>
+  <li>Good at following constitutional principles</li>
+  <li>Excels at longer context (100K+ tokens)</li>
+</ul>
+
+<h3 id="open-source-models-llama-mistral">Open Source Models (Llama, Mistral)</h3>
+
+<ul>
+  <li>Often fine-tuned with specific prompt formats (e.g., <code class="language-plaintext highlighter-rouge">[INST]</code> tags)</li>
+  <li>May need more explicit instructions</li>
+  <li>Vary widely in capabilities</li>
+</ul>
+
+<p><strong>Example (Llama 2 Chat):</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;s&gt;[INST] &lt;&lt;SYS&gt;&gt;
+You are a helpful assistant.
+&lt;&lt;/SYS&gt;&gt;
+
+{user_message} [/INST]
+</code></pre></div></div>
+
+<h2 id="evaluation-metrics">Evaluation Metrics</h2>
+
+<p>How do you know if your prompt is good?</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">evaluate_prompt</span><span class="p">(</span><span class="n">prompt</span><span class="p">,</span> <span class="n">test_set</span><span class="p">):</span>
+    <span class="n">scores</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="sh">'</span><span class="s">relevance</span><span class="sh">'</span><span class="p">:</span> <span class="p">[],</span>
+        <span class="sh">'</span><span class="s">correctness</span><span class="sh">'</span><span class="p">:</span> <span class="p">[],</span>
+        <span class="sh">'</span><span class="s">completeness</span><span class="sh">'</span><span class="p">:</span> <span class="p">[],</span>
+        <span class="sh">'</span><span class="s">format_compliance</span><span class="sh">'</span><span class="p">:</span> <span class="p">[],</span>
+        <span class="sh">'</span><span class="s">latency</span><span class="sh">'</span><span class="p">:</span> <span class="p">[],</span>
+        <span class="sh">'</span><span class="s">cost</span><span class="sh">'</span><span class="p">:</span> <span class="p">[]</span>
+    <span class="p">}</span>
+
+    <span class="k">for</span> <span class="n">example</span> <span class="ow">in</span> <span class="n">test_set</span><span class="p">:</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">llm</span><span class="p">.</span><span class="nf">complete</span><span class="p">(</span><span class="n">prompt</span><span class="p">.</span><span class="nf">format</span><span class="p">(</span><span class="o">**</span><span class="n">example</span><span class="p">.</span><span class="n">inputs</span><span class="p">))</span>
+
+        <span class="n">scores</span><span class="p">[</span><span class="sh">'</span><span class="s">relevance</span><span class="sh">'</span><span class="p">].</span><span class="nf">append</span><span class="p">(</span>
+            <span class="nf">judge_relevance</span><span class="p">(</span><span class="n">example</span><span class="p">.</span><span class="n">query</span><span class="p">,</span> <span class="n">response</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="n">scores</span><span class="p">[</span><span class="sh">'</span><span class="s">correctness</span><span class="sh">'</span><span class="p">].</span><span class="nf">append</span><span class="p">(</span>
+            <span class="nf">semantic_similarity</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">example</span><span class="p">.</span><span class="n">ground_truth</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="c1"># ... other metrics
+</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="n">metric</span><span class="p">:</span> <span class="n">np</span><span class="p">.</span><span class="nf">mean</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">metric</span><span class="p">,</span> <span class="n">values</span> <span class="ow">in</span> <span class="n">scores</span><span class="p">.</span><span class="nf">items</span><span class="p">()</span>
+    <span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="real-world-example-customer-support-bot">Real-World Example: Customer Support Bot</h2>
+
+<p><strong>Initial Prompt (Poor):</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Help the customer.
+</code></pre></div></div>
+
+<p><strong>Evolved Prompt (Production):</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>You are a customer support agent for TechCorp. Your goal is to resolve customer issues efficiently and professionally.
+
+Guidelines:
+1. Be empathetic and acknowledge the customer's frustration
+2. Ask clarifying questions if needed (max 2 questions before providing solution)
+3. Provide step-by-step solutions when applicable
+4. If you cannot help, escalate to a human agent
+5. Always end with asking if there's anything else you can help with
+
+Context:
+- Customer tier: {customer_tier}
+- Previous interactions: {interaction_history}
+- Current issue category: {issue_category}
+
+Customer message: {customer_message}
+
+Your response:
+</code></pre></div></div>
+
+<p><strong>Results:</strong></p>
+<ul>
+  <li>Baseline (poor prompt): 62% resolution rate</li>
+  <li>Production prompt: 84% resolution rate</li>
+  <li>Customer satisfaction: 3.2 → 4.3 / 5</li>
+</ul>
+
+<h2 id="prompt-library-template">Prompt Library Template</h2>
+
+<p>Maintain a library of tested prompts:</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># prompts/summarization_v3.yaml</span>
+<span class="na">name</span><span class="pi">:</span> <span class="s">summarization_v3</span>
+<span class="na">task</span><span class="pi">:</span> <span class="s">Document summarization</span>
+<span class="na">version</span><span class="pi">:</span> <span class="s">3.2.1</span>
+<span class="na">created</span><span class="pi">:</span> <span class="s">2026-01-15</span>
+<span class="na">tested_on</span><span class="pi">:</span> <span class="s">500 documents</span>
+<span class="na">avg_quality</span><span class="pi">:</span> <span class="s">4.2/5</span>
+
+<span class="na">template</span><span class="pi">:</span> <span class="pi">|</span>
+  <span class="s">Summarize the following document in {word_count} words.</span>
+
+  <span class="s">Focus on:</span>
+  <span class="s">- Main themes and arguments</span>
+  <span class="s">- Key findings or conclusions</span>
+  <span class="s">- Actionable insights</span>
+
+  <span class="s">Format: {format}  # Options: paragraph, bullets, numbered</span>
+
+  <span class="s">Document:</span>
+  <span class="s">{document}</span>
+
+  <span class="s">Summary:</span>
+
+<span class="na">parameters</span><span class="pi">:</span>
+  <span class="na">word_count</span><span class="pi">:</span>
+    <span class="na">type</span><span class="pi">:</span> <span class="s">int</span>
+    <span class="na">default</span><span class="pi">:</span> <span class="m">100</span>
+    <span class="na">range</span><span class="pi">:</span> <span class="pi">[</span><span class="nv">50</span><span class="pi">,</span> <span class="nv">500</span><span class="pi">]</span>
+
+  <span class="na">format</span><span class="pi">:</span>
+    <span class="na">type</span><span class="pi">:</span> <span class="s">enum</span>
+    <span class="na">default</span><span class="pi">:</span> <span class="s">bullets</span>
+    <span class="na">options</span><span class="pi">:</span> <span class="pi">[</span><span class="nv">paragraph</span><span class="pi">,</span> <span class="nv">bullets</span><span class="pi">,</span> <span class="nv">numbered</span><span class="pi">]</span>
+
+<span class="na">examples</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">input</span><span class="pi">:</span>
+      <span class="na">document</span><span class="pi">:</span> <span class="s2">"</span><span class="s">[Example</span><span class="nv"> </span><span class="s">document]"</span>
+      <span class="na">word_count</span><span class="pi">:</span> <span class="m">100</span>
+      <span class="na">format</span><span class="pi">:</span> <span class="s">bullets</span>
+    <span class="na">output</span><span class="pi">:</span> <span class="pi">|</span>
+      <span class="s">- Key point 1</span>
+      <span class="s">- Key point 2</span>
+      <span class="s">- Key point 3</span>
+</code></pre></div></div>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Prompt engineering is both art and science:</p>
+<ul>
+  <li><strong>Art</strong>: Understanding how to communicate effectively with LLMs</li>
+  <li><strong>Science</strong>: Systematic testing and iteration</li>
+</ul>
+
+<p>Key takeaways:</p>
+<ol>
+  <li>Start simple, add complexity only when needed</li>
+  <li>Test with real examples, not just happy paths</li>
+  <li>Version and track your prompts</li>
+  <li>Measure what matters (quality, not just completion)</li>
+  <li>Learn from failures</li>
+</ol>
+
+<p>The field is still evolving. What works today may be suboptimal tomorrow as models improve. Stay empirical, keep experimenting.</p>
+
+<h2 id="resources">Resources</h2>
+
+<ul>
+  <li><a href="https://platform.openai.com/docs/guides/prompt-engineering">OpenAI Prompt Engineering Guide</a></li>
+  <li><a href="https://docs.anthropic.com/claude/docs/prompt-engineering">Anthropic Prompt Engineering Guide</a></li>
+  <li><a href="https://www.promptingguide.ai/">Prompt Engineering Guide</a></li>
+</ul>
+
+<hr />
+
+<p><strong>What prompt engineering techniques have worked for you?</strong> Share your strategies and examples. Reach out via <a href="mailto:email4vishal@gmail.com">email</a> or <a href="https://x.com/twitt4vishal">X</a>.</p>
+
+<hr />
+
+<p><strong>Disclaimer:</strong> The views, opinions, and technical approaches shared in this post are my own, based on my personal experience building production AI/ML systems. They do not represent the views of my current or former employers. Technology choices and architectural decisions should always be evaluated in the context of your specific use case and requirements.</p>
+
+<hr />
+
+<p><strong>Questions or feedback?</strong> I’d love to hear your thoughts and experiences.</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td><strong>Contact:</strong> <a href="https://www.linkedin.com/in/sharma-vishal/"><i class="fas fa-fw fa-link"></i> LinkedIn</a></td>
+      <td><a href="https://github.com/git4vishal"><i class="fab fa-fw fa-github"></i> GitHub</a></td>
+      <td><a href="https://x.com/twitt4vishal"><i class="fab fa-fw fa-twitter-square"></i> X</a></td>
+      <td><a href="mailto:email4vishal@gmail.com"><i class="fas fa-fw fa-envelope"></i> Email</a></td>
+    </tr>
+  </tbody>
+</table>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#best-practices" class="page__taxonomy-item p-category" rel="tag">Best Practices</a><span class="sep">, </span>
+    
+      <a href="/tags/#claude" class="page__taxonomy-item p-category" rel="tag">Claude</a><span class="sep">, </span>
+    
+      <a href="/tags/#gpt" class="page__taxonomy-item p-category" rel="tag">GPT</a><span class="sep">, </span>
+    
+      <a href="/tags/#llm" class="page__taxonomy-item p-category" rel="tag">LLM</a><span class="sep">, </span>
+    
+      <a href="/tags/#prompt-engineering" class="page__taxonomy-item p-category" rel="tag">Prompt Engineering</a><span class="sep">, </span>
+    
+      <a href="/tags/#techniques" class="page__taxonomy-item p-category" rel="tag">Techniques</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#genai" class="page__taxonomy-item p-category" rel="tag">genai</a><span class="sep">, </span>
+    
+      <a href="/categories/#techniques" class="page__taxonomy-item p-category" rel="tag">techniques</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2025-11-30T12:00:00-06:00">November 30, 2025</time></p>
+
+      </footer>
+
+      
+
+      
+  <nav class="pagination">
+    
+      <a href="/operations/mlops/llmops-best-practices/" class="pagination--pager" title="LLMOps: Moving from MLOps to Production LLM Systems">Previous</a>
+    
+    
+      <a href="/optimization/cost/llm-cost-optimization/" class="pagination--pager" title="LLM Cost Optimization: Cutting Your AI Bill by 70% Without Sacrificing Quality">Next</a>
+    
+  </nav>
+
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    
+<div class="page__related">
+  
+  <h2 class="page__related-title">You May Also Enjoy</h2>
+  <div class="grid__wrapper">
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/case-study/platform-engineering/genai-customer-analysis-case-study/" rel="permalink">Case Study: Production GenAI Platform Processing 2M+ Monthly Customer Interactions
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          4 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">How I architected a production GenAI platform processing 2M+ monthly call transcripts with 85% accuracy, delivering $1.2M annual retention value through serv...</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/genai/architecture/production-grade-rag-systems/" rel="permalink">Building Production-Grade RAG Systems: Architecture and Best Practices
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          8 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Lessons learned from building and scaling RAG systems in enterprise environments—moving from proof-of-concept demos to production-grade systems that handle m...</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/evaluation/testing/evaluating-llm-applications/" rel="permalink">Evaluating LLM Applications: Beyond Vibes and Into Data
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          8 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Rigorous evaluation is what separates prototypes from production LLM systems. Learn the frameworks, metrics, and best practices for measuring what matters in...</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/governance/strategy/ai-governance-framework/" rel="permalink">Building an AI Governance Framework for Enterprise GenAI Adoption
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          8 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">As enterprises rush to adopt GenAI, many overlook a critical question: How do we govern these systems responsibly?
+</p>
+  </article>
+</div>
+
+    
+  </div>
+</div>
+
+  
+  
+</div>
+
+      
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';" role="search">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        
+
+<center>
+<div class="page__footer-follow">
+    <ul class="social-icons">
+        
+
+        <b>Contact: </b>
+        
+        
+        
+        <li><a href="https://www.linkedin.com/in/sharma-vishal/" rel="nofollow noopener noreferrer"><i
+                class="fas fa-fw fa-link" aria-hidden="true"></i> LinkedIn</a></li>
+        
+        
+        
+        <li><a href="https://github.com/git4vishal" rel="nofollow noopener noreferrer"><i
+                class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+        
+        
+        <li><a href="https://x.com/twitt4vishal" rel="nofollow noopener noreferrer"><i
+                class="fab fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
+        
+        
+        
+        <li><a href="mailto:email4vishal@gmail.com" rel="nofollow noopener noreferrer"><i
+                class="fab fa-fw fa-envelope" aria-hidden="true"></i> Email</a></li>
+        
+        
+        
+
+        
+        <li>
+            <a href="/feed.xml"><i
+                    class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+        
+    </ul>
+</div>
+
+
+<div class="page__footer-copyright">&copy;
+    
+    
+        2025 -
+    
+    2026
+    <a href="https://git4vishal.github.io">
+        Vishal Sharma | Enterprise Data &amp; AI Platform Leader
+    </a>.
+<!--    Powered by -->
+<!--    <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> -->
+<!--    &amp; -->
+<!--    <a href="https://mademistakes.com/work/jekyll-themes/minimal-mistakes/" rel="nofollow">Minimal Mistakes</a>.-->
+</div>
+</center>
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+
+
+  </body>
+</html>

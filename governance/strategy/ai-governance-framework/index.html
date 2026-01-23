@@ -1,0 +1,1323 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.27.3 by Michael Rose
+  Copyright 2013-2025 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Building an AI Governance Framework for Enterprise GenAI Adoption - Home</title>
+<meta name="description" content="As enterprises rush to adopt GenAI, many overlook a critical question: How do we govern these systems responsibly?">
+
+
+  <meta name="author" content="Vishal Sharma">
+  
+  <meta property="article:author" content="Vishal Sharma">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Home">
+<meta property="og:title" content="Building an AI Governance Framework for Enterprise GenAI Adoption">
+<meta property="og:url" content="https://git4vishal.github.io/governance/strategy/ai-governance-framework/">
+
+
+  <meta property="og:description" content="As enterprises rush to adopt GenAI, many overlook a critical question: How do we govern these systems responsibly?">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2025-12-10T12:00:00-06:00">
+
+
+
+
+
+
+<link rel="canonical" href="https://git4vishal.github.io/governance/strategy/ai-governance-framework/">
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Home Feed">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+  
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css"></noscript>
+
+
+
+    <!-- Mermaid JS for diagram rendering -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded', function() {
+    // Convert kramdown code blocks to mermaid divs
+    document.querySelectorAll('code.language-mermaid').forEach(function(code) {
+      const pre = code.parentElement;
+      const div = document.createElement('div');
+      div.className = 'mermaid';
+      div.textContent = code.textContent;
+      pre.replaceWith(div);
+    });
+
+    // Initialize Mermaid
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: 'dark',
+      securityLevel: 'loose'
+    });
+  });
+</script>
+
+  </head>
+
+  <body class="layout--single" dir="ltr">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Home
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a
+                href="/about/"
+                
+                
+              >About</a>
+            </li><li class="masthead__menu-item">
+              <a
+                href="/projects/"
+                
+                
+              >Projects</a>
+            </li><li class="masthead__menu-item">
+              <a
+                href="/blog/"
+                
+                
+              >Blogs</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="https://git4vishal.github.io/">
+        <img src="/assets/images/bio-photo.jpg" alt="Vishal Sharma" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="https://git4vishal.github.io/" itemprop="url">Vishal Sharma</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>Enterprise Data &amp; AI Platform Leader</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">Frisco, Texas</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="https://www.linkedin.com/in/sharma-vishal/" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
+          
+        
+          
+            <li><a href="https://github.com/git4vishal" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+            <li><a href="https://x.com/twitt4vishal" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:email4vishal@gmail.com" rel="me" class="u-email">
+            <meta itemprop="email" content="email4vishal@gmail.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Building an AI Governance Framework for Enterprise GenAI Adoption">
+    <meta itemprop="description" content="As enterprises rush to adopt GenAI, many overlook a critical question: How do we govern these systems responsibly?">
+    <meta itemprop="datePublished" content="2025-12-10T12:00:00-06:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">
+            <a href="https://git4vishal.github.io/governance/strategy/ai-governance-framework/" itemprop="url">Building an AI Governance Framework for Enterprise GenAI Adoption
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          8 minute read
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <p>As enterprises rush to adopt GenAI, many overlook a critical question: How do we govern these systems responsibly?</p>
+
+<p>Without proper governance, you risk data breaches, compliance violations, biased outputs, and reputational damage. After implementing AI governance frameworks across multiple enterprise deployments, here’s what actually works in practice.</p>
+
+<h2 id="why-ai-governance-matters">Why AI Governance Matters</h2>
+
+<p>Traditional software governance doesn’t translate directly to AI systems because:</p>
+
+<ol>
+  <li><strong>Non-deterministic outputs</strong>: Same input can produce different results</li>
+  <li><strong>Training data provenance</strong>: Models inherit biases from training data</li>
+  <li><strong>Emergent behaviors</strong>: Models can exhibit unexpected capabilities</li>
+  <li><strong>Regulatory uncertainty</strong>: Laws are still catching up to the technology</li>
+  <li><strong>Vendor dependencies</strong>: Relying on third-party APIs (OpenAI, Anthropic)</li>
+</ol>
+
+<h2 id="the-ai-governance-framework">The AI Governance Framework</h2>
+
+<p>Our framework has five pillars:</p>
+
+<pre><code class="language-mermaid">graph TD
+    A[1. Risk Assessment&lt;br/&gt;Identify, classify, and&lt;br/&gt;prioritize AI risks] --&gt; B[2. Policy &amp; Standards&lt;br/&gt;Define acceptable use,&lt;br/&gt;data handling, controls]
+    B --&gt; C[3. Technical Controls&lt;br/&gt;Implement guardrails,&lt;br/&gt;monitoring, access control]
+    C --&gt; D[4. Monitoring &amp; Auditing&lt;br/&gt;Track usage, detect issues,&lt;br/&gt;maintain audit logs]
+    D --&gt; E[5. Continuous Improvement&lt;br/&gt;Review incidents, update policies,&lt;br/&gt;retrain teams]
+</code></pre>
+
+<h2 id="pillar-1-risk-assessment">Pillar 1: Risk Assessment</h2>
+
+<h3 id="ai-risk-classification">AI Risk Classification</h3>
+
+<p>Categorize AI applications by risk level:</p>
+
+<p><strong>High Risk:</strong></p>
+<ul>
+  <li>Legal document generation</li>
+  <li>Financial decision making</li>
+  <li>Healthcare diagnostics</li>
+  <li>HR screening/hiring</li>
+  <li>Credit decisions</li>
+</ul>
+
+<p><strong>Medium Risk:</strong></p>
+<ul>
+  <li>Customer support chatbots</li>
+  <li>Content generation for review</li>
+  <li>Data analysis and insights</li>
+  <li>Code generation for developers</li>
+</ul>
+
+<p><strong>Low Risk:</strong></p>
+<ul>
+  <li>Text summarization</li>
+  <li>Translation</li>
+  <li>Sentiment analysis</li>
+  <li>Search enhancement</li>
+</ul>
+
+<h3 id="risk-assessment-template">Risk Assessment Template</h3>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">Application</span><span class="pi">:</span> <span class="s">Customer Support Chatbot</span>
+<span class="na">Risk Level</span><span class="pi">:</span> <span class="s">Medium</span>
+
+<span class="na">Risks Identified</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">Data Privacy</span><span class="pi">:</span>
+      <span class="na">Severity</span><span class="pi">:</span> <span class="s">High</span>
+      <span class="na">Likelihood</span><span class="pi">:</span> <span class="s">Medium</span>
+      <span class="na">Mitigation</span><span class="pi">:</span> <span class="s">PII detection, data masking, access controls</span>
+
+  <span class="pi">-</span> <span class="na">Hallucination</span><span class="pi">:</span>
+      <span class="na">Severity</span><span class="pi">:</span> <span class="s">Medium</span>
+      <span class="na">Likelihood</span><span class="pi">:</span> <span class="s">High</span>
+      <span class="na">Mitigation</span><span class="pi">:</span> <span class="s">RAG with citations, human review for critical cases</span>
+
+  <span class="pi">-</span> <span class="na">Bias</span><span class="pi">:</span>
+      <span class="na">Severity</span><span class="pi">:</span> <span class="s">Medium</span>
+      <span class="na">Likelihood</span><span class="pi">:</span> <span class="s">Medium</span>
+      <span class="na">Mitigation</span><span class="pi">:</span> <span class="s">Regular bias testing, diverse training data</span>
+
+  <span class="pi">-</span> <span class="na">Compliance</span><span class="pi">:</span>
+      <span class="na">Severity</span><span class="pi">:</span> <span class="s">High</span>
+      <span class="na">Likelihood</span><span class="pi">:</span> <span class="s">Low</span>
+      <span class="na">Mitigation</span><span class="pi">:</span> <span class="s">GDPR-compliant data handling, audit logs</span>
+
+<span class="na">Overall Risk Score</span><span class="pi">:</span> <span class="s">6.5/10</span>
+<span class="na">Approval Required</span><span class="pi">:</span> <span class="s">Department Head + Legal Review</span>
+<span class="na">Review Frequency</span><span class="pi">:</span> <span class="s">Quarterly</span>
+</code></pre></div></div>
+
+<h2 id="pillar-2-policy--standards">Pillar 2: Policy &amp; Standards</h2>
+
+<h3 id="acceptable-use-policy">Acceptable Use Policy</h3>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gh"># GenAI Acceptable Use Policy v1.0</span>
+
+<span class="gu">## Approved Use Cases</span>
+<span class="p">-</span> Enhancing productivity (summarization, drafting, coding assistance)
+<span class="p">-</span> Data analysis and insight generation
+<span class="p">-</span> Customer support with human oversight
+<span class="p">-</span> Content creation for internal use
+
+<span class="gu">## Prohibited Use Cases</span>
+<span class="p">-</span> Making final decisions on hiring, promotions, or terminations
+<span class="p">-</span> Generating legal advice without lawyer review
+<span class="p">-</span> Processing highly sensitive data (SSN, health records) without approval
+<span class="p">-</span> Creating content intended to deceive or manipulate
+
+<span class="gu">## Data Handling</span>
+<span class="p">-</span> ✅ DO: Use public information, approved datasets
+<span class="p">-</span> ✅ DO: Anonymize personal data before processing
+<span class="p">-</span> ❌ DON'T: Send customer PII to external LLM APIs
+<span class="p">-</span> ❌ DON'T: Use proprietary competitor information
+
+<span class="gu">## Output Handling</span>
+<span class="p">-</span> All AI-generated content must be reviewed by a human
+<span class="p">-</span> AI outputs must be labeled as AI-generated where appropriate
+<span class="p">-</span> Critical decisions must not rely solely on AI recommendations
+<span class="p">-</span> Citations and sources must be verified
+
+<span class="gu">## Vendor Management</span>
+<span class="p">-</span> Only use approved AI vendors (OpenAI, Anthropic, Azure OpenAI)
+<span class="p">-</span> Review vendor data processing agreements annually
+<span class="p">-</span> Understand data retention and usage policies
+<span class="p">-</span> Have exit strategy for vendor lock-in
+</code></pre></div></div>
+
+<h3 id="data-classification-matrix">Data Classification Matrix</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Data Type</th>
+      <th>Can Send to External LLM?</th>
+      <th>Controls Required</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Public information</td>
+      <td>✅ Yes</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <td>Internal non-sensitive</td>
+      <td>✅ Yes</td>
+      <td>Approval required</td>
+    </tr>
+    <tr>
+      <td>Customer PII</td>
+      <td>⚠️ Only if anonymized</td>
+      <td>DPA, encryption, approval</td>
+    </tr>
+    <tr>
+      <td>Financial data</td>
+      <td>❌ No (use Azure OpenAI private)</td>
+      <td>Private deployment only</td>
+    </tr>
+    <tr>
+      <td>Health records</td>
+      <td>❌ No</td>
+      <td>HIPAA-compliant solution only</td>
+    </tr>
+    <tr>
+      <td>Trade secrets</td>
+      <td>❌ No</td>
+      <td>Private deployment only</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="pillar-3-technical-controls">Pillar 3: Technical Controls</h2>
+
+<h3 id="input-guardrails">Input Guardrails</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">InputGuardrails</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="n">self</span><span class="p">):</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">pii_detector</span> <span class="o">=</span> <span class="nc">PIIDetector</span><span class="p">()</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">content_moderator</span> <span class="o">=</span> <span class="nc">ContentModerator</span><span class="p">()</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">injection_detector</span> <span class="o">=</span> <span class="nc">InjectionDetector</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">validate_input</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">user_input</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+        <span class="n">violations</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="c1"># 1. PII Detection
+</span>        <span class="n">pii_found</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">pii_detector</span><span class="p">.</span><span class="nf">detect</span><span class="p">(</span><span class="n">user_input</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">pii_found</span><span class="p">:</span>
+            <span class="n">violations</span><span class="p">.</span><span class="nf">append</span><span class="p">({</span>
+                <span class="sh">'</span><span class="s">type</span><span class="sh">'</span><span class="p">:</span> <span class="sh">'</span><span class="s">PII_DETECTED</span><span class="sh">'</span><span class="p">,</span>
+                <span class="sh">'</span><span class="s">severity</span><span class="sh">'</span><span class="p">:</span> <span class="sh">'</span><span class="s">HIGH</span><span class="sh">'</span><span class="p">,</span>
+                <span class="sh">'</span><span class="s">entities</span><span class="sh">'</span><span class="p">:</span> <span class="n">pii_found</span><span class="p">,</span>
+                <span class="sh">'</span><span class="s">action</span><span class="sh">'</span><span class="p">:</span> <span class="sh">'</span><span class="s">REDACT</span><span class="sh">'</span>
+            <span class="p">})</span>
+            <span class="n">user_input</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">pii_detector</span><span class="p">.</span><span class="nf">redact</span><span class="p">(</span><span class="n">user_input</span><span class="p">)</span>
+
+        <span class="c1"># 2. Content Moderation
+</span>        <span class="n">moderation</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">content_moderator</span><span class="p">.</span><span class="nf">check</span><span class="p">(</span><span class="n">user_input</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">moderation</span><span class="p">.</span><span class="n">flagged</span><span class="p">:</span>
+            <span class="n">violations</span><span class="p">.</span><span class="nf">append</span><span class="p">({</span>
+                <span class="sh">'</span><span class="s">type</span><span class="sh">'</span><span class="p">:</span> <span class="sh">'</span><span class="s">CONTENT_VIOLATION</span><span class="sh">'</span><span class="p">,</span>
+                <span class="sh">'</span><span class="s">severity</span><span class="sh">'</span><span class="p">:</span> <span class="sh">'</span><span class="s">HIGH</span><span class="sh">'</span><span class="p">,</span>
+                <span class="sh">'</span><span class="s">categories</span><span class="sh">'</span><span class="p">:</span> <span class="n">moderation</span><span class="p">.</span><span class="n">categories</span><span class="p">,</span>
+                <span class="sh">'</span><span class="s">action</span><span class="sh">'</span><span class="p">:</span> <span class="sh">'</span><span class="s">BLOCK</span><span class="sh">'</span>
+            <span class="p">})</span>
+            <span class="k">raise</span> <span class="nc">ContentPolicyViolation</span><span class="p">(</span><span class="n">moderation</span><span class="p">.</span><span class="n">categories</span><span class="p">)</span>
+
+        <span class="c1"># 3. Prompt Injection Detection
+</span>        <span class="k">if</span> <span class="n">self</span><span class="p">.</span><span class="n">injection_detector</span><span class="p">.</span><span class="nf">is_injection</span><span class="p">(</span><span class="n">user_input</span><span class="p">):</span>
+            <span class="n">violations</span><span class="p">.</span><span class="nf">append</span><span class="p">({</span>
+                <span class="sh">'</span><span class="s">type</span><span class="sh">'</span><span class="p">:</span> <span class="sh">'</span><span class="s">PROMPT_INJECTION</span><span class="sh">'</span><span class="p">,</span>
+                <span class="sh">'</span><span class="s">severity</span><span class="sh">'</span><span class="p">:</span> <span class="sh">'</span><span class="s">HIGH</span><span class="sh">'</span><span class="p">,</span>
+                <span class="sh">'</span><span class="s">action</span><span class="sh">'</span><span class="p">:</span> <span class="sh">'</span><span class="s">BLOCK</span><span class="sh">'</span>
+            <span class="p">})</span>
+            <span class="k">raise</span> <span class="nc">PromptInjectionDetected</span><span class="p">()</span>
+
+        <span class="c1"># 4. Data Classification Check
+</span>        <span class="k">if</span> <span class="n">context</span><span class="p">.</span><span class="n">requires_approval</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">context</span><span class="p">.</span><span class="n">approved</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="nc">ApprovalRequired</span><span class="p">()</span>
+
+        <span class="c1"># Log all violations
+</span>        <span class="k">if</span> <span class="n">violations</span><span class="p">:</span>
+            <span class="nf">log_security_event</span><span class="p">(</span><span class="n">violations</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">user_input</span><span class="p">,</span> <span class="n">violations</span>
+</code></pre></div></div>
+
+<h3 id="output-guardrails">Output Guardrails</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">OutputGuardrails</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">validate_output</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">llm_output</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+        <span class="n">checks</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="c1"># 1. Toxicity Check
+</span>        <span class="n">toxicity_score</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="nf">toxicity_classifier</span><span class="p">(</span><span class="n">llm_output</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">toxicity_score</span> <span class="o">&gt;</span> <span class="mf">0.7</span><span class="p">:</span>
+            <span class="n">checks</span><span class="p">.</span><span class="nf">append</span><span class="p">({</span>
+                <span class="sh">'</span><span class="s">check</span><span class="sh">'</span><span class="p">:</span> <span class="sh">'</span><span class="s">toxicity</span><span class="sh">'</span><span class="p">,</span>
+                <span class="sh">'</span><span class="s">passed</span><span class="sh">'</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span>
+                <span class="sh">'</span><span class="s">score</span><span class="sh">'</span><span class="p">:</span> <span class="n">toxicity_score</span>
+            <span class="p">})</span>
+            <span class="k">return</span> <span class="n">self</span><span class="p">.</span><span class="nf">safe_fallback_response</span><span class="p">()</span>
+
+        <span class="c1"># 2. Hallucination Detection (for RAG)
+</span>        <span class="k">if</span> <span class="n">context</span><span class="p">.</span><span class="n">retrieved_docs</span><span class="p">:</span>
+            <span class="n">faithfulness</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="nf">check_faithfulness</span><span class="p">(</span>
+                <span class="n">llm_output</span><span class="p">,</span>
+                <span class="n">context</span><span class="p">.</span><span class="n">retrieved_docs</span>
+            <span class="p">)</span>
+            <span class="k">if</span> <span class="n">faithfulness</span> <span class="o">&lt;</span> <span class="mf">0.6</span><span class="p">:</span>
+                <span class="n">checks</span><span class="p">.</span><span class="nf">append</span><span class="p">({</span>
+                    <span class="sh">'</span><span class="s">check</span><span class="sh">'</span><span class="p">:</span> <span class="sh">'</span><span class="s">faithfulness</span><span class="sh">'</span><span class="p">,</span>
+                    <span class="sh">'</span><span class="s">passed</span><span class="sh">'</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span>
+                    <span class="sh">'</span><span class="s">score</span><span class="sh">'</span><span class="p">:</span> <span class="n">faithfulness</span>
+                <span class="p">})</span>
+                <span class="n">llm_output</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="nf">add_uncertainty_disclaimer</span><span class="p">(</span><span class="n">llm_output</span><span class="p">)</span>
+
+        <span class="c1"># 3. PII Leakage
+</span>        <span class="k">if</span> <span class="n">self</span><span class="p">.</span><span class="nf">contains_pii</span><span class="p">(</span><span class="n">llm_output</span><span class="p">):</span>
+            <span class="n">checks</span><span class="p">.</span><span class="nf">append</span><span class="p">({</span>
+                <span class="sh">'</span><span class="s">check</span><span class="sh">'</span><span class="p">:</span> <span class="sh">'</span><span class="s">pii_leakage</span><span class="sh">'</span><span class="p">,</span>
+                <span class="sh">'</span><span class="s">passed</span><span class="sh">'</span><span class="p">:</span> <span class="bp">False</span>
+            <span class="p">})</span>
+            <span class="n">llm_output</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="nf">redact_pii</span><span class="p">(</span><span class="n">llm_output</span><span class="p">)</span>
+
+        <span class="c1"># 4. Citation Validation (for RAG)
+</span>        <span class="k">if</span> <span class="sh">'</span><span class="s">[Source:</span><span class="sh">'</span> <span class="ow">in</span> <span class="n">llm_output</span><span class="p">:</span>
+            <span class="n">valid_citations</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="nf">validate_citations</span><span class="p">(</span>
+                <span class="n">llm_output</span><span class="p">,</span>
+                <span class="n">context</span><span class="p">.</span><span class="n">retrieved_docs</span>
+            <span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">valid_citations</span><span class="p">:</span>
+                <span class="n">checks</span><span class="p">.</span><span class="nf">append</span><span class="p">({</span>
+                    <span class="sh">'</span><span class="s">check</span><span class="sh">'</span><span class="p">:</span> <span class="sh">'</span><span class="s">citation_validity</span><span class="sh">'</span><span class="p">,</span>
+                    <span class="sh">'</span><span class="s">passed</span><span class="sh">'</span><span class="p">:</span> <span class="bp">False</span>
+                <span class="p">})</span>
+
+        <span class="nf">log_output_checks</span><span class="p">(</span><span class="n">checks</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">llm_output</span>
+</code></pre></div></div>
+
+<h3 id="access-control">Access Control</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">AIAccessControl</span><span class="p">:</span>
+    <span class="n">RISK_LEVELS</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="sh">'</span><span class="s">HIGH</span><span class="sh">'</span><span class="p">:</span> <span class="p">[</span><span class="sh">'</span><span class="s">senior_leadership</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">legal</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">compliance</span><span class="sh">'</span><span class="p">],</span>
+        <span class="sh">'</span><span class="s">MEDIUM</span><span class="sh">'</span><span class="p">:</span> <span class="p">[</span><span class="sh">'</span><span class="s">team_lead</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">manager</span><span class="sh">'</span><span class="p">],</span>
+        <span class="sh">'</span><span class="s">LOW</span><span class="sh">'</span><span class="p">:</span> <span class="p">[</span><span class="sh">'</span><span class="s">all_employees</span><span class="sh">'</span><span class="p">]</span>
+    <span class="p">}</span>
+
+    <span class="k">def</span> <span class="nf">can_access</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">user</span><span class="p">,</span> <span class="n">application</span><span class="p">):</span>
+        <span class="c1"># Check role-based access
+</span>        <span class="n">required_roles</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">RISK_LEVELS</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span>
+            <span class="n">application</span><span class="p">.</span><span class="n">risk_level</span><span class="p">,</span>
+            <span class="p">[</span><span class="sh">'</span><span class="s">all_employees</span><span class="sh">'</span><span class="p">]</span>
+        <span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="nf">any</span><span class="p">(</span><span class="n">role</span> <span class="ow">in</span> <span class="n">user</span><span class="p">.</span><span class="n">roles</span> <span class="k">for</span> <span class="n">role</span> <span class="ow">in</span> <span class="n">required_roles</span><span class="p">):</span>
+            <span class="nf">log_access_denied</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">application</span><span class="p">)</span>
+            <span class="k">return</span> <span class="bp">False</span>
+
+        <span class="c1"># Check if user completed AI training
+</span>        <span class="k">if</span> <span class="ow">not</span> <span class="n">user</span><span class="p">.</span><span class="n">completed_ai_training</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">False</span>
+
+        <span class="c1"># Check rate limits
+</span>        <span class="k">if</span> <span class="n">self</span><span class="p">.</span><span class="nf">exceeds_rate_limit</span><span class="p">(</span><span class="n">user</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">False</span>
+
+        <span class="nf">log_access_granted</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">application</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">True</span>
+
+    <span class="k">def</span> <span class="nf">exceeds_rate_limit</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">user</span><span class="p">):</span>
+        <span class="n">usage</span> <span class="o">=</span> <span class="nf">get_user_usage</span><span class="p">(</span><span class="n">user</span><span class="p">.</span><span class="nb">id</span><span class="p">,</span> <span class="n">last_24_hours</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+        <span class="n">limits</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="sh">'</span><span class="s">requests_per_day</span><span class="sh">'</span><span class="p">:</span> <span class="mi">1000</span><span class="p">,</span>
+            <span class="sh">'</span><span class="s">tokens_per_day</span><span class="sh">'</span><span class="p">:</span> <span class="mi">100000</span><span class="p">,</span>
+            <span class="sh">'</span><span class="s">cost_per_day</span><span class="sh">'</span><span class="p">:</span> <span class="mf">50.00</span>
+        <span class="p">}</span>
+
+        <span class="nf">return </span><span class="p">(</span>
+            <span class="n">usage</span><span class="p">.</span><span class="n">requests</span> <span class="o">&gt;</span> <span class="n">limits</span><span class="p">[</span><span class="sh">'</span><span class="s">requests_per_day</span><span class="sh">'</span><span class="p">]</span> <span class="ow">or</span>
+            <span class="n">usage</span><span class="p">.</span><span class="n">tokens</span> <span class="o">&gt;</span> <span class="n">limits</span><span class="p">[</span><span class="sh">'</span><span class="s">tokens_per_day</span><span class="sh">'</span><span class="p">]</span> <span class="ow">or</span>
+            <span class="n">usage</span><span class="p">.</span><span class="n">cost</span> <span class="o">&gt;</span> <span class="n">limits</span><span class="p">[</span><span class="sh">'</span><span class="s">cost_per_day</span><span class="sh">'</span><span class="p">]</span>
+        <span class="p">)</span>
+</code></pre></div></div>
+
+<h2 id="pillar-4-monitoring--auditing">Pillar 4: Monitoring &amp; Auditing</h2>
+
+<h3 id="comprehensive-logging">Comprehensive Logging</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">AIAuditLogger</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">log_request</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
+        <span class="sh">"""</span><span class="s">
+        Log every AI request for audit purposes
+        </span><span class="sh">"""</span>
+        <span class="n">audit_record</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="sh">'</span><span class="s">timestamp</span><span class="sh">'</span><span class="p">:</span> <span class="n">datetime</span><span class="p">.</span><span class="nf">now</span><span class="p">().</span><span class="nf">isoformat</span><span class="p">(),</span>
+            <span class="sh">'</span><span class="s">request_id</span><span class="sh">'</span><span class="p">:</span> <span class="n">request</span><span class="p">.</span><span class="nb">id</span><span class="p">,</span>
+
+            <span class="c1"># User info
+</span>            <span class="sh">'</span><span class="s">user_id</span><span class="sh">'</span><span class="p">:</span> <span class="n">request</span><span class="p">.</span><span class="n">user</span><span class="p">.</span><span class="nb">id</span><span class="p">,</span>
+            <span class="sh">'</span><span class="s">user_email</span><span class="sh">'</span><span class="p">:</span> <span class="n">request</span><span class="p">.</span><span class="n">user</span><span class="p">.</span><span class="n">email</span><span class="p">,</span>
+            <span class="sh">'</span><span class="s">user_role</span><span class="sh">'</span><span class="p">:</span> <span class="n">request</span><span class="p">.</span><span class="n">user</span><span class="p">.</span><span class="n">role</span><span class="p">,</span>
+
+            <span class="c1"># Application info
+</span>            <span class="sh">'</span><span class="s">application</span><span class="sh">'</span><span class="p">:</span> <span class="n">request</span><span class="p">.</span><span class="n">application</span><span class="p">.</span><span class="n">name</span><span class="p">,</span>
+            <span class="sh">'</span><span class="s">risk_level</span><span class="sh">'</span><span class="p">:</span> <span class="n">request</span><span class="p">.</span><span class="n">application</span><span class="p">.</span><span class="n">risk_level</span><span class="p">,</span>
+
+            <span class="c1"># Request details
+</span>            <span class="sh">'</span><span class="s">input_text</span><span class="sh">'</span><span class="p">:</span> <span class="n">request</span><span class="p">.</span><span class="nb">input</span><span class="p">[:</span><span class="mi">500</span><span class="p">],</span>  <span class="c1"># Truncate for storage
+</span>            <span class="sh">'</span><span class="s">input_tokens</span><span class="sh">'</span><span class="p">:</span> <span class="n">request</span><span class="p">.</span><span class="n">input_tokens</span><span class="p">,</span>
+            <span class="sh">'</span><span class="s">model</span><span class="sh">'</span><span class="p">:</span> <span class="n">request</span><span class="p">.</span><span class="n">model</span><span class="p">,</span>
+            <span class="sh">'</span><span class="s">prompt_version</span><span class="sh">'</span><span class="p">:</span> <span class="n">request</span><span class="p">.</span><span class="n">prompt_version</span><span class="p">,</span>
+
+            <span class="c1"># Response details
+</span>            <span class="sh">'</span><span class="s">output_text</span><span class="sh">'</span><span class="p">:</span> <span class="n">request</span><span class="p">.</span><span class="n">output</span><span class="p">[:</span><span class="mi">500</span><span class="p">],</span>
+            <span class="sh">'</span><span class="s">output_tokens</span><span class="sh">'</span><span class="p">:</span> <span class="n">request</span><span class="p">.</span><span class="n">output_tokens</span><span class="p">,</span>
+            <span class="sh">'</span><span class="s">latency_ms</span><span class="sh">'</span><span class="p">:</span> <span class="n">request</span><span class="p">.</span><span class="n">latency_ms</span><span class="p">,</span>
+            <span class="sh">'</span><span class="s">cost_usd</span><span class="sh">'</span><span class="p">:</span> <span class="n">request</span><span class="p">.</span><span class="n">cost</span><span class="p">,</span>
+
+            <span class="c1"># Safety checks
+</span>            <span class="sh">'</span><span class="s">input_violations</span><span class="sh">'</span><span class="p">:</span> <span class="n">request</span><span class="p">.</span><span class="n">input_violations</span><span class="p">,</span>
+            <span class="sh">'</span><span class="s">output_checks</span><span class="sh">'</span><span class="p">:</span> <span class="n">request</span><span class="p">.</span><span class="n">output_checks</span><span class="p">,</span>
+
+            <span class="c1"># Metadata
+</span>            <span class="sh">'</span><span class="s">ip_address</span><span class="sh">'</span><span class="p">:</span> <span class="n">request</span><span class="p">.</span><span class="n">ip_address</span><span class="p">,</span>
+            <span class="sh">'</span><span class="s">user_agent</span><span class="sh">'</span><span class="p">:</span> <span class="n">request</span><span class="p">.</span><span class="n">user_agent</span>
+        <span class="p">}</span>
+
+        <span class="c1"># Store in audit database
+</span>        <span class="n">audit_db</span><span class="p">.</span><span class="nf">insert</span><span class="p">(</span><span class="n">audit_record</span><span class="p">)</span>
+
+        <span class="c1"># Check for anomalies
+</span>        <span class="n">self</span><span class="p">.</span><span class="nf">detect_anomalies</span><span class="p">(</span><span class="n">audit_record</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">detect_anomalies</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">record</span><span class="p">):</span>
+        <span class="sh">"""</span><span class="s">
+        Detect unusual patterns
+        </span><span class="sh">"""</span>
+        <span class="c1"># High token usage
+</span>        <span class="k">if</span> <span class="n">record</span><span class="p">[</span><span class="sh">'</span><span class="s">input_tokens</span><span class="sh">'</span><span class="p">]</span> <span class="o">+</span> <span class="n">record</span><span class="p">[</span><span class="sh">'</span><span class="s">output_tokens</span><span class="sh">'</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">10000</span><span class="p">:</span>
+            <span class="nf">alert</span><span class="p">(</span><span class="sh">'</span><span class="s">HIGH_TOKEN_USAGE</span><span class="sh">'</span><span class="p">,</span> <span class="n">record</span><span class="p">)</span>
+
+        <span class="c1"># Repeated violations
+</span>        <span class="n">user_violations</span> <span class="o">=</span> <span class="n">audit_db</span><span class="p">.</span><span class="nf">count_violations</span><span class="p">(</span>
+            <span class="n">record</span><span class="p">[</span><span class="sh">'</span><span class="s">user_id</span><span class="sh">'</span><span class="p">],</span>
+            <span class="n">last_7_days</span><span class="o">=</span><span class="bp">True</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="n">user_violations</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">:</span>
+            <span class="nf">alert</span><span class="p">(</span><span class="sh">'</span><span class="s">REPEATED_VIOLATIONS</span><span class="sh">'</span><span class="p">,</span> <span class="n">record</span><span class="p">)</span>
+
+        <span class="c1"># Unusual access patterns
+</span>        <span class="k">if</span> <span class="n">self</span><span class="p">.</span><span class="nf">is_unusual_access</span><span class="p">(</span><span class="n">record</span><span class="p">):</span>
+            <span class="nf">alert</span><span class="p">(</span><span class="sh">'</span><span class="s">UNUSUAL_ACCESS_PATTERN</span><span class="sh">'</span><span class="p">,</span> <span class="n">record</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="compliance-reporting">Compliance Reporting</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">generate_compliance_report</span><span class="p">(</span><span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">):</span>
+    <span class="sh">"""</span><span class="s">
+    Generate report for compliance teams
+    </span><span class="sh">"""</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">audit_db</span><span class="p">.</span><span class="nf">query</span><span class="p">(</span><span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">)</span>
+
+    <span class="n">report</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="sh">'</span><span class="s">period</span><span class="sh">'</span><span class="p">:</span> <span class="sa">f</span><span class="sh">"</span><span class="si">{</span><span class="n">start_date</span><span class="si">}</span><span class="s"> to </span><span class="si">{</span><span class="n">end_date</span><span class="si">}</span><span class="sh">"</span><span class="p">,</span>
+
+        <span class="sh">'</span><span class="s">usage_summary</span><span class="sh">'</span><span class="p">:</span> <span class="p">{</span>
+            <span class="sh">'</span><span class="s">total_requests</span><span class="sh">'</span><span class="p">:</span> <span class="nf">len</span><span class="p">(</span><span class="n">data</span><span class="p">),</span>
+            <span class="sh">'</span><span class="s">unique_users</span><span class="sh">'</span><span class="p">:</span> <span class="nf">len</span><span class="p">(</span><span class="nf">set</span><span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="sh">'</span><span class="s">user_id</span><span class="sh">'</span><span class="p">]</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">data</span><span class="p">)),</span>
+            <span class="sh">'</span><span class="s">applications_used</span><span class="sh">'</span><span class="p">:</span> <span class="nf">len</span><span class="p">(</span><span class="nf">set</span><span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="sh">'</span><span class="s">application</span><span class="sh">'</span><span class="p">]</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">data</span><span class="p">)),</span>
+            <span class="sh">'</span><span class="s">total_cost</span><span class="sh">'</span><span class="p">:</span> <span class="nf">sum</span><span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="sh">'</span><span class="s">cost_usd</span><span class="sh">'</span><span class="p">]</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">data</span><span class="p">)</span>
+        <span class="p">},</span>
+
+        <span class="sh">'</span><span class="s">risk_breakdown</span><span class="sh">'</span><span class="p">:</span> <span class="p">{</span>
+            <span class="sh">'</span><span class="s">high_risk_requests</span><span class="sh">'</span><span class="p">:</span> <span class="nf">sum</span><span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">data</span> <span class="k">if</span> <span class="n">r</span><span class="p">[</span><span class="sh">'</span><span class="s">risk_level</span><span class="sh">'</span><span class="p">]</span> <span class="o">==</span> <span class="sh">'</span><span class="s">HIGH</span><span class="sh">'</span><span class="p">),</span>
+            <span class="sh">'</span><span class="s">medium_risk_requests</span><span class="sh">'</span><span class="p">:</span> <span class="nf">sum</span><span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">data</span> <span class="k">if</span> <span class="n">r</span><span class="p">[</span><span class="sh">'</span><span class="s">risk_level</span><span class="sh">'</span><span class="p">]</span> <span class="o">==</span> <span class="sh">'</span><span class="s">MEDIUM</span><span class="sh">'</span><span class="p">),</span>
+            <span class="sh">'</span><span class="s">low_risk_requests</span><span class="sh">'</span><span class="p">:</span> <span class="nf">sum</span><span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">data</span> <span class="k">if</span> <span class="n">r</span><span class="p">[</span><span class="sh">'</span><span class="s">risk_level</span><span class="sh">'</span><span class="p">]</span> <span class="o">==</span> <span class="sh">'</span><span class="s">LOW</span><span class="sh">'</span><span class="p">)</span>
+        <span class="p">},</span>
+
+        <span class="sh">'</span><span class="s">violations</span><span class="sh">'</span><span class="p">:</span> <span class="p">{</span>
+            <span class="sh">'</span><span class="s">pii_detected</span><span class="sh">'</span><span class="p">:</span> <span class="nf">sum</span><span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">data</span> <span class="k">if</span> <span class="sh">'</span><span class="s">PII_DETECTED</span><span class="sh">'</span> <span class="ow">in</span> <span class="n">r</span><span class="p">[</span><span class="sh">'</span><span class="s">input_violations</span><span class="sh">'</span><span class="p">]),</span>
+            <span class="sh">'</span><span class="s">content_violations</span><span class="sh">'</span><span class="p">:</span> <span class="nf">sum</span><span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">data</span> <span class="k">if</span> <span class="sh">'</span><span class="s">CONTENT_VIOLATION</span><span class="sh">'</span> <span class="ow">in</span> <span class="n">r</span><span class="p">[</span><span class="sh">'</span><span class="s">input_violations</span><span class="sh">'</span><span class="p">]),</span>
+            <span class="sh">'</span><span class="s">injection_attempts</span><span class="sh">'</span><span class="p">:</span> <span class="nf">sum</span><span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">data</span> <span class="k">if</span> <span class="sh">'</span><span class="s">PROMPT_INJECTION</span><span class="sh">'</span> <span class="ow">in</span> <span class="n">r</span><span class="p">[</span><span class="sh">'</span><span class="s">input_violations</span><span class="sh">'</span><span class="p">])</span>
+        <span class="p">},</span>
+
+        <span class="sh">'</span><span class="s">data_handling</span><span class="sh">'</span><span class="p">:</span> <span class="p">{</span>
+            <span class="sh">'</span><span class="s">pii_processed</span><span class="sh">'</span><span class="p">:</span> <span class="nf">count_pii_processed</span><span class="p">(</span><span class="n">data</span><span class="p">),</span>
+            <span class="sh">'</span><span class="s">external_api_calls</span><span class="sh">'</span><span class="p">:</span> <span class="nf">sum</span><span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">data</span> <span class="k">if</span> <span class="n">r</span><span class="p">[</span><span class="sh">'</span><span class="s">model</span><span class="sh">'</span><span class="p">].</span><span class="nf">startswith</span><span class="p">(</span><span class="sh">'</span><span class="s">gpt-</span><span class="sh">'</span><span class="p">)),</span>
+            <span class="sh">'</span><span class="s">private_deployments</span><span class="sh">'</span><span class="p">:</span> <span class="nf">sum</span><span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">data</span> <span class="k">if</span> <span class="sh">'</span><span class="s">azure</span><span class="sh">'</span> <span class="ow">in</span> <span class="n">r</span><span class="p">[</span><span class="sh">'</span><span class="s">model</span><span class="sh">'</span><span class="p">])</span>
+        <span class="p">},</span>
+
+        <span class="sh">'</span><span class="s">top_users</span><span class="sh">'</span><span class="p">:</span> <span class="nf">get_top_users_by_usage</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="mi">10</span><span class="p">),</span>
+        <span class="sh">'</span><span class="s">top_applications</span><span class="sh">'</span><span class="p">:</span> <span class="nf">get_top_applications</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">report</span>
+</code></pre></div></div>
+
+<h2 id="pillar-5-continuous-improvement">Pillar 5: Continuous Improvement</h2>
+
+<h3 id="incident-response-process">Incident Response Process</h3>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">AI Incident Response Playbook</span><span class="pi">:</span>
+
+<span class="na">Severity Levels</span><span class="pi">:</span>
+  <span class="na">P0 (Critical)</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s">Data breach or PII exposure</span>
+    <span class="pi">-</span> <span class="s">Significant financial loss</span>
+    <span class="pi">-</span> <span class="s">Legal/regulatory violation</span>
+    <span class="na">Response Time</span><span class="pi">:</span> <span class="s">Immediate</span>
+    <span class="na">Team</span><span class="pi">:</span> <span class="s">On-call engineer + Legal + CISO</span>
+
+  <span class="na">P1 (High)</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s">System generating harmful content</span>
+    <span class="pi">-</span> <span class="s">Widespread hallucinations</span>
+    <span class="pi">-</span> <span class="s">Service disruption</span>
+    <span class="na">Response Time</span><span class="pi">:</span> <span class="s">1 hour</span>
+    <span class="na">Team</span><span class="pi">:</span> <span class="s">On-call engineer + Product manager</span>
+
+  <span class="na">P2 (Medium)</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s">Quality degradation</span>
+    <span class="pi">-</span> <span class="s">Cost spike</span>
+    <span class="pi">-</span> <span class="s">Individual user complaint</span>
+    <span class="na">Response Time</span><span class="pi">:</span> <span class="s">4 hours</span>
+    <span class="na">Team</span><span class="pi">:</span> <span class="s">On-call engineer</span>
+
+<span class="na">Response Steps</span><span class="pi">:</span>
+  <span class="s">1. Detect &amp; Alert (automated monitoring)</span>
+  <span class="s">2. Assess severity and impact</span>
+  <span class="s">3. Contain (disable feature if necessary)</span>
+  <span class="s">4. Investigate root cause</span>
+  <span class="s">5. Remediate</span>
+  <span class="s">6. Document and communicate</span>
+  <span class="s">7. Post-mortem and prevention</span>
+
+<span class="na">Post-Mortem Template</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">What happened?</span>
+  <span class="pi">-</span> <span class="s">Timeline of events</span>
+  <span class="pi">-</span> <span class="s">Root cause analysis</span>
+  <span class="pi">-</span> <span class="s">Impact assessment</span>
+  <span class="pi">-</span> <span class="s">What went well?</span>
+  <span class="pi">-</span> <span class="s">What could be improved?</span>
+  <span class="pi">-</span> <span class="s">Action items</span>
+</code></pre></div></div>
+
+<h3 id="regular-review-cadence">Regular Review Cadence</h3>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gu">## Governance Review Schedule</span>
+
+<span class="gu">### Weekly (Operational Team)</span>
+<span class="p">-</span> Review usage metrics
+<span class="p">-</span> Check for violations and anomalies
+<span class="p">-</span> Address user feedback
+
+<span class="gu">### Monthly (AI Governance Committee)</span>
+<span class="p">-</span> Review high-risk application usage
+<span class="p">-</span> Assess compliance with policies
+<span class="p">-</span> Review cost and performance metrics
+<span class="p">-</span> Update vendor assessments
+
+<span class="gu">### Quarterly (Executive Review)</span>
+<span class="p">-</span> Strategic alignment review
+<span class="p">-</span> Risk assessment updates
+<span class="p">-</span> Policy effectiveness evaluation
+<span class="p">-</span> Budget and ROI analysis
+<span class="p">-</span> Regulatory landscape updates
+
+<span class="gu">### Annually (Full Governance Audit)</span>
+<span class="p">-</span> Comprehensive policy review
+<span class="p">-</span> Third-party security audit
+<span class="p">-</span> Legal compliance review
+<span class="p">-</span> Update training materials
+<span class="p">-</span> Benchmark against industry standards
+</code></pre></div></div>
+
+<h2 id="implementation-roadmap">Implementation Roadmap</h2>
+
+<h3 id="phase-1-foundation-month-1-2">Phase 1: Foundation (Month 1-2)</h3>
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Conduct initial risk assessment</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Draft acceptable use policy</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Implement basic logging</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Deploy PII detection</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Set up access controls</li>
+</ul>
+
+<h3 id="phase-2-technical-controls-month-2-3">Phase 2: Technical Controls (Month 2-3)</h3>
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Implement input/output guardrails</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Add content moderation</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Set up monitoring dashboards</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Configure alerts</li>
+</ul>
+
+<h3 id="phase-3-processes-month-3-4">Phase 3: Processes (Month 3-4)</h3>
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Create incident response playbook</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Establish review cadence</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Train employees on policies</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Set up compliance reporting</li>
+</ul>
+
+<h3 id="phase-4-optimization-month-4">Phase 4: Optimization (Month 4+)</h3>
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Regular policy reviews</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Continuous control improvements</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Stakeholder feedback integration</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Benchmark and iterate</li>
+</ul>
+
+<h2 id="common-pitfalls-to-avoid">Common Pitfalls to Avoid</h2>
+
+<ol>
+  <li><strong>Too Restrictive</strong>: Governance shouldn’t block innovation</li>
+  <li><strong>Too Loose</strong>: Balance speed with responsibility</li>
+  <li><strong>Set and Forget</strong>: AI governance requires continuous attention</li>
+  <li><strong>Technology Only</strong>: Governance is people + process + technology</li>
+  <li><strong>Ignoring Stakeholders</strong>: Involve legal, security, compliance, users</li>
+</ol>
+
+<h2 id="measuring-success">Measuring Success</h2>
+
+<p>Key metrics:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">governance_metrics</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="c1"># Risk Management
+</span>    <span class="sh">'</span><span class="s">incidents_per_month</span><span class="sh">'</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>  <span class="c1"># Target: &lt; 5
+</span>    <span class="sh">'</span><span class="s">mean_time_to_detect</span><span class="sh">'</span><span class="p">:</span> <span class="mi">15</span><span class="p">,</span>  <span class="c1"># minutes, Target: &lt; 30
+</span>    <span class="sh">'</span><span class="s">mean_time_to_resolve</span><span class="sh">'</span><span class="p">:</span> <span class="mi">120</span><span class="p">,</span>  <span class="c1"># minutes, Target: &lt; 180
+</span>
+    <span class="c1"># Compliance
+</span>    <span class="sh">'</span><span class="s">policy_violations_per_1000_requests</span><span class="sh">'</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span>  <span class="c1"># Target: &lt; 1
+</span>    <span class="sh">'</span><span class="s">audit_findings</span><span class="sh">'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>  <span class="c1"># Target: 0 critical findings
+</span>    <span class="sh">'</span><span class="s">training_completion_rate</span><span class="sh">'</span><span class="p">:</span> <span class="mf">0.95</span><span class="p">,</span>  <span class="c1"># Target: &gt; 90%
+</span>
+    <span class="c1"># Adoption
+</span>    <span class="sh">'</span><span class="s">approved_applications</span><span class="sh">'</span><span class="p">:</span> <span class="mi">15</span><span class="p">,</span>
+    <span class="sh">'</span><span class="s">active_users</span><span class="sh">'</span><span class="p">:</span> <span class="mi">2500</span><span class="p">,</span>
+    <span class="sh">'</span><span class="s">user_satisfaction</span><span class="sh">'</span><span class="p">:</span> <span class="mf">4.2</span><span class="p">,</span>  <span class="c1"># Target: &gt; 4.0
+</span>
+    <span class="c1"># Efficiency
+</span>    <span class="sh">'</span><span class="s">approval_turnaround_time</span><span class="sh">'</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>  <span class="c1"># days, Target: &lt; 7
+</span>    <span class="sh">'</span><span class="s">false_positive_rate</span><span class="sh">'</span><span class="p">:</span> <span class="mf">0.03</span><span class="p">,</span>  <span class="c1"># Target: &lt; 5%
+</span><span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="real-world-impact">Real-World Impact</h2>
+
+<p>After implementing this framework:</p>
+
+<p><strong>Before Governance:</strong></p>
+<ul>
+  <li>3 PII exposure incidents in 6 months</li>
+  <li>No visibility into AI usage</li>
+  <li>Ad-hoc approvals causing delays</li>
+  <li>Legal concerns blocking adoption</li>
+</ul>
+
+<p><strong>After Governance:</strong></p>
+<ul>
+  <li>0 security incidents in 12 months</li>
+  <li>100% audit trail coverage</li>
+  <li>5-day average approval time</li>
+  <li>2500 users across 15 applications</li>
+  <li>Legal and compliance confidence</li>
+</ul>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>AI governance isn’t about saying “no” to innovation—it’s about enabling responsible innovation at scale.</p>
+
+<p>Key takeaways:</p>
+<ol>
+  <li><strong>Start with risk assessment</strong>: Understand what you’re trying to protect</li>
+  <li><strong>Balance control and enablement</strong>: Don’t be a blocker</li>
+  <li><strong>Automate where possible</strong>: Technical controls &gt; manual reviews</li>
+  <li><strong>Measure and iterate</strong>: Governance is never “done”</li>
+  <li><strong>Communicate clearly</strong>: Everyone should understand the “why”</li>
+</ol>
+
+<p>AI is moving fast. Your governance framework should too.</p>
+
+<h2 id="resources">Resources</h2>
+
+<ul>
+  <li><a href="https://www.nist.gov/itl/ai-risk-management-framework">NIST AI Risk Management Framework</a></li>
+  <li><a href="https://artificialintelligenceact.eu/">EU AI Act</a></li>
+  <li><a href="https://ai.google/responsibility/responsible-ai-practices/">Responsible AI Practices by Google</a></li>
+</ul>
+
+<hr />
+
+<p><strong>Building AI governance in your organization?</strong> I’d love to hear about your challenges and approaches. Reach out via <a href="mailto:email4vishal@gmail.com">email</a> or <a href="https://www.linkedin.com/in/sharma-vishal/">LinkedIn</a>.</p>
+
+<hr />
+
+<p><strong>Disclaimer:</strong> The views, opinions, and technical approaches shared in this post are my own, based on my personal experience building production AI/ML systems. They do not represent the views of my current or former employers. Technology choices and architectural decisions should always be evaluated in the context of your specific use case and requirements.</p>
+
+<hr />
+
+<p><strong>Questions or feedback?</strong> I’d love to hear your thoughts and experiences.</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td><strong>Contact:</strong> <a href="https://www.linkedin.com/in/sharma-vishal/"><i class="fas fa-fw fa-link"></i> LinkedIn</a></td>
+      <td><a href="https://github.com/git4vishal"><i class="fab fa-fw fa-github"></i> GitHub</a></td>
+      <td><a href="https://x.com/twitt4vishal"><i class="fab fa-fw fa-twitter-square"></i> X</a></td>
+      <td><a href="mailto:email4vishal@gmail.com"><i class="fas fa-fw fa-envelope"></i> Email</a></td>
+    </tr>
+  </tbody>
+</table>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#ai-governance" class="page__taxonomy-item p-category" rel="tag">AI Governance</a><span class="sep">, </span>
+    
+      <a href="/tags/#compliance" class="page__taxonomy-item p-category" rel="tag">Compliance</a><span class="sep">, </span>
+    
+      <a href="/tags/#enterprise" class="page__taxonomy-item p-category" rel="tag">Enterprise</a><span class="sep">, </span>
+    
+      <a href="/tags/#responsible-ai" class="page__taxonomy-item p-category" rel="tag">Responsible AI</a><span class="sep">, </span>
+    
+      <a href="/tags/#risk-management" class="page__taxonomy-item p-category" rel="tag">Risk Management</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#governance" class="page__taxonomy-item p-category" rel="tag">governance</a><span class="sep">, </span>
+    
+      <a href="/categories/#strategy" class="page__taxonomy-item p-category" rel="tag">strategy</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2025-12-10T12:00:00-06:00">December 10, 2025</time></p>
+
+      </footer>
+
+      
+
+      
+  <nav class="pagination">
+    
+      <a href="/optimization/cost/llm-cost-optimization/" class="pagination--pager" title="LLM Cost Optimization: Cutting Your AI Bill by 70% Without Sacrificing Quality">Previous</a>
+    
+    
+      <a href="/evaluation/testing/evaluating-llm-applications/" class="pagination--pager" title="Evaluating LLM Applications: Beyond Vibes and Into Data">Next</a>
+    
+  </nav>
+
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    
+<div class="page__related">
+  
+  <h2 class="page__related-title">You May Also Enjoy</h2>
+  <div class="grid__wrapper">
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/case-study/platform-engineering/genai-customer-analysis-case-study/" rel="permalink">Case Study: Production GenAI Platform Processing 2M+ Monthly Customer Interactions
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          4 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">How I architected a production GenAI platform processing 2M+ monthly call transcripts with 85% accuracy, delivering $1.2M annual retention value through serv...</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/genai/architecture/production-grade-rag-systems/" rel="permalink">Building Production-Grade RAG Systems: Architecture and Best Practices
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          8 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Lessons learned from building and scaling RAG systems in enterprise environments—moving from proof-of-concept demos to production-grade systems that handle m...</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/evaluation/testing/evaluating-llm-applications/" rel="permalink">Evaluating LLM Applications: Beyond Vibes and Into Data
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          8 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Rigorous evaluation is what separates prototypes from production LLM systems. Learn the frameworks, metrics, and best practices for measuring what matters in...</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/optimization/cost/llm-cost-optimization/" rel="permalink">LLM Cost Optimization: Cutting Your AI Bill by 70% Without Sacrificing Quality
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          9 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">When we first deployed our RAG system to production, our LLM costs were $12,000/month for 50,000 queries. Six months later, we’re handling 200,000 queries at...</p>
+  </article>
+</div>
+
+    
+  </div>
+</div>
+
+  
+  
+</div>
+
+      
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';" role="search">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        
+
+<center>
+<div class="page__footer-follow">
+    <ul class="social-icons">
+        
+
+        <b>Contact: </b>
+        
+        
+        
+        <li><a href="https://www.linkedin.com/in/sharma-vishal/" rel="nofollow noopener noreferrer"><i
+                class="fas fa-fw fa-link" aria-hidden="true"></i> LinkedIn</a></li>
+        
+        
+        
+        <li><a href="https://github.com/git4vishal" rel="nofollow noopener noreferrer"><i
+                class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+        
+        
+        <li><a href="https://x.com/twitt4vishal" rel="nofollow noopener noreferrer"><i
+                class="fab fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
+        
+        
+        
+        <li><a href="mailto:email4vishal@gmail.com" rel="nofollow noopener noreferrer"><i
+                class="fab fa-fw fa-envelope" aria-hidden="true"></i> Email</a></li>
+        
+        
+        
+
+        
+        <li>
+            <a href="/feed.xml"><i
+                    class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+        
+    </ul>
+</div>
+
+
+<div class="page__footer-copyright">&copy;
+    
+    
+        2025 -
+    
+    2026
+    <a href="https://git4vishal.github.io">
+        Vishal Sharma | Enterprise Data &amp; AI Platform Leader
+    </a>.
+<!--    Powered by -->
+<!--    <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> -->
+<!--    &amp; -->
+<!--    <a href="https://mademistakes.com/work/jekyll-themes/minimal-mistakes/" rel="nofollow">Minimal Mistakes</a>.-->
+</div>
+</center>
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+
+
+  </body>
+</html>

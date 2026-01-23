@@ -1,0 +1,1418 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.27.3 by Michael Rose
+  Copyright 2013-2025 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>LLM Cost Optimization: Cutting Your AI Bill by 70% Without Sacrificing Quality - Home</title>
+<meta name="description" content="When we first deployed our RAG system to production, our LLM costs were $12,000/month for 50,000 queries. Six months later, we’re handling 200,000 queries at $3,500/month—4x the volume at 71% less cost.">
+
+
+  <meta name="author" content="Vishal Sharma">
+  
+  <meta property="article:author" content="Vishal Sharma">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Home">
+<meta property="og:title" content="LLM Cost Optimization: Cutting Your AI Bill by 70% Without Sacrificing Quality">
+<meta property="og:url" content="https://git4vishal.github.io/optimization/cost/llm-cost-optimization/">
+
+
+  <meta property="og:description" content="When we first deployed our RAG system to production, our LLM costs were $12,000/month for 50,000 queries. Six months later, we’re handling 200,000 queries at $3,500/month—4x the volume at 71% less cost.">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2025-12-05T12:00:00-06:00">
+
+
+
+
+
+
+<link rel="canonical" href="https://git4vishal.github.io/optimization/cost/llm-cost-optimization/">
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Home Feed">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+  
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css"></noscript>
+
+
+
+    <!-- Mermaid JS for diagram rendering -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded', function() {
+    // Convert kramdown code blocks to mermaid divs
+    document.querySelectorAll('code.language-mermaid').forEach(function(code) {
+      const pre = code.parentElement;
+      const div = document.createElement('div');
+      div.className = 'mermaid';
+      div.textContent = code.textContent;
+      pre.replaceWith(div);
+    });
+
+    // Initialize Mermaid
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: 'dark',
+      securityLevel: 'loose'
+    });
+  });
+</script>
+
+  </head>
+
+  <body class="layout--single" dir="ltr">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Home
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a
+                href="/about/"
+                
+                
+              >About</a>
+            </li><li class="masthead__menu-item">
+              <a
+                href="/projects/"
+                
+                
+              >Projects</a>
+            </li><li class="masthead__menu-item">
+              <a
+                href="/blog/"
+                
+                
+              >Blogs</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="https://git4vishal.github.io/">
+        <img src="/assets/images/bio-photo.jpg" alt="Vishal Sharma" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="https://git4vishal.github.io/" itemprop="url">Vishal Sharma</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>Enterprise Data &amp; AI Platform Leader</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">Frisco, Texas</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="https://www.linkedin.com/in/sharma-vishal/" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
+          
+        
+          
+            <li><a href="https://github.com/git4vishal" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+            <li><a href="https://x.com/twitt4vishal" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:email4vishal@gmail.com" rel="me" class="u-email">
+            <meta itemprop="email" content="email4vishal@gmail.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="LLM Cost Optimization: Cutting Your AI Bill by 70% Without Sacrificing Quality">
+    <meta itemprop="description" content="When we first deployed our RAG system to production, our LLM costs were $12,000/month for 50,000 queries. Six months later, we’re handling 200,000 queries at $3,500/month—4x the volume at 71% less cost.">
+    <meta itemprop="datePublished" content="2025-12-05T12:00:00-06:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">
+            <a href="https://git4vishal.github.io/optimization/cost/llm-cost-optimization/" itemprop="url">LLM Cost Optimization: Cutting Your AI Bill by 70% Without Sacrificing Quality
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          9 minute read
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <p>When we first deployed our RAG system to production, our LLM costs were $12,000/month for 50,000 queries. Six months later, we’re handling 200,000 queries at $3,500/month—4x the volume at 71% less cost.</p>
+
+<p>Here’s how we did it, and how you can too.</p>
+
+<h2 id="the-cost-problem">The Cost Problem</h2>
+
+<p>LLM costs can spiral out of control because:</p>
+
+<ol>
+  <li><strong>Token costs are variable</strong>: Unlike traditional APIs with fixed pricing</li>
+  <li><strong>Usage patterns are unpredictable</strong>: Some queries use 10K tokens, others 500</li>
+  <li><strong>Quality requirements vary</strong>: Not every query needs GPT-4</li>
+  <li><strong>Hidden costs</strong>: Embedding generation, retrieval, retries, failed requests</li>
+</ol>
+
+<h2 id="understanding-your-cost-structure">Understanding Your Cost Structure</h2>
+
+<p>Before optimizing, measure:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">CostTracker</span><span class="p">:</span>
+    <span class="n">PRICING</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="sh">'</span><span class="s">gpt-4</span><span class="sh">'</span><span class="p">:</span> <span class="p">{</span>
+            <span class="sh">'</span><span class="s">input</span><span class="sh">'</span><span class="p">:</span> <span class="mf">0.03</span><span class="p">,</span>   <span class="c1"># per 1K tokens
+</span>            <span class="sh">'</span><span class="s">output</span><span class="sh">'</span><span class="p">:</span> <span class="mf">0.06</span>
+        <span class="p">},</span>
+        <span class="sh">'</span><span class="s">gpt-4-turbo</span><span class="sh">'</span><span class="p">:</span> <span class="p">{</span>
+            <span class="sh">'</span><span class="s">input</span><span class="sh">'</span><span class="p">:</span> <span class="mf">0.01</span><span class="p">,</span>
+            <span class="sh">'</span><span class="s">output</span><span class="sh">'</span><span class="p">:</span> <span class="mf">0.03</span>
+        <span class="p">},</span>
+        <span class="sh">'</span><span class="s">gpt-3.5-turbo</span><span class="sh">'</span><span class="p">:</span> <span class="p">{</span>
+            <span class="sh">'</span><span class="s">input</span><span class="sh">'</span><span class="p">:</span> <span class="mf">0.0005</span><span class="p">,</span>
+            <span class="sh">'</span><span class="s">output</span><span class="sh">'</span><span class="p">:</span> <span class="mf">0.0015</span>
+        <span class="p">},</span>
+        <span class="sh">'</span><span class="s">text-embedding-3-small</span><span class="sh">'</span><span class="p">:</span> <span class="p">{</span>
+            <span class="sh">'</span><span class="s">input</span><span class="sh">'</span><span class="p">:</span> <span class="mf">0.00002</span><span class="p">,</span>
+            <span class="sh">'</span><span class="s">output</span><span class="sh">'</span><span class="p">:</span> <span class="mi">0</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">def</span> <span class="nf">calculate_cost</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">input_tokens</span><span class="p">,</span> <span class="n">output_tokens</span><span class="p">):</span>
+        <span class="n">pricing</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">PRICING</span><span class="p">[</span><span class="n">model</span><span class="p">]</span>
+        <span class="n">cost</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="p">(</span><span class="n">input_tokens</span> <span class="o">/</span> <span class="mi">1000</span><span class="p">)</span> <span class="o">*</span> <span class="n">pricing</span><span class="p">[</span><span class="sh">'</span><span class="s">input</span><span class="sh">'</span><span class="p">]</span> <span class="o">+</span>
+            <span class="p">(</span><span class="n">output_tokens</span> <span class="o">/</span> <span class="mi">1000</span><span class="p">)</span> <span class="o">*</span> <span class="n">pricing</span><span class="p">[</span><span class="sh">'</span><span class="s">output</span><span class="sh">'</span><span class="p">]</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">cost</span>
+
+    <span class="k">def</span> <span class="nf">analyze_request</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">request_log</span><span class="p">):</span>
+        <span class="n">breakdown</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="sh">'</span><span class="s">embedding</span><span class="sh">'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="sh">'</span><span class="s">retrieval</span><span class="sh">'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="sh">'</span><span class="s">generation</span><span class="sh">'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="sh">'</span><span class="s">total</span><span class="sh">'</span><span class="p">:</span> <span class="mi">0</span>
+        <span class="p">}</span>
+
+        <span class="c1"># Embedding cost
+</span>        <span class="n">breakdown</span><span class="p">[</span><span class="sh">'</span><span class="s">embedding</span><span class="sh">'</span><span class="p">]</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="nf">calculate_cost</span><span class="p">(</span>
+            <span class="sh">'</span><span class="s">text-embedding-3-small</span><span class="sh">'</span><span class="p">,</span>
+            <span class="n">request_log</span><span class="p">.</span><span class="n">query_tokens</span><span class="p">,</span>
+            <span class="mi">0</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Generation cost
+</span>        <span class="n">breakdown</span><span class="p">[</span><span class="sh">'</span><span class="s">generation</span><span class="sh">'</span><span class="p">]</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="nf">calculate_cost</span><span class="p">(</span>
+            <span class="n">request_log</span><span class="p">.</span><span class="n">model</span><span class="p">,</span>
+            <span class="n">request_log</span><span class="p">.</span><span class="n">prompt_tokens</span><span class="p">,</span>
+            <span class="n">request_log</span><span class="p">.</span><span class="n">completion_tokens</span>
+        <span class="p">)</span>
+
+        <span class="n">breakdown</span><span class="p">[</span><span class="sh">'</span><span class="s">total</span><span class="sh">'</span><span class="p">]</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span><span class="n">breakdown</span><span class="p">.</span><span class="nf">values</span><span class="p">())</span>
+        <span class="k">return</span> <span class="n">breakdown</span>
+</code></pre></div></div>
+
+<p><strong>Run this for a week.</strong> You might discover:</p>
+<ul>
+  <li>70% of costs come from 20% of queries</li>
+  <li>Most expensive queries aren’t the most valuable</li>
+  <li>Embedding costs are negligible (usually &lt; 1%)</li>
+  <li>GPT-4 is used where GPT-3.5-turbo would suffice</li>
+</ul>
+
+<h2 id="strategy-1-model-routing-20-40-savings">Strategy 1: Model Routing (20-40% savings)</h2>
+
+<p>Route queries to the right model based on complexity.</p>
+
+<h3 id="simple-router">Simple Router</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">ModelRouter</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="n">self</span><span class="p">):</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">cheap_model</span> <span class="o">=</span> <span class="sh">'</span><span class="s">gpt-3.5-turbo</span><span class="sh">'</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">expensive_model</span> <span class="o">=</span> <span class="sh">'</span><span class="s">gpt-4</span><span class="sh">'</span>
+
+    <span class="k">def</span> <span class="nf">classify_complexity</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">query</span><span class="p">):</span>
+        <span class="sh">"""</span><span class="s">
+        Classify query complexity using heuristics or a small classifier
+        </span><span class="sh">"""</span>
+        <span class="n">signals</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="sh">'</span><span class="s">length</span><span class="sh">'</span><span class="p">:</span> <span class="nf">len</span><span class="p">(</span><span class="n">query</span><span class="p">.</span><span class="nf">split</span><span class="p">()),</span>
+            <span class="sh">'</span><span class="s">has_code</span><span class="sh">'</span><span class="p">:</span> <span class="sh">'</span><span class="s">```</span><span class="sh">'</span> <span class="ow">in</span> <span class="n">query</span> <span class="ow">or</span> <span class="sh">'</span><span class="s">code</span><span class="sh">'</span> <span class="ow">in</span> <span class="n">query</span><span class="p">.</span><span class="nf">lower</span><span class="p">(),</span>
+            <span class="sh">'</span><span class="s">technical_terms</span><span class="sh">'</span><span class="p">:</span> <span class="n">self</span><span class="p">.</span><span class="nf">count_technical_terms</span><span class="p">(</span><span class="n">query</span><span class="p">),</span>
+            <span class="sh">'</span><span class="s">requires_reasoning</span><span class="sh">'</span><span class="p">:</span> <span class="nf">any</span><span class="p">(</span><span class="n">kw</span> <span class="ow">in</span> <span class="n">query</span><span class="p">.</span><span class="nf">lower</span><span class="p">()</span>
+                <span class="k">for</span> <span class="n">kw</span> <span class="ow">in</span> <span class="p">[</span><span class="sh">'</span><span class="s">why</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">how</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">explain</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">compare</span><span class="sh">'</span><span class="p">])</span>
+        <span class="p">}</span>
+
+        <span class="c1"># Simple scoring
+</span>        <span class="n">complexity_score</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">signals</span><span class="p">[</span><span class="sh">'</span><span class="s">length</span><span class="sh">'</span><span class="p">]</span> <span class="o">/</span> <span class="mi">100</span> <span class="o">+</span>
+            <span class="n">signals</span><span class="p">[</span><span class="sh">'</span><span class="s">has_code</span><span class="sh">'</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span>
+            <span class="n">signals</span><span class="p">[</span><span class="sh">'</span><span class="s">technical_terms</span><span class="sh">'</span><span class="p">]</span> <span class="o">*</span> <span class="mf">0.5</span> <span class="o">+</span>
+            <span class="n">signals</span><span class="p">[</span><span class="sh">'</span><span class="s">requires_reasoning</span><span class="sh">'</span><span class="p">]</span> <span class="o">*</span> <span class="mi">1</span>
+        <span class="p">)</span>
+
+        <span class="k">return</span> <span class="sh">'</span><span class="s">complex</span><span class="sh">'</span> <span class="k">if</span> <span class="n">complexity_score</span> <span class="o">&gt;</span> <span class="mi">3</span> <span class="k">else</span> <span class="sh">'</span><span class="s">simple</span><span class="sh">'</span>
+
+    <span class="k">def</span> <span class="nf">route</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">query</span><span class="p">):</span>
+        <span class="n">complexity</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="nf">classify_complexity</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">complexity</span> <span class="o">==</span> <span class="sh">'</span><span class="s">simple</span><span class="sh">'</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">self</span><span class="p">.</span><span class="n">cheap_model</span>
+        <span class="k">return</span> <span class="n">self</span><span class="p">.</span><span class="n">expensive_model</span>
+</code></pre></div></div>
+
+<h3 id="ml-based-router">ML-Based Router</h3>
+
+<p>Train a small classifier on historical data:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">joblib</span>
+<span class="kn">from</span> <span class="n">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+
+<span class="k">class</span> <span class="nc">MLModelRouter</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="n">self</span><span class="p">):</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">classifier</span> <span class="o">=</span> <span class="n">joblib</span><span class="p">.</span><span class="nf">load</span><span class="p">(</span><span class="sh">'</span><span class="s">model_router.pkl</span><span class="sh">'</span><span class="p">)</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">vectorizer</span> <span class="o">=</span> <span class="n">joblib</span><span class="p">.</span><span class="nf">load</span><span class="p">(</span><span class="sh">'</span><span class="s">vectorizer.pkl</span><span class="sh">'</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">train</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">historical_queries</span><span class="p">):</span>
+        <span class="sh">"""</span><span class="s">
+        Train on past queries labeled by whether
+        GPT-4 performed better than GPT-3.5
+        </span><span class="sh">"""</span>
+        <span class="n">X</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">vectorizer</span><span class="p">.</span><span class="nf">fit_transform</span><span class="p">([</span>
+            <span class="n">q</span><span class="p">.</span><span class="n">text</span> <span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="n">historical_queries</span>
+        <span class="p">])</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="n">q</span><span class="p">.</span><span class="n">needed_gpt4</span>  <span class="c1"># Binary: did this query need GPT-4?
+</span>            <span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="n">historical_queries</span>
+        <span class="p">]</span>
+
+        <span class="n">self</span><span class="p">.</span><span class="n">classifier</span><span class="p">.</span><span class="nf">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+        <span class="n">joblib</span><span class="p">.</span><span class="nf">dump</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">classifier</span><span class="p">,</span> <span class="sh">'</span><span class="s">model_router.pkl</span><span class="sh">'</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">route</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">query</span><span class="p">):</span>
+        <span class="n">X</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">vectorizer</span><span class="p">.</span><span class="nf">transform</span><span class="p">([</span><span class="n">query</span><span class="p">])</span>
+        <span class="n">needs_gpt4</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">classifier</span><span class="p">.</span><span class="nf">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+        <span class="k">return</span> <span class="sh">'</span><span class="s">gpt-4</span><span class="sh">'</span> <span class="k">if</span> <span class="n">needs_gpt4</span> <span class="k">else</span> <span class="sh">'</span><span class="s">gpt-3.5-turbo</span><span class="sh">'</span>
+</code></pre></div></div>
+
+<p><strong>Results from our system:</strong></p>
+<ul>
+  <li>65% of queries routed to GPT-3.5-turbo</li>
+  <li>Quality degradation: &lt; 2%</li>
+  <li>Cost savings: 35%</li>
+</ul>
+
+<h2 id="strategy-2-prompt-compression-10-25-savings">Strategy 2: Prompt Compression (10-25% savings)</h2>
+
+<p>Reduce token count without losing information.</p>
+
+<h3 id="remove-redundancy">Remove Redundancy</h3>
+
+<p><strong>Before:</strong></p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">prompt</span> <span class="o">=</span> <span class="sa">f</span><span class="sh">"""</span><span class="s">
+You are a helpful assistant. You should answer questions helpfully.
+Be helpful and provide good answers. Make sure your answers are helpful.
+
+Question: </span><span class="si">{</span><span class="n">query</span><span class="si">}</span><span class="s">
+
+Please provide a helpful answer:
+</span><span class="sh">"""</span>
+<span class="c1"># Token count: ~50
+</span></code></pre></div></div>
+
+<p><strong>After:</strong></p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">prompt</span> <span class="o">=</span> <span class="sa">f</span><span class="sh">"""</span><span class="s">
+Answer this question clearly and accurately.
+
+Question: </span><span class="si">{</span><span class="n">query</span><span class="si">}</span><span class="s">
+
+Answer:
+</span><span class="sh">"""</span>
+<span class="c1"># Token count: ~20
+</span></code></pre></div></div>
+
+<h3 id="compress-retrieved-context">Compress Retrieved Context</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">compress_context</span><span class="p">(</span><span class="n">chunks</span><span class="p">,</span> <span class="n">max_tokens</span><span class="o">=</span><span class="mi">2000</span><span class="p">):</span>
+    <span class="sh">"""</span><span class="s">
+    Intelligently compress retrieved context
+    </span><span class="sh">"""</span>
+    <span class="n">compressed_chunks</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">token_count</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">for</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="nf">sorted</span><span class="p">(</span><span class="n">chunks</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">c</span><span class="p">:</span> <span class="n">c</span><span class="p">.</span><span class="n">relevance_score</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="bp">True</span><span class="p">):</span>
+        <span class="c1"># Remove redundant sentences
+</span>        <span class="n">chunk_text</span> <span class="o">=</span> <span class="nf">remove_redundant_sentences</span><span class="p">(</span><span class="n">chunk</span><span class="p">.</span><span class="n">text</span><span class="p">)</span>
+
+        <span class="c1"># Extract key sentences if still too long
+</span>        <span class="k">if</span> <span class="n">token_count</span> <span class="o">+</span> <span class="nf">estimate_tokens</span><span class="p">(</span><span class="n">chunk_text</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">max_tokens</span><span class="p">:</span>
+            <span class="n">chunk_text</span> <span class="o">=</span> <span class="nf">extract_key_sentences</span><span class="p">(</span>
+                <span class="n">chunk_text</span><span class="p">,</span>
+                <span class="n">budget</span><span class="o">=</span><span class="n">max_tokens</span> <span class="o">-</span> <span class="n">token_count</span>
+            <span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">token_count</span> <span class="o">+</span> <span class="nf">estimate_tokens</span><span class="p">(</span><span class="n">chunk_text</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">max_tokens</span><span class="p">:</span>
+            <span class="n">compressed_chunks</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="n">chunk_text</span><span class="p">)</span>
+            <span class="n">token_count</span> <span class="o">+=</span> <span class="nf">estimate_tokens</span><span class="p">(</span><span class="n">chunk_text</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">break</span>
+
+    <span class="k">return</span> <span class="sh">"</span><span class="se">\n\n</span><span class="sh">"</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span><span class="n">compressed_chunks</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="use-llm-for-compression">Use LLM for Compression</h3>
+
+<p>For very large contexts:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">llm_compress</span><span class="p">(</span><span class="n">long_context</span><span class="p">,</span> <span class="n">budget_tokens</span><span class="p">):</span>
+    <span class="sh">"""</span><span class="s">
+    Use cheap model to compress context for expensive model
+    </span><span class="sh">"""</span>
+    <span class="n">compression_prompt</span> <span class="o">=</span> <span class="sa">f</span><span class="sh">"""</span><span class="s">
+    Compress this text to ~</span><span class="si">{</span><span class="n">budget_tokens</span><span class="si">}</span><span class="s"> tokens while retaining all key information.
+
+    Text:
+    </span><span class="si">{</span><span class="n">long_context</span><span class="si">}</span><span class="s">
+
+    Compressed version:
+    </span><span class="sh">"""</span>
+
+    <span class="n">compressed</span> <span class="o">=</span> <span class="n">gpt_3_5_turbo</span><span class="p">.</span><span class="nf">complete</span><span class="p">(</span>
+        <span class="n">compression_prompt</span><span class="p">,</span>
+        <span class="n">max_tokens</span><span class="o">=</span><span class="n">budget_tokens</span>
+    <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">compressed</span>
+</code></pre></div></div>
+
+<p><strong>Our results:</strong></p>
+<ul>
+  <li>Average prompt size: 3200 → 2100 tokens</li>
+  <li>Quality impact: Minimal (&lt; 1% degradation)</li>
+  <li>Cost savings: 18%</li>
+</ul>
+
+<h2 id="strategy-3-caching-30-50-savings">Strategy 3: Caching (30-50% savings)</h2>
+
+<p>Cache aggressively at multiple levels.</p>
+
+<h3 id="semantic-caching">Semantic Caching</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">SemanticCache</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">similarity_threshold</span><span class="o">=</span><span class="mf">0.95</span><span class="p">):</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">cache</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># {embedding: response}
+</span>        <span class="n">self</span><span class="p">.</span><span class="n">threshold</span> <span class="o">=</span> <span class="n">similarity_threshold</span>
+
+    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">query</span><span class="p">):</span>
+        <span class="n">query_embedding</span> <span class="o">=</span> <span class="nf">embed</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+
+        <span class="c1"># Check for similar queries
+</span>        <span class="k">for</span> <span class="n">cached_embedding</span><span class="p">,</span> <span class="n">response</span> <span class="ow">in</span> <span class="n">self</span><span class="p">.</span><span class="n">cache</span><span class="p">.</span><span class="nf">items</span><span class="p">():</span>
+            <span class="n">similarity</span> <span class="o">=</span> <span class="nf">cosine_similarity</span><span class="p">(</span><span class="n">query_embedding</span><span class="p">,</span> <span class="n">cached_embedding</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">similarity</span> <span class="o">&gt;=</span> <span class="n">self</span><span class="p">.</span><span class="n">threshold</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">response</span>
+
+        <span class="k">return</span> <span class="bp">None</span>
+
+    <span class="k">def</span> <span class="nf">set</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">query</span><span class="p">,</span> <span class="n">response</span><span class="p">):</span>
+        <span class="n">query_embedding</span> <span class="o">=</span> <span class="nf">embed</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">cache</span><span class="p">[</span><span class="n">query_embedding</span><span class="p">]</span> <span class="o">=</span> <span class="n">response</span>
+</code></pre></div></div>
+
+<h3 id="tiered-caching">Tiered Caching</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">TieredCache</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="n">self</span><span class="p">):</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">exact_match</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># Redis: O(1) lookup
+</span>        <span class="n">self</span><span class="p">.</span><span class="n">semantic</span> <span class="o">=</span> <span class="nc">SemanticCache</span><span class="p">()</span>  <span class="c1"># Approximate matches
+</span>        <span class="n">self</span><span class="p">.</span><span class="n">popular</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># Most frequent queries
+</span>
+    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">query</span><span class="p">):</span>
+        <span class="c1"># 1. Exact match (fastest, ~1ms)
+</span>        <span class="k">if</span> <span class="n">query</span> <span class="ow">in</span> <span class="n">self</span><span class="p">.</span><span class="n">exact_match</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">self</span><span class="p">.</span><span class="n">exact_match</span><span class="p">[</span><span class="n">query</span><span class="p">]</span>
+
+        <span class="c1"># 2. Semantic match (~10ms)
+</span>        <span class="n">semantic_match</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">semantic</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">semantic_match</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">semantic_match</span>
+
+        <span class="c1"># 3. Popular queries (pre-computed)
+</span>        <span class="n">canonical_form</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="nf">canonicalize</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">canonical_form</span> <span class="ow">in</span> <span class="n">self</span><span class="p">.</span><span class="n">popular</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">self</span><span class="p">.</span><span class="n">popular</span><span class="p">[</span><span class="n">canonical_form</span><span class="p">]</span>
+
+        <span class="k">return</span> <span class="bp">None</span>
+
+    <span class="k">def</span> <span class="nf">set</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">query</span><span class="p">,</span> <span class="n">response</span><span class="p">):</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">exact_match</span><span class="p">[</span><span class="n">query</span><span class="p">]</span> <span class="o">=</span> <span class="n">response</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">semantic</span><span class="p">.</span><span class="nf">set</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">response</span><span class="p">)</span>
+
+        <span class="c1"># Track popularity
+</span>        <span class="n">self</span><span class="p">.</span><span class="nf">increment_popularity</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><strong>Our results:</strong></p>
+<ul>
+  <li>Cache hit rate: 42%</li>
+  <li>Avg cache lookup time: 8ms</li>
+  <li>Cost savings: 42% (on cached queries)</li>
+</ul>
+
+<h2 id="strategy-4-smart-context-management-15-30-savings">Strategy 4: Smart Context Management (15-30% savings)</h2>
+
+<p>Don’t send unnecessary tokens.</p>
+
+<h3 id="dynamic-context-size">Dynamic Context Size</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">adaptive_retrieval</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">min_chunks</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">max_chunks</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+    <span class="sh">"""</span><span class="s">
+    Retrieve more chunks only if needed
+    </span><span class="sh">"""</span>
+    <span class="n">chunks</span> <span class="o">=</span> <span class="nf">retrieve</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="n">min_chunks</span><span class="p">)</span>
+
+    <span class="c1"># Check if we have enough information
+</span>    <span class="n">confidence</span> <span class="o">=</span> <span class="nf">estimate_confidence</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">chunks</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">confidence</span> <span class="o">&lt;</span> <span class="mf">0.7</span> <span class="ow">and</span> <span class="nf">len</span><span class="p">(</span><span class="n">chunks</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">max_chunks</span><span class="p">:</span>
+        <span class="c1"># Retrieve more
+</span>        <span class="n">chunks</span> <span class="o">=</span> <span class="nf">retrieve</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="n">min_chunks</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="n">confidence</span> <span class="o">=</span> <span class="nf">estimate_confidence</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">chunks</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">chunks</span>
+
+<span class="k">def</span> <span class="nf">estimate_confidence</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">chunks</span><span class="p">):</span>
+    <span class="sh">"""</span><span class="s">
+    Estimate if chunks contain sufficient information
+    </span><span class="sh">"""</span>
+    <span class="c1"># Use a small model to assess coverage
+</span>    <span class="n">assessment_prompt</span> <span class="o">=</span> <span class="sa">f</span><span class="sh">"""</span><span class="s">
+    Question: </span><span class="si">{</span><span class="n">query</span><span class="si">}</span><span class="s">
+
+    Available information:
+    </span><span class="si">{</span><span class="nf">summarize_chunks</span><span class="p">(</span><span class="n">chunks</span><span class="p">)</span><span class="si">}</span><span class="s">
+
+    Can this information answer the question? (yes/no)
+    </span><span class="sh">"""</span>
+
+    <span class="n">response</span> <span class="o">=</span> <span class="n">cheap_model</span><span class="p">.</span><span class="nf">complete</span><span class="p">(</span><span class="n">assessment_prompt</span><span class="p">)</span>
+    <span class="k">return</span> <span class="mf">1.0</span> <span class="k">if</span> <span class="sh">'</span><span class="s">yes</span><span class="sh">'</span> <span class="ow">in</span> <span class="n">response</span><span class="p">.</span><span class="nf">lower</span><span class="p">()</span> <span class="k">else</span> <span class="mf">0.3</span>
+</code></pre></div></div>
+
+<h3 id="chunk-deduplication">Chunk Deduplication</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">deduplicate_chunks</span><span class="p">(</span><span class="n">chunks</span><span class="p">):</span>
+    <span class="sh">"""</span><span class="s">
+    Remove redundant information from retrieved chunks
+    </span><span class="sh">"""</span>
+    <span class="n">seen_content</span> <span class="o">=</span> <span class="nf">set</span><span class="p">()</span>
+    <span class="n">unique_chunks</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="n">chunks</span><span class="p">:</span>
+        <span class="c1"># Create fingerprint (sentence-level)
+</span>        <span class="n">sentences</span> <span class="o">=</span> <span class="nf">sent_tokenize</span><span class="p">(</span><span class="n">chunk</span><span class="p">.</span><span class="n">text</span><span class="p">)</span>
+        <span class="n">fingerprint</span> <span class="o">=</span> <span class="nf">frozenset</span><span class="p">(</span>
+            <span class="n">sentence</span><span class="p">.</span><span class="nf">lower</span><span class="p">().</span><span class="nf">strip</span><span class="p">()</span>
+            <span class="k">for</span> <span class="n">sentence</span> <span class="ow">in</span> <span class="n">sentences</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Check overlap
+</span>        <span class="n">overlap</span> <span class="o">=</span> <span class="nf">len</span><span class="p">(</span><span class="n">fingerprint</span> <span class="o">&amp;</span> <span class="n">seen_content</span><span class="p">)</span> <span class="o">/</span> <span class="nf">len</span><span class="p">(</span><span class="n">fingerprint</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">overlap</span> <span class="o">&lt;</span> <span class="mf">0.5</span><span class="p">:</span>  <span class="c1"># Less than 50% overlap
+</span>            <span class="n">unique_chunks</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="n">chunk</span><span class="p">)</span>
+            <span class="n">seen_content</span><span class="p">.</span><span class="nf">update</span><span class="p">(</span><span class="n">fingerprint</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">unique_chunks</span>
+</code></pre></div></div>
+
+<h2 id="strategy-5-batch-processing-20-40-savings">Strategy 5: Batch Processing (20-40% savings)</h2>
+
+<p>Process multiple requests together when possible.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">BatchProcessor</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">max_wait_ms</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">batch_size</span> <span class="o">=</span> <span class="n">batch_size</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">max_wait_ms</span> <span class="o">=</span> <span class="n">max_wait_ms</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">queue</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">process</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">query</span><span class="p">):</span>
+        <span class="sh">"""</span><span class="s">
+        Add query to batch and wait for batch completion
+        </span><span class="sh">"""</span>
+        <span class="n">future</span> <span class="o">=</span> <span class="n">asyncio</span><span class="p">.</span><span class="nc">Future</span><span class="p">()</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">queue</span><span class="p">.</span><span class="nf">append</span><span class="p">((</span><span class="n">query</span><span class="p">,</span> <span class="n">future</span><span class="p">))</span>
+
+        <span class="c1"># Trigger batch if full
+</span>        <span class="k">if</span> <span class="nf">len</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">queue</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">self</span><span class="p">.</span><span class="n">batch_size</span><span class="p">:</span>
+            <span class="k">await</span> <span class="n">self</span><span class="p">.</span><span class="nf">_process_batch</span><span class="p">()</span>
+
+        <span class="c1"># Or wait for timeout
+</span>        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="k">await</span> <span class="n">asyncio</span><span class="p">.</span><span class="nf">wait_for</span><span class="p">(</span>
+                <span class="n">future</span><span class="p">,</span>
+                <span class="n">timeout</span><span class="o">=</span><span class="n">self</span><span class="p">.</span><span class="n">max_wait_ms</span> <span class="o">/</span> <span class="mi">1000</span>
+            <span class="p">)</span>
+        <span class="k">except</span> <span class="n">asyncio</span><span class="p">.</span><span class="nb">TimeoutError</span><span class="p">:</span>
+            <span class="k">await</span> <span class="n">self</span><span class="p">.</span><span class="nf">_process_batch</span><span class="p">()</span>
+            <span class="k">return</span> <span class="k">await</span> <span class="n">future</span>
+
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">_process_batch</span><span class="p">(</span><span class="n">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">self</span><span class="p">.</span><span class="n">queue</span><span class="p">:</span>
+            <span class="k">return</span>
+
+        <span class="n">batch</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">queue</span><span class="p">[:</span><span class="n">self</span><span class="p">.</span><span class="n">batch_size</span><span class="p">]</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">queue</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">queue</span><span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">batch_size</span><span class="p">:]</span>
+
+        <span class="c1"># Create single prompt for batch
+</span>        <span class="n">batch_prompt</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="nf">create_batch_prompt</span><span class="p">([</span><span class="n">q</span> <span class="k">for</span> <span class="n">q</span><span class="p">,</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">batch</span><span class="p">])</span>
+
+        <span class="c1"># Single API call
+</span>        <span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">llm</span><span class="p">.</span><span class="nf">complete_async</span><span class="p">(</span><span class="n">batch_prompt</span><span class="p">)</span>
+
+        <span class="c1"># Parse and distribute results
+</span>        <span class="n">results</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="nf">parse_batch_response</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+
+        <span class="nf">for </span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">future</span><span class="p">),</span> <span class="n">result</span> <span class="ow">in</span> <span class="nf">zip</span><span class="p">(</span><span class="n">batch</span><span class="p">,</span> <span class="n">results</span><span class="p">):</span>
+            <span class="n">future</span><span class="p">.</span><span class="nf">set_result</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">create_batch_prompt</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">queries</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="sh">"""</span><span class="s">
+        Answer these questions:
+
+        1. </span><span class="si">{</span><span class="n">queries</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s">
+        2. </span><span class="si">{</span><span class="n">queries</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s">
+</span><span class="gp">        ...</span>
+
+<span class="s">        Provide answers in order:
+        1. [Answer to question 1]
+        2. [Answer to question 2]
+</span><span class="gp">        ...</span>
+        <span class="sh">"""</span>
+</code></pre></div></div>
+
+<p><strong>Note:</strong> Only works for similar, independent queries. Not suitable for RAG with different contexts.</p>
+
+<h2 id="strategy-6-speculative-sampling--early-stopping">Strategy 6: Speculative Sampling / Early Stopping</h2>
+
+<p>Stop generation when you have enough.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">stream_with_early_stop</span><span class="p">(</span><span class="n">prompt</span><span class="p">,</span> <span class="n">stop_conditions</span><span class="p">):</span>
+    <span class="sh">"""</span><span class="s">
+    Stream tokens and stop when conditions are met
+    </span><span class="sh">"""</span>
+    <span class="nb">buffer</span> <span class="o">=</span> <span class="sh">""</span>
+
+    <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">llm</span><span class="p">.</span><span class="nf">stream</span><span class="p">(</span><span class="n">prompt</span><span class="p">):</span>
+        <span class="nb">buffer</span> <span class="o">+=</span> <span class="n">token</span>
+
+        <span class="c1"># Check stop conditions
+</span>        <span class="k">if</span> <span class="nf">any</span><span class="p">(</span><span class="nf">condition</span><span class="p">(</span><span class="nb">buffer</span><span class="p">)</span> <span class="k">for</span> <span class="n">condition</span> <span class="ow">in</span> <span class="n">stop_conditions</span><span class="p">):</span>
+            <span class="k">break</span>
+
+    <span class="k">return</span> <span class="nb">buffer</span>
+
+<span class="c1"># Example stop conditions
+</span><span class="k">def</span> <span class="nf">has_complete_answer</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+    <span class="sh">"""</span><span class="s">Stop if we have a complete answer</span><span class="sh">"""</span>
+    <span class="c1"># Look for conclusion markers
+</span>    <span class="k">return</span> <span class="nf">any</span><span class="p">(</span><span class="n">marker</span> <span class="ow">in</span> <span class="n">text</span><span class="p">.</span><span class="nf">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">marker</span> <span class="ow">in</span> <span class="p">[</span>
+        <span class="sh">'</span><span class="s">in summary</span><span class="sh">'</span><span class="p">,</span>
+        <span class="sh">'</span><span class="s">in conclusion</span><span class="sh">'</span><span class="p">,</span>
+        <span class="sh">'</span><span class="s">therefore</span><span class="sh">'</span><span class="p">,</span>
+    <span class="p">])</span> <span class="ow">and</span> <span class="nf">len</span><span class="p">(</span><span class="n">text</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">200</span>
+
+<span class="k">def</span> <span class="nf">has_citation</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+    <span class="sh">"""</span><span class="s">Stop if we found a citation</span><span class="sh">"""</span>
+    <span class="k">return</span> <span class="sh">'</span><span class="s">[Source:</span><span class="sh">'</span> <span class="ow">in</span> <span class="n">text</span>
+</code></pre></div></div>
+
+<h2 id="strategy-7-model-fine-tuning-50-70-savings-long-term">Strategy 7: Model Fine-Tuning (50-70% savings long-term)</h2>
+
+<p>For high-volume, specialized tasks, fine-tuning can dramatically reduce costs.</p>
+
+<p><strong>When to fine-tune:</strong></p>
+<ul>
+  <li>Processing &gt; 100K queries/month on similar tasks</li>
+  <li>Task is well-defined and consistent</li>
+  <li>Have at least 500-1000 high-quality examples</li>
+</ul>
+
+<p><strong>Cost comparison:</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GPT-4 (before): $0.06 per request (avg)
+Fine-tuned GPT-3.5: $0.005 per request
+Savings: 92%
+
+ROI Break-even:
+Fine-tuning cost: $200 (one-time)
+Break-even at: ~3,500 requests
+</code></pre></div></div>
+
+<p><strong>Example:</strong></p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Prepare training data
+</span><span class="n">training_data</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span>
+        <span class="sh">"</span><span class="s">messages</span><span class="sh">"</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span><span class="sh">"</span><span class="s">role</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">system</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">content</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">You extract action items from meetings.</span><span class="sh">"</span><span class="p">},</span>
+            <span class="p">{</span><span class="sh">"</span><span class="s">role</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">user</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">content</span><span class="sh">"</span><span class="p">:</span> <span class="n">meeting_transcript</span><span class="p">},</span>
+            <span class="p">{</span><span class="sh">"</span><span class="s">role</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">assistant</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">content</span><span class="sh">"</span><span class="p">:</span> <span class="n">extracted_action_items</span><span class="p">}</span>
+        <span class="p">]</span>
+    <span class="p">}</span>
+    <span class="k">for</span> <span class="n">meeting_transcript</span><span class="p">,</span> <span class="n">extracted_action_items</span> <span class="ow">in</span> <span class="n">labeled_data</span>
+<span class="p">]</span>
+
+<span class="c1"># Fine-tune
+</span><span class="n">fine_tuned_model</span> <span class="o">=</span> <span class="n">openai</span><span class="p">.</span><span class="n">FineTune</span><span class="p">.</span><span class="nf">create</span><span class="p">(</span>
+    <span class="n">training_file</span><span class="o">=</span><span class="nf">upload_training_data</span><span class="p">(</span><span class="n">training_data</span><span class="p">),</span>
+    <span class="n">model</span><span class="o">=</span><span class="sh">"</span><span class="s">gpt-3.5-turbo</span><span class="sh">"</span>
+<span class="p">)</span>
+
+<span class="c1"># Use fine-tuned model
+</span><span class="n">response</span> <span class="o">=</span> <span class="n">openai</span><span class="p">.</span><span class="n">ChatCompletion</span><span class="p">.</span><span class="nf">create</span><span class="p">(</span>
+    <span class="n">model</span><span class="o">=</span><span class="n">fine_tuned_model</span><span class="p">.</span><span class="nb">id</span><span class="p">,</span>
+    <span class="n">messages</span><span class="o">=</span><span class="p">[</span>
+        <span class="p">{</span><span class="sh">"</span><span class="s">role</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">user</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">content</span><span class="sh">"</span><span class="p">:</span> <span class="n">new_meeting_transcript</span><span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<h2 id="strategy-8-self-hosting-open-source-models">Strategy 8: Self-Hosting Open Source Models</h2>
+
+<p>For very high volume, consider self-hosting.</p>
+
+<p><strong>Cost comparison (200K queries/month):</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Option</th>
+      <th>Monthly Cost</th>
+      <th>Latency</th>
+      <th>Quality</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>GPT-4 API</td>
+      <td>$12,000</td>
+      <td>1.2s</td>
+      <td>Excellent</td>
+    </tr>
+    <tr>
+      <td>GPT-3.5 API</td>
+      <td>$600</td>
+      <td>0.8s</td>
+      <td>Good</td>
+    </tr>
+    <tr>
+      <td>Self-hosted Llama 3 70B</td>
+      <td>$400 (GPU)</td>
+      <td>1.5s</td>
+      <td>Good</td>
+    </tr>
+    <tr>
+      <td>Self-hosted Llama 3 8B</td>
+      <td>$150 (GPU)</td>
+      <td>0.4s</td>
+      <td>Adequate</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Considerations:</strong></p>
+<ul>
+  <li>Infrastructure management overhead</li>
+  <li>GPU costs (AWS p4d.24xlarge: ~$32/hour)</li>
+  <li>Latency and quality trade-offs</li>
+  <li>Scaling complexity</li>
+</ul>
+
+<p><strong>When it makes sense:</strong></p>
+<ul>
+  <li>Volume &gt; 500K queries/month</li>
+  <li>Have ML infrastructure team</li>
+  <li>Privacy/security requirements</li>
+</ul>
+
+<h2 id="real-world-results">Real-World Results</h2>
+
+<p>Here’s how our costs evolved:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Month 1 (Baseline):
+- Volume: 50K queries
+- Model: 100% GPT-4
+- Avg prompt size: 3500 tokens
+- Cache hit rate: 0%
+- Total cost: $12,000
+- Cost per query: $0.24
+
+Month 3 (Optimizations 1-4):
+- Volume: 100K queries
+- Model: 60% GPT-3.5, 40% GPT-4
+- Avg prompt size: 2200 tokens
+- Cache hit rate: 35%
+- Total cost: $5,200
+- Cost per query: $0.052
+
+Month 6 (All optimizations):
+- Volume: 200K queries
+- Model: 70% GPT-3.5, 30% GPT-4
+- Avg prompt size: 2100 tokens
+- Cache hit rate: 42%
+- Fine-tuned for common queries
+- Total cost: $3,500
+- Cost per query: $0.0175
+
+Cost reduction: 93% per query
+Volume increase: 4x
+Total cost reduction: 71%
+</code></pre></div></div>
+
+<h2 id="cost-monitoring-dashboard">Cost Monitoring Dashboard</h2>
+
+<p>Build visibility into costs:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Metrics to track
+</span><span class="n">metrics</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="c1"># Costs
+</span>    <span class="sh">'</span><span class="s">cost_total</span><span class="sh">'</span><span class="p">:</span> <span class="mi">3500</span><span class="p">,</span>
+    <span class="sh">'</span><span class="s">cost_per_query</span><span class="sh">'</span><span class="p">:</span> <span class="mf">0.0175</span><span class="p">,</span>
+    <span class="sh">'</span><span class="s">cost_by_model</span><span class="sh">'</span><span class="p">:</span> <span class="p">{</span>
+        <span class="sh">'</span><span class="s">gpt-4</span><span class="sh">'</span><span class="p">:</span> <span class="mi">2100</span><span class="p">,</span>
+        <span class="sh">'</span><span class="s">gpt-3.5-turbo</span><span class="sh">'</span><span class="p">:</span> <span class="mi">1200</span><span class="p">,</span>
+        <span class="sh">'</span><span class="s">fine-tuned</span><span class="sh">'</span><span class="p">:</span> <span class="mi">200</span>
+    <span class="p">},</span>
+
+    <span class="c1"># Efficiency
+</span>    <span class="sh">'</span><span class="s">cache_hit_rate</span><span class="sh">'</span><span class="p">:</span> <span class="mf">0.42</span><span class="p">,</span>
+    <span class="sh">'</span><span class="s">avg_input_tokens</span><span class="sh">'</span><span class="p">:</span> <span class="mi">1800</span><span class="p">,</span>
+    <span class="sh">'</span><span class="s">avg_output_tokens</span><span class="sh">'</span><span class="p">:</span> <span class="mi">300</span><span class="p">,</span>
+
+    <span class="c1"># Quality
+</span>    <span class="sh">'</span><span class="s">avg_quality_score</span><span class="sh">'</span><span class="p">:</span> <span class="mf">4.2</span><span class="p">,</span>
+    <span class="sh">'</span><span class="s">user_satisfaction</span><span class="sh">'</span><span class="p">:</span> <span class="mf">4.3</span><span class="p">,</span>
+
+    <span class="c1"># Volume
+</span>    <span class="sh">'</span><span class="s">total_queries</span><span class="sh">'</span><span class="p">:</span> <span class="mi">200000</span><span class="p">,</span>
+    <span class="sh">'</span><span class="s">queries_per_day</span><span class="sh">'</span><span class="p">:</span> <span class="mi">6700</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="c1"># Alert thresholds
+</span><span class="n">alerts</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="sh">'</span><span class="s">daily_cost_exceeds</span><span class="sh">'</span><span class="p">:</span> <span class="mi">150</span><span class="p">,</span>
+    <span class="sh">'</span><span class="s">cost_per_query_exceeds</span><span class="sh">'</span><span class="p">:</span> <span class="mf">0.02</span><span class="p">,</span>
+    <span class="sh">'</span><span class="s">cache_hit_rate_below</span><span class="sh">'</span><span class="p">:</span> <span class="mf">0.35</span><span class="p">,</span>
+    <span class="sh">'</span><span class="s">quality_score_below</span><span class="sh">'</span><span class="p">:</span> <span class="mf">4.0</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="implementation-checklist">Implementation Checklist</h2>
+
+<p>Start here:</p>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><strong>Week 1: Measure</strong>
+    <ul class="task-list">
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Instrument all LLM calls</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Track costs by model, query type</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Analyze usage patterns</li>
+    </ul>
+  </li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><strong>Week 2: Quick Wins</strong>
+    <ul class="task-list">
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Implement exact-match caching</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Compress prompts</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Route simple queries to GPT-3.5</li>
+    </ul>
+  </li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><strong>Week 3-4: Advanced</strong>
+    <ul class="task-list">
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Semantic caching</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />ML-based model routing</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Context optimization</li>
+    </ul>
+  </li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><strong>Month 2: Long-term</strong>
+    <ul class="task-list">
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Evaluate fine-tuning ROI</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Consider self-hosting for scale</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Cost optimization is ongoing:</p>
+
+<ol>
+  <li><strong>Measure everything</strong>: You can’t optimize what you don’t measure</li>
+  <li><strong>Start with high-impact changes</strong>: Model routing and caching first</li>
+  <li><strong>Monitor quality</strong>: Cost reduction means nothing if quality suffers</li>
+  <li><strong>Iterate continuously</strong>: Usage patterns change, keep optimizing</li>
+</ol>
+
+<p>Remember: The cheapest query is the one you don’t make. Consider if every LLM call is necessary.</p>
+
+<h2 id="resources">Resources</h2>
+
+<ul>
+  <li><a href="https://openai.com/pricing">OpenAI Pricing</a></li>
+  <li><a href="https://platform.openai.com/docs/guides/production-best-practices/optimizing-costs">Cost Optimization Best Practices</a></li>
+  <li><a href="https://docs.smith.langchain.com/">LangSmith for Cost Tracking</a></li>
+</ul>
+
+<hr />
+
+<p><strong>What cost optimization strategies have worked for you?</strong> I’d love to hear your experiences and numbers. Reach out via <a href="mailto:email4vishal@gmail.com">email</a> or <a href="https://x.com/twitt4vishal">X</a>.</p>
+
+<hr />
+
+<p><strong>Disclaimer:</strong> The views, opinions, and technical approaches shared in this post are my own, based on my personal experience building production AI/ML systems. They do not represent the views of my current or former employers. Technology choices and architectural decisions should always be evaluated in the context of your specific use case and requirements.</p>
+
+<hr />
+
+<p><strong>Questions or feedback?</strong> I’d love to hear your thoughts and experiences.</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td><strong>Contact:</strong> <a href="https://www.linkedin.com/in/sharma-vishal/"><i class="fas fa-fw fa-link"></i> LinkedIn</a></td>
+      <td><a href="https://github.com/git4vishal"><i class="fab fa-fw fa-github"></i> GitHub</a></td>
+      <td><a href="https://x.com/twitt4vishal"><i class="fab fa-fw fa-twitter-square"></i> X</a></td>
+      <td><a href="mailto:email4vishal@gmail.com"><i class="fas fa-fw fa-envelope"></i> Email</a></td>
+    </tr>
+  </tbody>
+</table>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#cost-optimization" class="page__taxonomy-item p-category" rel="tag">Cost Optimization</a><span class="sep">, </span>
+    
+      <a href="/tags/#economics" class="page__taxonomy-item p-category" rel="tag">Economics</a><span class="sep">, </span>
+    
+      <a href="/tags/#llm" class="page__taxonomy-item p-category" rel="tag">LLM</a><span class="sep">, </span>
+    
+      <a href="/tags/#production" class="page__taxonomy-item p-category" rel="tag">Production</a><span class="sep">, </span>
+    
+      <a href="/tags/#roi" class="page__taxonomy-item p-category" rel="tag">ROI</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#cost" class="page__taxonomy-item p-category" rel="tag">cost</a><span class="sep">, </span>
+    
+      <a href="/categories/#optimization" class="page__taxonomy-item p-category" rel="tag">optimization</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2025-12-05T12:00:00-06:00">December 5, 2025</time></p>
+
+      </footer>
+
+      
+
+      
+  <nav class="pagination">
+    
+      <a href="/genai/techniques/prompt-engineering-strategies/" class="pagination--pager" title="Prompt Engineering: From Basics to Advanced Strategies">Previous</a>
+    
+    
+      <a href="/governance/strategy/ai-governance-framework/" class="pagination--pager" title="Building an AI Governance Framework for Enterprise GenAI Adoption">Next</a>
+    
+  </nav>
+
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    
+<div class="page__related">
+  
+  <h2 class="page__related-title">You May Also Enjoy</h2>
+  <div class="grid__wrapper">
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/case-study/platform-engineering/genai-customer-analysis-case-study/" rel="permalink">Case Study: Production GenAI Platform Processing 2M+ Monthly Customer Interactions
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          4 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">How I architected a production GenAI platform processing 2M+ monthly call transcripts with 85% accuracy, delivering $1.2M annual retention value through serv...</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/genai/architecture/production-grade-rag-systems/" rel="permalink">Building Production-Grade RAG Systems: Architecture and Best Practices
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          8 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Lessons learned from building and scaling RAG systems in enterprise environments—moving from proof-of-concept demos to production-grade systems that handle m...</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/evaluation/testing/evaluating-llm-applications/" rel="permalink">Evaluating LLM Applications: Beyond Vibes and Into Data
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          8 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Rigorous evaluation is what separates prototypes from production LLM systems. Learn the frameworks, metrics, and best practices for measuring what matters in...</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/governance/strategy/ai-governance-framework/" rel="permalink">Building an AI Governance Framework for Enterprise GenAI Adoption
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          8 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">As enterprises rush to adopt GenAI, many overlook a critical question: How do we govern these systems responsibly?
+</p>
+  </article>
+</div>
+
+    
+  </div>
+</div>
+
+  
+  
+</div>
+
+      
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';" role="search">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        
+
+<center>
+<div class="page__footer-follow">
+    <ul class="social-icons">
+        
+
+        <b>Contact: </b>
+        
+        
+        
+        <li><a href="https://www.linkedin.com/in/sharma-vishal/" rel="nofollow noopener noreferrer"><i
+                class="fas fa-fw fa-link" aria-hidden="true"></i> LinkedIn</a></li>
+        
+        
+        
+        <li><a href="https://github.com/git4vishal" rel="nofollow noopener noreferrer"><i
+                class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+        
+        
+        <li><a href="https://x.com/twitt4vishal" rel="nofollow noopener noreferrer"><i
+                class="fab fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
+        
+        
+        
+        <li><a href="mailto:email4vishal@gmail.com" rel="nofollow noopener noreferrer"><i
+                class="fab fa-fw fa-envelope" aria-hidden="true"></i> Email</a></li>
+        
+        
+        
+
+        
+        <li>
+            <a href="/feed.xml"><i
+                    class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+        
+    </ul>
+</div>
+
+
+<div class="page__footer-copyright">&copy;
+    
+    
+        2025 -
+    
+    2026
+    <a href="https://git4vishal.github.io">
+        Vishal Sharma | Enterprise Data &amp; AI Platform Leader
+    </a>.
+<!--    Powered by -->
+<!--    <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> -->
+<!--    &amp; -->
+<!--    <a href="https://mademistakes.com/work/jekyll-themes/minimal-mistakes/" rel="nofollow">Minimal Mistakes</a>.-->
+</div>
+</center>
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+
+
+  </body>
+</html>

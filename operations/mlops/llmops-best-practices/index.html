@@ -1,0 +1,1186 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.27.3 by Michael Rose
+  Copyright 2013-2025 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>LLMOps: Moving from MLOps to Production LLM Systems - Home</title>
+<meta name="description" content="If you’ve built ML systems in the past, you might think LLMOps is just “MLOps with LLMs.” You’d be partially right but also missing some critical differences that make operating LLM applications uniquely challenging.">
+
+
+  <meta name="author" content="Vishal Sharma">
+  
+  <meta property="article:author" content="Vishal Sharma">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Home">
+<meta property="og:title" content="LLMOps: Moving from MLOps to Production LLM Systems">
+<meta property="og:url" content="https://git4vishal.github.io/operations/mlops/llmops-best-practices/">
+
+
+  <meta property="og:description" content="If you’ve built ML systems in the past, you might think LLMOps is just “MLOps with LLMs.” You’d be partially right but also missing some critical differences that make operating LLM applications uniquely challenging.">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2025-11-25T12:00:00-06:00">
+
+
+
+
+
+
+<link rel="canonical" href="https://git4vishal.github.io/operations/mlops/llmops-best-practices/">
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Home Feed">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+  
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css"></noscript>
+
+
+
+    <!-- Mermaid JS for diagram rendering -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded', function() {
+    // Convert kramdown code blocks to mermaid divs
+    document.querySelectorAll('code.language-mermaid').forEach(function(code) {
+      const pre = code.parentElement;
+      const div = document.createElement('div');
+      div.className = 'mermaid';
+      div.textContent = code.textContent;
+      pre.replaceWith(div);
+    });
+
+    // Initialize Mermaid
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: 'dark',
+      securityLevel: 'loose'
+    });
+  });
+</script>
+
+  </head>
+
+  <body class="layout--single" dir="ltr">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Home
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a
+                href="/about/"
+                
+                
+              >About</a>
+            </li><li class="masthead__menu-item">
+              <a
+                href="/projects/"
+                
+                
+              >Projects</a>
+            </li><li class="masthead__menu-item">
+              <a
+                href="/blog/"
+                
+                
+              >Blogs</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="https://git4vishal.github.io/">
+        <img src="/assets/images/bio-photo.jpg" alt="Vishal Sharma" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="https://git4vishal.github.io/" itemprop="url">Vishal Sharma</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>Enterprise Data &amp; AI Platform Leader</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">Frisco, Texas</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="https://www.linkedin.com/in/sharma-vishal/" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
+          
+        
+          
+            <li><a href="https://github.com/git4vishal" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+            <li><a href="https://x.com/twitt4vishal" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:email4vishal@gmail.com" rel="me" class="u-email">
+            <meta itemprop="email" content="email4vishal@gmail.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="LLMOps: Moving from MLOps to Production LLM Systems">
+    <meta itemprop="description" content="If you’ve built ML systems in the past, you might think LLMOps is just “MLOps with LLMs.” You’d be partially right but also missing some critical differences that make operating LLM applications uniquely challenging.">
+    <meta itemprop="datePublished" content="2025-11-25T12:00:00-06:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">
+            <a href="https://git4vishal.github.io/operations/mlops/llmops-best-practices/" itemprop="url">LLMOps: Moving from MLOps to Production LLM Systems
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          6 minute read
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <p>If you’ve built ML systems in the past, you might think LLMOps is just “MLOps with LLMs.” You’d be partially right but also missing some critical differences that make operating LLM applications uniquely challenging.</p>
+
+<p>After managing LLM applications in production for the past two years, I’ve learned that LLMOps requires its own set of practices, tools, and mental models.</p>
+
+<h2 id="mlops-vs-llmops-key-differences">MLOps vs LLMOps: Key Differences</h2>
+
+<h3 id="traditional-mlops">Traditional MLOps</h3>
+<ul>
+  <li><strong>Model training</strong> is the core activity</li>
+  <li><strong>Model versioning</strong> tracks weights and architecture</li>
+  <li><strong>A/B testing</strong> compares model versions</li>
+  <li><strong>Monitoring</strong> focuses on feature drift and model performance</li>
+  <li><strong>Retraining</strong> happens on a schedule or when performance degrades</li>
+</ul>
+
+<h3 id="llmops">LLMOps</h3>
+<ul>
+  <li><strong>Prompt engineering</strong> is the core activity</li>
+  <li><strong>Prompt versioning</strong> is as critical as model versioning</li>
+  <li><strong>A/B testing</strong> compares prompts, retrieval strategies, and model configurations</li>
+  <li><strong>Monitoring</strong> includes token usage, latency, cost, and safety</li>
+  <li><strong>“Retraining”</strong> often means prompt tuning or RAG updates, rarely fine-tuning</li>
+</ul>
+
+<p>The fundamental shift: <strong>In LLMOps, you’re orchestrating external AI services more than training your own models.</strong></p>
+
+<h2 id="the-llmops-stack">The LLMOps Stack</h2>
+
+<p>Here’s what a production LLMOps stack typically includes:</p>
+
+<pre><code class="language-mermaid">graph TD
+    A[Application Layer&lt;br/&gt;Your RAG/Agent/Chat App] --&gt; B[Orchestration Layer&lt;br/&gt;LangChain, LlamaIndex, Custom]
+    B --&gt; C[LLM Provider&lt;br/&gt;OpenAI, Anthropic, etc]
+    B --&gt; D[Vector DB&lt;br/&gt;Pinecone, Weaviate, etc]
+    B --&gt; E[Tools/APIs&lt;br/&gt;External integrations]
+    C --&gt; F[Observability Layer&lt;br/&gt;LangSmith, W&amp;B, Custom Monitoring]
+    D --&gt; F
+    E --&gt; F
+</code></pre>
+
+<h2 id="core-llmops-practices">Core LLMOps Practices</h2>
+
+<h3 id="1-prompt-management">1. Prompt Management</h3>
+
+<p>Prompts are your new model weights. Treat them accordingly.</p>
+
+<p><strong>Bad Practice:</strong></p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Hardcoded prompt in code
+</span><span class="n">response</span> <span class="o">=</span> <span class="n">llm</span><span class="p">.</span><span class="nf">complete</span><span class="p">(</span><span class="sh">"</span><span class="s">Answer this question: </span><span class="sh">"</span> <span class="o">+</span> <span class="n">user_query</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><strong>Good Practice:</strong></p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Versioned prompt template
+</span><span class="n">prompt_template</span> <span class="o">=</span> <span class="nf">get_prompt_template</span><span class="p">(</span>
+    <span class="n">name</span><span class="o">=</span><span class="sh">"</span><span class="s">rag_qa_v2</span><span class="sh">"</span><span class="p">,</span>
+    <span class="n">version</span><span class="o">=</span><span class="sh">"</span><span class="s">1.3.2</span><span class="sh">"</span>
+<span class="p">)</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">llm</span><span class="p">.</span><span class="nf">complete</span><span class="p">(</span>
+    <span class="n">prompt_template</span><span class="p">.</span><span class="nf">format</span><span class="p">(</span>
+        <span class="n">context</span><span class="o">=</span><span class="n">context</span><span class="p">,</span>
+        <span class="n">query</span><span class="o">=</span><span class="n">user_query</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+
+<span class="c1"># Log prompt version with request
+</span><span class="nf">log_request</span><span class="p">(</span>
+    <span class="n">prompt_version</span><span class="o">=</span><span class="sh">"</span><span class="s">1.3.2</span><span class="sh">"</span><span class="p">,</span>
+    <span class="nb">input</span><span class="o">=</span><span class="n">user_query</span><span class="p">,</span>
+    <span class="n">output</span><span class="o">=</span><span class="n">response</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<p><strong>Prompt Version Control:</strong></p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># prompts/rag_qa_v2.yaml</span>
+<span class="na">name</span><span class="pi">:</span> <span class="s">rag_qa_v2</span>
+<span class="na">version</span><span class="pi">:</span> <span class="s">1.3.2</span>
+<span class="na">created_by</span><span class="pi">:</span> <span class="s">vsharma</span>
+<span class="na">created_at</span><span class="pi">:</span> <span class="s">2026-01-15</span>
+<span class="na">template</span><span class="pi">:</span> <span class="pi">|</span>
+  <span class="s">You are a helpful assistant that answers questions based on provided context.</span>
+
+  <span class="s">Rules:</span>
+  <span class="s">1. Only use information from the context</span>
+  <span class="s">2. Cite sources using [Source: X]</span>
+  <span class="s">3. If unsure, say "I don't have enough information"</span>
+
+  <span class="s">Context:</span>
+  <span class="s">{context}</span>
+
+  <span class="s">Question: {query}</span>
+
+  <span class="s">Answer:</span>
+<span class="na">metadata</span><span class="pi">:</span>
+  <span class="na">tested_on</span><span class="pi">:</span> <span class="s">500 examples</span>
+  <span class="na">avg_accuracy</span><span class="pi">:</span> <span class="m">0.87</span>
+  <span class="na">avg_tokens</span><span class="pi">:</span> <span class="m">1250</span>
+</code></pre></div></div>
+
+<h3 id="2-evaluation-framework">2. Evaluation Framework</h3>
+
+<p>Unlike traditional ML, you can’t just track accuracy and precision. LLM evaluation is multi-dimensional.</p>
+
+<p><strong>Dimensions to Evaluate:</strong></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">LLMEvaluator</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">evaluate</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">,</span> <span class="n">output</span><span class="p">,</span> <span class="n">ground_truth</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="n">metrics</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="c1"># 1. Relevance - Does the answer address the question?
+</span>        <span class="n">metrics</span><span class="p">[</span><span class="sh">'</span><span class="s">relevance</span><span class="sh">'</span><span class="p">]</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="nf">llm_judge_relevance</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">output</span><span class="p">)</span>
+
+        <span class="c1"># 2. Correctness - Is the answer factually correct?
+</span>        <span class="k">if</span> <span class="n">ground_truth</span><span class="p">:</span>
+            <span class="n">metrics</span><span class="p">[</span><span class="sh">'</span><span class="s">correctness</span><span class="sh">'</span><span class="p">]</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="nf">semantic_similarity</span><span class="p">(</span>
+                <span class="n">output</span><span class="p">,</span> <span class="n">ground_truth</span>
+            <span class="p">)</span>
+
+        <span class="c1"># 3. Completeness - Does it cover all aspects?
+</span>        <span class="n">metrics</span><span class="p">[</span><span class="sh">'</span><span class="s">completeness</span><span class="sh">'</span><span class="p">]</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="nf">llm_judge_completeness</span><span class="p">(</span>
+            <span class="nb">input</span><span class="p">,</span> <span class="n">output</span>
+        <span class="p">)</span>
+
+        <span class="c1"># 4. Conciseness - Is it appropriately concise?
+</span>        <span class="n">metrics</span><span class="p">[</span><span class="sh">'</span><span class="s">conciseness</span><span class="sh">'</span><span class="p">]</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="nf">conciseness_score</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+
+        <span class="c1"># 5. Safety - Any harmful content?
+</span>        <span class="n">metrics</span><span class="p">[</span><span class="sh">'</span><span class="s">safety</span><span class="sh">'</span><span class="p">]</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="nf">safety_check</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+
+        <span class="c1"># 6. Citation Quality - For RAG systems
+</span>        <span class="n">metrics</span><span class="p">[</span><span class="sh">'</span><span class="s">citation_accuracy</span><span class="sh">'</span><span class="p">]</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="nf">verify_citations</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+
+        <span class="c1"># 7. Latency
+</span>        <span class="n">metrics</span><span class="p">[</span><span class="sh">'</span><span class="s">latency_ms</span><span class="sh">'</span><span class="p">]</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">latency</span>
+
+        <span class="c1"># 8. Cost
+</span>        <span class="n">metrics</span><span class="p">[</span><span class="sh">'</span><span class="s">cost_dollars</span><span class="sh">'</span><span class="p">]</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="nf">calculate_cost</span><span class="p">()</span>
+
+        <span class="k">return</span> <span class="n">metrics</span>
+</code></pre></div></div>
+
+<p><strong>LLM-as-a-Judge Pattern:</strong></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">llm_judge_relevance</span><span class="p">(</span><span class="n">question</span><span class="p">,</span> <span class="n">answer</span><span class="p">):</span>
+    <span class="n">judge_prompt</span> <span class="o">=</span> <span class="sa">f</span><span class="sh">"""</span><span class="s">
+    Evaluate if the answer is relevant to the question.
+
+    Question: </span><span class="si">{</span><span class="n">question</span><span class="si">}</span><span class="s">
+    Answer: </span><span class="si">{</span><span class="n">answer</span><span class="si">}</span><span class="s">
+
+    Rate relevance on a scale of 1-5:
+    1 - Completely irrelevant
+    2 - Slightly relevant
+    3 - Moderately relevant
+    4 - Mostly relevant
+    5 - Highly relevant
+
+    Provide only the number.
+    </span><span class="sh">"""</span>
+
+    <span class="n">score</span> <span class="o">=</span> <span class="n">cheap_llm</span><span class="p">.</span><span class="nf">complete</span><span class="p">(</span><span class="n">judge_prompt</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nf">int</span><span class="p">(</span><span class="n">score</span><span class="p">.</span><span class="nf">strip</span><span class="p">())</span>
+</code></pre></div></div>
+
+<h3 id="3-monitoring--observability">3. Monitoring &amp; Observability</h3>
+
+<p>Monitor more than just uptime and error rates.</p>
+
+<p><strong>Key Metrics:</strong></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Production monitoring dashboard
+</span><span class="n">metrics</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="c1"># Performance
+</span>    <span class="sh">'</span><span class="s">latency_p50</span><span class="sh">'</span><span class="p">:</span> <span class="mi">850</span><span class="p">,</span>  <span class="c1"># ms
+</span>    <span class="sh">'</span><span class="s">latency_p95</span><span class="sh">'</span><span class="p">:</span> <span class="mi">1800</span><span class="p">,</span>
+    <span class="sh">'</span><span class="s">latency_p99</span><span class="sh">'</span><span class="p">:</span> <span class="mi">3200</span><span class="p">,</span>
+
+    <span class="c1"># Cost
+</span>    <span class="sh">'</span><span class="s">cost_per_request</span><span class="sh">'</span><span class="p">:</span> <span class="mf">0.032</span><span class="p">,</span>  <span class="c1"># USD
+</span>    <span class="sh">'</span><span class="s">daily_spend</span><span class="sh">'</span><span class="p">:</span> <span class="mi">2400</span><span class="p">,</span>
+    <span class="sh">'</span><span class="s">token_usage_input</span><span class="sh">'</span><span class="p">:</span> <span class="mf">1.5</span><span class="n">M</span><span class="p">,</span>
+    <span class="sh">'</span><span class="s">token_usage_output</span><span class="sh">'</span><span class="p">:</span> <span class="mi">850</span><span class="n">K</span><span class="p">,</span>
+
+    <span class="c1"># Quality
+</span>    <span class="sh">'</span><span class="s">avg_relevance_score</span><span class="sh">'</span><span class="p">:</span> <span class="mf">4.2</span><span class="p">,</span>
+    <span class="sh">'</span><span class="s">hallucination_rate</span><span class="sh">'</span><span class="p">:</span> <span class="mf">0.03</span><span class="p">,</span>  <span class="c1"># 3%
+</span>    <span class="sh">'</span><span class="s">user_satisfaction</span><span class="sh">'</span><span class="p">:</span> <span class="mf">4.1</span><span class="p">,</span>
+
+    <span class="c1"># Safety
+</span>    <span class="sh">'</span><span class="s">moderation_flags</span><span class="sh">'</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span>
+    <span class="sh">'</span><span class="s">pii_detections</span><span class="sh">'</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+
+    <span class="c1"># Usage
+</span>    <span class="sh">'</span><span class="s">total_requests</span><span class="sh">'</span><span class="p">:</span> <span class="mi">75000</span><span class="p">,</span>
+    <span class="sh">'</span><span class="s">unique_users</span><span class="sh">'</span><span class="p">:</span> <span class="mi">8500</span><span class="p">,</span>
+    <span class="sh">'</span><span class="s">error_rate</span><span class="sh">'</span><span class="p">:</span> <span class="mf">0.008</span><span class="p">,</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>Tracing Requests:</strong></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="n">langsmith</span> <span class="kn">import</span> <span class="n">trace</span>
+
+<span class="nd">@trace</span>
+<span class="k">def</span> <span class="nf">rag_pipeline</span><span class="p">(</span><span class="n">query</span><span class="p">):</span>
+    <span class="c1"># Each step is automatically traced
+</span>    <span class="n">chunks</span> <span class="o">=</span> <span class="nf">retrieve</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+    <span class="n">context</span> <span class="o">=</span> <span class="nf">assemble_context</span><span class="p">(</span><span class="n">chunks</span><span class="p">)</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="nf">generate</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">response</span>
+
+<span class="c1"># LangSmith dashboard shows:
+# - Full trace of each request
+# - Latency breakdown by step
+# - Token usage per step
+# - Intermediate outputs
+</span></code></pre></div></div>
+
+<h3 id="4-ab-testing">4. A/B Testing</h3>
+
+<p>Test prompts, models, and configurations like you’d test features.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">LLMExperiment</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="n">self</span><span class="p">):</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">variants</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="sh">'</span><span class="s">control</span><span class="sh">'</span><span class="p">:</span> <span class="p">{</span>
+                <span class="sh">'</span><span class="s">model</span><span class="sh">'</span><span class="p">:</span> <span class="sh">'</span><span class="s">gpt-4</span><span class="sh">'</span><span class="p">,</span>
+                <span class="sh">'</span><span class="s">prompt</span><span class="sh">'</span><span class="p">:</span> <span class="sh">'</span><span class="s">v1.2</span><span class="sh">'</span><span class="p">,</span>
+                <span class="sh">'</span><span class="s">temperature</span><span class="sh">'</span><span class="p">:</span> <span class="mf">0.7</span><span class="p">,</span>
+                <span class="sh">'</span><span class="s">traffic</span><span class="sh">'</span><span class="p">:</span> <span class="mf">0.5</span>
+            <span class="p">},</span>
+            <span class="sh">'</span><span class="s">treatment</span><span class="sh">'</span><span class="p">:</span> <span class="p">{</span>
+                <span class="sh">'</span><span class="s">model</span><span class="sh">'</span><span class="p">:</span> <span class="sh">'</span><span class="s">gpt-4</span><span class="sh">'</span><span class="p">,</span>
+                <span class="sh">'</span><span class="s">prompt</span><span class="sh">'</span><span class="p">:</span> <span class="sh">'</span><span class="s">v1.3</span><span class="sh">'</span><span class="p">,</span>  <span class="c1"># New prompt
+</span>                <span class="sh">'</span><span class="s">temperature</span><span class="sh">'</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span>  <span class="c1"># Lower temperature
+</span>                <span class="sh">'</span><span class="s">traffic</span><span class="sh">'</span><span class="p">:</span> <span class="mf">0.5</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+    <span class="k">def</span> <span class="nf">get_variant</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">user_id</span><span class="p">):</span>
+        <span class="c1"># Consistent hashing for user assignment
+</span>        <span class="k">if</span> <span class="nf">hash</span><span class="p">(</span><span class="n">user_id</span><span class="p">)</span> <span class="o">%</span> <span class="mi">100</span> <span class="o">&lt;</span> <span class="mi">50</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">self</span><span class="p">.</span><span class="n">variants</span><span class="p">[</span><span class="sh">'</span><span class="s">control</span><span class="sh">'</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">self</span><span class="p">.</span><span class="n">variants</span><span class="p">[</span><span class="sh">'</span><span class="s">treatment</span><span class="sh">'</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">run_request</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">user_id</span><span class="p">,</span> <span class="n">query</span><span class="p">):</span>
+        <span class="n">variant</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="nf">get_variant</span><span class="p">(</span><span class="n">user_id</span><span class="p">)</span>
+
+        <span class="n">prompt</span> <span class="o">=</span> <span class="nf">get_prompt</span><span class="p">(</span><span class="n">variant</span><span class="p">[</span><span class="sh">'</span><span class="s">prompt</span><span class="sh">'</span><span class="p">])</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">llm</span><span class="p">.</span><span class="nf">complete</span><span class="p">(</span>
+            <span class="n">prompt</span><span class="p">.</span><span class="nf">format</span><span class="p">(</span><span class="n">query</span><span class="o">=</span><span class="n">query</span><span class="p">),</span>
+            <span class="n">model</span><span class="o">=</span><span class="n">variant</span><span class="p">[</span><span class="sh">'</span><span class="s">model</span><span class="sh">'</span><span class="p">],</span>
+            <span class="n">temperature</span><span class="o">=</span><span class="n">variant</span><span class="p">[</span><span class="sh">'</span><span class="s">temperature</span><span class="sh">'</span><span class="p">]</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Log for analysis
+</span>        <span class="nf">log_experiment</span><span class="p">(</span>
+            <span class="n">variant_name</span><span class="o">=</span><span class="n">variant</span><span class="p">,</span>
+            <span class="n">user_id</span><span class="o">=</span><span class="n">user_id</span><span class="p">,</span>
+            <span class="n">query</span><span class="o">=</span><span class="n">query</span><span class="p">,</span>
+            <span class="n">response</span><span class="o">=</span><span class="n">response</span>
+        <span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">response</span>
+</code></pre></div></div>
+
+<p><strong>Analysis:</strong></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># After collecting data
+</span><span class="n">results</span> <span class="o">=</span> <span class="nf">analyze_experiment</span><span class="p">(</span><span class="sh">'</span><span class="s">prompt_v1.3_test</span><span class="sh">'</span><span class="p">)</span>
+
+<span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"""</span><span class="s">
+Control (v1.2):
+- Avg Relevance: </span><span class="si">{</span><span class="n">results</span><span class="p">.</span><span class="n">control</span><span class="p">.</span><span class="n">relevance</span><span class="si">}</span><span class="s">
+- Avg Latency: </span><span class="si">{</span><span class="n">results</span><span class="p">.</span><span class="n">control</span><span class="p">.</span><span class="n">latency</span><span class="si">}</span><span class="s">ms
+- Cost: $</span><span class="si">{</span><span class="n">results</span><span class="p">.</span><span class="n">control</span><span class="p">.</span><span class="n">cost</span><span class="si">}</span><span class="s">
+- User Satisfaction: </span><span class="si">{</span><span class="n">results</span><span class="p">.</span><span class="n">control</span><span class="p">.</span><span class="n">satisfaction</span><span class="si">}</span><span class="s">
+
+Treatment (v1.3):
+- Avg Relevance: </span><span class="si">{</span><span class="n">results</span><span class="p">.</span><span class="n">treatment</span><span class="p">.</span><span class="n">relevance</span><span class="si">}</span><span class="s"> (+</span><span class="si">{</span><span class="n">results</span><span class="p">.</span><span class="n">lift</span><span class="p">.</span><span class="n">relevance</span><span class="si">}</span><span class="s">%)
+- Avg Latency: </span><span class="si">{</span><span class="n">results</span><span class="p">.</span><span class="n">treatment</span><span class="p">.</span><span class="n">latency</span><span class="si">}</span><span class="s">ms (+</span><span class="si">{</span><span class="n">results</span><span class="p">.</span><span class="n">lift</span><span class="p">.</span><span class="n">latency</span><span class="si">}</span><span class="s">ms)
+- Cost: $</span><span class="si">{</span><span class="n">results</span><span class="p">.</span><span class="n">treatment</span><span class="p">.</span><span class="n">cost</span><span class="si">}</span><span class="s"> (+</span><span class="si">{</span><span class="n">results</span><span class="p">.</span><span class="n">lift</span><span class="p">.</span><span class="n">cost</span><span class="si">}</span><span class="s">%)
+- User Satisfaction: </span><span class="si">{</span><span class="n">results</span><span class="p">.</span><span class="n">treatment</span><span class="p">.</span><span class="n">satisfaction</span><span class="si">}</span><span class="s"> (+</span><span class="si">{</span><span class="n">results</span><span class="p">.</span><span class="n">lift</span><span class="p">.</span><span class="n">satisfaction</span><span class="si">}</span><span class="s">pts)
+
+Statistical Significance: </span><span class="si">{</span><span class="n">results</span><span class="p">.</span><span class="n">p_value</span><span class="si">}</span><span class="s">
+Recommendation: </span><span class="si">{</span><span class="sh">'</span><span class="s">SHIP</span><span class="sh">'</span> <span class="k">if</span> <span class="n">results</span><span class="p">.</span><span class="n">significant</span> <span class="ow">and</span> <span class="n">results</span><span class="p">.</span><span class="n">net_positive</span> <span class="k">else</span> <span class="sh">'</span><span class="s">REVERT</span><span class="sh">'</span><span class="si">}</span><span class="s">
+</span><span class="sh">"""</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="5-cost-management">5. Cost Management</h3>
+
+<p>Token usage can spiral out of control quickly.</p>
+
+<p><strong>Cost Tracking:</strong></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">CostTracker</span><span class="p">:</span>
+    <span class="n">PRICING</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="sh">'</span><span class="s">gpt-4</span><span class="sh">'</span><span class="p">:</span> <span class="p">{</span><span class="sh">'</span><span class="s">input</span><span class="sh">'</span><span class="p">:</span> <span class="mf">0.03</span><span class="p">,</span> <span class="sh">'</span><span class="s">output</span><span class="sh">'</span><span class="p">:</span> <span class="mf">0.06</span><span class="p">},</span>  <span class="c1"># per 1K tokens
+</span>        <span class="sh">'</span><span class="s">gpt-4-turbo</span><span class="sh">'</span><span class="p">:</span> <span class="p">{</span><span class="sh">'</span><span class="s">input</span><span class="sh">'</span><span class="p">:</span> <span class="mf">0.01</span><span class="p">,</span> <span class="sh">'</span><span class="s">output</span><span class="sh">'</span><span class="p">:</span> <span class="mf">0.03</span><span class="p">},</span>
+        <span class="sh">'</span><span class="s">gpt-3.5-turbo</span><span class="sh">'</span><span class="p">:</span> <span class="p">{</span><span class="sh">'</span><span class="s">input</span><span class="sh">'</span><span class="p">:</span> <span class="mf">0.0005</span><span class="p">,</span> <span class="sh">'</span><span class="s">output</span><span class="sh">'</span><span class="p">:</span> <span class="mf">0.0015</span><span class="p">},</span>
+    <span class="p">}</span>
+
+    <span class="k">def</span> <span class="nf">track_request</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">input_tokens</span><span class="p">,</span> <span class="n">output_tokens</span><span class="p">):</span>
+        <span class="n">cost</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="p">(</span><span class="n">input_tokens</span> <span class="o">/</span> <span class="mi">1000</span><span class="p">)</span> <span class="o">*</span> <span class="n">self</span><span class="p">.</span><span class="n">PRICING</span><span class="p">[</span><span class="n">model</span><span class="p">][</span><span class="sh">'</span><span class="s">input</span><span class="sh">'</span><span class="p">]</span> <span class="o">+</span>
+            <span class="p">(</span><span class="n">output_tokens</span> <span class="o">/</span> <span class="mi">1000</span><span class="p">)</span> <span class="o">*</span> <span class="n">self</span><span class="p">.</span><span class="n">PRICING</span><span class="p">[</span><span class="n">model</span><span class="p">][</span><span class="sh">'</span><span class="s">output</span><span class="sh">'</span><span class="p">]</span>
+        <span class="p">)</span>
+
+        <span class="n">metrics</span><span class="p">.</span><span class="nf">counter</span><span class="p">(</span><span class="sh">'</span><span class="s">llm_cost_total</span><span class="sh">'</span><span class="p">).</span><span class="nf">inc</span><span class="p">(</span><span class="n">cost</span><span class="p">)</span>
+        <span class="n">metrics</span><span class="p">.</span><span class="nf">counter</span><span class="p">(</span><span class="sh">'</span><span class="s">llm_tokens_input</span><span class="sh">'</span><span class="p">,</span> <span class="p">{</span><span class="sh">'</span><span class="s">model</span><span class="sh">'</span><span class="p">:</span> <span class="n">model</span><span class="p">}).</span><span class="nf">inc</span><span class="p">(</span><span class="n">input_tokens</span><span class="p">)</span>
+        <span class="n">metrics</span><span class="p">.</span><span class="nf">counter</span><span class="p">(</span><span class="sh">'</span><span class="s">llm_tokens_output</span><span class="sh">'</span><span class="p">,</span> <span class="p">{</span><span class="sh">'</span><span class="s">model</span><span class="sh">'</span><span class="p">:</span> <span class="n">model</span><span class="p">}).</span><span class="nf">inc</span><span class="p">(</span><span class="n">output_tokens</span><span class="p">)</span>
+
+        <span class="c1"># Alert if daily spend exceeds budget
+</span>        <span class="k">if</span> <span class="nf">daily_spend</span><span class="p">()</span> <span class="o">&gt;</span> <span class="n">BUDGET_LIMIT</span><span class="p">:</span>
+            <span class="nf">alert</span><span class="p">(</span><span class="sh">"</span><span class="s">Daily LLM budget exceeded!</span><span class="sh">"</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">cost</span>
+</code></pre></div></div>
+
+<p><strong>Optimization Strategies:</strong></p>
+
+<ol>
+  <li><strong>Prompt compression</strong>: Remove unnecessary tokens</li>
+  <li><strong>Model cascading</strong>: Use cheaper models first, escalate if needed</li>
+  <li><strong>Caching</strong>: Cache responses for common queries</li>
+  <li><strong>Batch processing</strong>: Process multiple items together</li>
+  <li><strong>Streaming</strong>: Stop generation early if answer is complete</li>
+</ol>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">optimized_generation</span><span class="p">(</span><span class="n">query</span><span class="p">):</span>
+    <span class="c1"># 1. Check cache
+</span>    <span class="n">cached</span> <span class="o">=</span> <span class="n">cache</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">cached</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">cached</span>
+
+    <span class="c1"># 2. Try cheap model first
+</span>    <span class="n">response</span> <span class="o">=</span> <span class="n">gpt_3_5_turbo</span><span class="p">.</span><span class="nf">complete</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+
+    <span class="c1"># 3. Verify quality
+</span>    <span class="k">if</span> <span class="nf">quality_check</span><span class="p">(</span><span class="n">response</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">THRESHOLD</span><span class="p">:</span>
+        <span class="c1"># 4. Escalate to better model
+</span>        <span class="n">response</span> <span class="o">=</span> <span class="n">gpt_4</span><span class="p">.</span><span class="nf">complete</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+
+    <span class="c1"># 5. Cache result
+</span>    <span class="n">cache</span><span class="p">.</span><span class="nf">set</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">ttl</span><span class="o">=</span><span class="mi">3600</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">response</span>
+</code></pre></div></div>
+
+<h3 id="6-safety--guardrails">6. Safety &amp; Guardrails</h3>
+
+<p>Prevent harmful outputs and misuse.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">SafetyGuardrails</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">check_input</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">user_input</span><span class="p">):</span>
+        <span class="c1"># 1. Content moderation
+</span>        <span class="k">if</span> <span class="n">self</span><span class="p">.</span><span class="nf">contains_harmful_content</span><span class="p">(</span><span class="n">user_input</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="nc">ContentPolicyViolation</span><span class="p">()</span>
+
+        <span class="c1"># 2. Prompt injection detection
+</span>        <span class="k">if</span> <span class="n">self</span><span class="p">.</span><span class="nf">is_prompt_injection</span><span class="p">(</span><span class="n">user_input</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="nc">PromptInjectionDetected</span><span class="p">()</span>
+
+        <span class="c1"># 3. PII detection
+</span>        <span class="k">if</span> <span class="n">self</span><span class="p">.</span><span class="nf">contains_pii</span><span class="p">(</span><span class="n">user_input</span><span class="p">):</span>
+            <span class="n">user_input</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="nf">redact_pii</span><span class="p">(</span><span class="n">user_input</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">user_input</span>
+
+    <span class="k">def</span> <span class="nf">check_output</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">llm_output</span><span class="p">):</span>
+        <span class="c1"># 1. Harmful content in response
+</span>        <span class="k">if</span> <span class="n">self</span><span class="p">.</span><span class="nf">contains_harmful_content</span><span class="p">(</span><span class="n">llm_output</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">self</span><span class="p">.</span><span class="nf">safe_fallback_response</span><span class="p">()</span>
+
+        <span class="c1"># 2. Hallucination check (for RAG)
+</span>        <span class="k">if</span> <span class="n">self</span><span class="p">.</span><span class="nf">is_hallucination</span><span class="p">(</span><span class="n">llm_output</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">self</span><span class="p">.</span><span class="nf">request_clarification</span><span class="p">()</span>
+
+        <span class="c1"># 3. Citation validation
+</span>        <span class="k">if</span> <span class="ow">not</span> <span class="n">self</span><span class="p">.</span><span class="nf">valid_citations</span><span class="p">(</span><span class="n">llm_output</span><span class="p">):</span>
+            <span class="n">llm_output</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="nf">add_disclaimer</span><span class="p">(</span><span class="n">llm_output</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">llm_output</span>
+</code></pre></div></div>
+
+<h2 id="operational-challenges">Operational Challenges</h2>
+
+<h3 id="challenge-1-non-determinism">Challenge 1: Non-Determinism</h3>
+
+<p><strong>Problem:</strong> LLMs are stochastic. Same input → different outputs.</p>
+
+<p><strong>Solution:</strong></p>
+<ul>
+  <li>Set <code class="language-plaintext highlighter-rouge">temperature=0</code> for reproducibility when possible</li>
+  <li>Use <code class="language-plaintext highlighter-rouge">seed</code> parameter where available</li>
+  <li>Run multiple times and aggregate for critical decisions</li>
+  <li>Accept that some variance is unavoidable</li>
+</ul>
+
+<h3 id="challenge-2-latency-variability">Challenge 2: Latency Variability</h3>
+
+<p><strong>Problem:</strong> Response times vary widely (500ms to 10s+).</p>
+
+<p><strong>Solution:</strong></p>
+<ul>
+  <li>Set appropriate timeouts</li>
+  <li>Implement streaming for better UX</li>
+  <li>Use caching aggressively</li>
+  <li>Consider async processing for non-real-time use cases</li>
+</ul>
+
+<h3 id="challenge-3-rate-limits">Challenge 3: Rate Limits</h3>
+
+<p><strong>Problem:</strong> API providers have rate limits.</p>
+
+<p><strong>Solution:</strong></p>
+<ul>
+  <li>Implement exponential backoff</li>
+  <li>Queue requests during high load</li>
+  <li>Distribute across multiple API keys</li>
+  <li>Consider self-hosting for critical workloads</li>
+</ul>
+
+<h2 id="recommended-tools">Recommended Tools</h2>
+
+<p><strong>Observability:</strong></p>
+<ul>
+  <li>LangSmith (LangChain native)</li>
+  <li>Weights &amp; Biases</li>
+  <li>Helicone</li>
+  <li>Custom dashboards (Grafana + Prometheus)</li>
+</ul>
+
+<p><strong>Evaluation:</strong></p>
+<ul>
+  <li>RAGAS</li>
+  <li>TruLens</li>
+  <li>Custom eval frameworks</li>
+</ul>
+
+<p><strong>Prompt Management:</strong></p>
+<ul>
+  <li>PromptLayer</li>
+  <li>HumanLoop</li>
+  <li>Custom version control (Git + YAML)</li>
+</ul>
+
+<p><strong>Safety:</strong></p>
+<ul>
+  <li>OpenAI Moderation API</li>
+  <li>LLama Guard</li>
+  <li>Custom classifiers</li>
+</ul>
+
+<h2 id="getting-started-checklist">Getting Started Checklist</h2>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Implement prompt versioning</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Set up request logging and tracing</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Build evaluation framework</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Configure monitoring and alerts</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Implement cost tracking</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Add safety guardrails</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Create runbooks for common issues</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Set up A/B testing infrastructure</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Document incident response procedures</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Establish feedback loop from users</li>
+</ul>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>LLMOps is still an emerging discipline. Best practices are evolving rapidly. The key is to start with fundamentals:</p>
+
+<ol>
+  <li><strong>Version everything</strong>: Prompts, configs, models</li>
+  <li><strong>Measure continuously</strong>: Quality, cost, latency</li>
+  <li><strong>Iterate quickly</strong>: Run experiments, learn, improve</li>
+  <li><strong>Build safety in</strong>: Don’t treat it as an afterthought</li>
+</ol>
+
+<p>As the field matures, we’ll see more standardization and better tooling. For now, expect to build some infrastructure yourself.</p>
+
+<h2 id="resources">Resources</h2>
+
+<ul>
+  <li><a href="https://platform.openai.com/docs/guides/production-best-practices">OpenAI Best Practices</a></li>
+  <li><a href="https://docs.smith.langchain.com/">LangSmith Documentation</a></li>
+  <li><a href="https://github.com/explodinggradients/ragas">RAGAS Evaluation Framework</a></li>
+</ul>
+
+<hr />
+
+<p><strong>What’s your LLMOps stack?</strong> I’d love to hear what tools and practices you’re using. Reach out via <a href="mailto:email4vishal@gmail.com">email</a> or <a href="https://x.com/twitt4vishal">X</a>.</p>
+
+<hr />
+
+<p><strong>Disclaimer:</strong> The views, opinions, and technical approaches shared in this post are my own, based on my personal experience building production AI/ML systems. They do not represent the views of my current or former employers. Technology choices and architectural decisions should always be evaluated in the context of your specific use case and requirements.</p>
+
+<hr />
+
+<p><strong>Questions or feedback?</strong> I’d love to hear your thoughts and experiences.</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td><strong>Contact:</strong> <a href="https://www.linkedin.com/in/sharma-vishal/"><i class="fas fa-fw fa-link"></i> LinkedIn</a></td>
+      <td><a href="https://github.com/git4vishal"><i class="fab fa-fw fa-github"></i> GitHub</a></td>
+      <td><a href="https://x.com/twitt4vishal"><i class="fab fa-fw fa-twitter-square"></i> X</a></td>
+      <td><a href="mailto:email4vishal@gmail.com"><i class="fas fa-fw fa-envelope"></i> Email</a></td>
+    </tr>
+  </tbody>
+</table>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#best-practices" class="page__taxonomy-item p-category" rel="tag">Best Practices</a><span class="sep">, </span>
+    
+      <a href="/tags/#devops" class="page__taxonomy-item p-category" rel="tag">DevOps</a><span class="sep">, </span>
+    
+      <a href="/tags/#llmops" class="page__taxonomy-item p-category" rel="tag">LLMOps</a><span class="sep">, </span>
+    
+      <a href="/tags/#mlops" class="page__taxonomy-item p-category" rel="tag">MLOps</a><span class="sep">, </span>
+    
+      <a href="/tags/#operations" class="page__taxonomy-item p-category" rel="tag">Operations</a><span class="sep">, </span>
+    
+      <a href="/tags/#production" class="page__taxonomy-item p-category" rel="tag">Production</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#mlops" class="page__taxonomy-item p-category" rel="tag">mlops</a><span class="sep">, </span>
+    
+      <a href="/categories/#operations" class="page__taxonomy-item p-category" rel="tag">operations</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2025-11-25T12:00:00-06:00">November 25, 2025</time></p>
+
+      </footer>
+
+      
+
+      
+  <nav class="pagination">
+    
+      <a href="#" class="pagination--pager disabled">Previous</a>
+    
+    
+      <a href="/genai/techniques/prompt-engineering-strategies/" class="pagination--pager" title="Prompt Engineering: From Basics to Advanced Strategies">Next</a>
+    
+  </nav>
+
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    
+<div class="page__related">
+  
+  <h2 class="page__related-title">You May Also Enjoy</h2>
+  <div class="grid__wrapper">
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/case-study/platform-engineering/genai-customer-analysis-case-study/" rel="permalink">Case Study: Production GenAI Platform Processing 2M+ Monthly Customer Interactions
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          4 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">How I architected a production GenAI platform processing 2M+ monthly call transcripts with 85% accuracy, delivering $1.2M annual retention value through serv...</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/genai/architecture/production-grade-rag-systems/" rel="permalink">Building Production-Grade RAG Systems: Architecture and Best Practices
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          8 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Lessons learned from building and scaling RAG systems in enterprise environments—moving from proof-of-concept demos to production-grade systems that handle m...</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/evaluation/testing/evaluating-llm-applications/" rel="permalink">Evaluating LLM Applications: Beyond Vibes and Into Data
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          8 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Rigorous evaluation is what separates prototypes from production LLM systems. Learn the frameworks, metrics, and best practices for measuring what matters in...</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/governance/strategy/ai-governance-framework/" rel="permalink">Building an AI Governance Framework for Enterprise GenAI Adoption
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          8 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">As enterprises rush to adopt GenAI, many overlook a critical question: How do we govern these systems responsibly?
+</p>
+  </article>
+</div>
+
+    
+  </div>
+</div>
+
+  
+  
+</div>
+
+      
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';" role="search">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        
+
+<center>
+<div class="page__footer-follow">
+    <ul class="social-icons">
+        
+
+        <b>Contact: </b>
+        
+        
+        
+        <li><a href="https://www.linkedin.com/in/sharma-vishal/" rel="nofollow noopener noreferrer"><i
+                class="fas fa-fw fa-link" aria-hidden="true"></i> LinkedIn</a></li>
+        
+        
+        
+        <li><a href="https://github.com/git4vishal" rel="nofollow noopener noreferrer"><i
+                class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+        
+        
+        <li><a href="https://x.com/twitt4vishal" rel="nofollow noopener noreferrer"><i
+                class="fab fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
+        
+        
+        
+        <li><a href="mailto:email4vishal@gmail.com" rel="nofollow noopener noreferrer"><i
+                class="fab fa-fw fa-envelope" aria-hidden="true"></i> Email</a></li>
+        
+        
+        
+
+        
+        <li>
+            <a href="/feed.xml"><i
+                    class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+        
+    </ul>
+</div>
+
+
+<div class="page__footer-copyright">&copy;
+    
+    
+        2025 -
+    
+    2026
+    <a href="https://git4vishal.github.io">
+        Vishal Sharma | Enterprise Data &amp; AI Platform Leader
+    </a>.
+<!--    Powered by -->
+<!--    <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> -->
+<!--    &amp; -->
+<!--    <a href="https://mademistakes.com/work/jekyll-themes/minimal-mistakes/" rel="nofollow">Minimal Mistakes</a>.-->
+</div>
+</center>
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+
+
+  </body>
+</html>

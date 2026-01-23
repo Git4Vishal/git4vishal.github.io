@@ -1,0 +1,1412 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.27.3 by Michael Rose
+  Copyright 2013-2025 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Evaluating LLM Applications: Beyond Vibes and Into Data - Home</title>
+<meta name="description" content="Rigorous evaluation is what separates prototypes from production LLM systems. Learn the frameworks, metrics, and best practices for measuring what matters in your LLM applications.">
+
+
+  <meta name="author" content="Vishal Sharma">
+  
+  <meta property="article:author" content="Vishal Sharma">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Home">
+<meta property="og:title" content="Evaluating LLM Applications: Beyond Vibes and Into Data">
+<meta property="og:url" content="https://git4vishal.github.io/evaluation/testing/evaluating-llm-applications/">
+
+
+  <meta property="og:description" content="Rigorous evaluation is what separates prototypes from production LLM systems. Learn the frameworks, metrics, and best practices for measuring what matters in your LLM applications.">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2025-12-15T12:00:00-06:00">
+
+
+
+
+
+
+<link rel="canonical" href="https://git4vishal.github.io/evaluation/testing/evaluating-llm-applications/">
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Home Feed">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+  
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css"></noscript>
+
+
+
+    <!-- Mermaid JS for diagram rendering -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded', function() {
+    // Convert kramdown code blocks to mermaid divs
+    document.querySelectorAll('code.language-mermaid').forEach(function(code) {
+      const pre = code.parentElement;
+      const div = document.createElement('div');
+      div.className = 'mermaid';
+      div.textContent = code.textContent;
+      pre.replaceWith(div);
+    });
+
+    // Initialize Mermaid
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: 'dark',
+      securityLevel: 'loose'
+    });
+  });
+</script>
+
+  </head>
+
+  <body class="layout--single" dir="ltr">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Home
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a
+                href="/about/"
+                
+                
+              >About</a>
+            </li><li class="masthead__menu-item">
+              <a
+                href="/projects/"
+                
+                
+              >Projects</a>
+            </li><li class="masthead__menu-item">
+              <a
+                href="/blog/"
+                
+                
+              >Blogs</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="https://git4vishal.github.io/">
+        <img src="/assets/images/bio-photo.jpg" alt="Vishal Sharma" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="https://git4vishal.github.io/" itemprop="url">Vishal Sharma</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>Enterprise Data &amp; AI Platform Leader</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">Frisco, Texas</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="https://www.linkedin.com/in/sharma-vishal/" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
+          
+        
+          
+            <li><a href="https://github.com/git4vishal" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+            <li><a href="https://x.com/twitt4vishal" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:email4vishal@gmail.com" rel="me" class="u-email">
+            <meta itemprop="email" content="email4vishal@gmail.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Evaluating LLM Applications: Beyond Vibes and Into Data">
+    <meta itemprop="description" content="Rigorous evaluation is what separates prototypes from production LLM systems. Learn the frameworks, metrics, and best practices for measuring what matters in your LLM applications.">
+    <meta itemprop="datePublished" content="2025-12-15T12:00:00-06:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">
+            <a href="https://git4vishal.github.io/evaluation/testing/evaluating-llm-applications/" itemprop="url">Evaluating LLM Applications: Beyond Vibes and Into Data
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          10 minute read
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <p>“It feels better” is not an evaluation strategy.</p>
+
+<p>Yet this is how many teams evaluate LLM applications—running a few examples, checking if outputs “look good,” and shipping to production. This works until it doesn’t.</p>
+
+<p>After building evaluation frameworks for multiple production LLM systems, I’ve learned that rigorous evaluation is what separates prototypes from production systems.</p>
+
+<h2 id="the-evaluation-challenge">The Evaluation Challenge</h2>
+
+<p>Traditional software testing doesn’t translate to LLM applications:</p>
+
+<p><strong>Traditional Software:</strong></p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">test_add</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="nf">add</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">==</span> <span class="mi">5</span>  <span class="c1"># ✅ Deterministic
+</span></code></pre></div></div>
+
+<p><strong>LLM Applications:</strong></p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">test_summarize</span><span class="p">():</span>
+    <span class="n">summary</span> <span class="o">=</span> <span class="n">llm</span><span class="p">.</span><span class="nf">summarize</span><span class="p">(</span><span class="n">document</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">summary</span> <span class="o">==</span> <span class="err">???</span>  <span class="c1"># ❌ What's the "correct" output?
+</span></code></pre></div></div>
+
+<p>The challenges:</p>
+<ol>
+  <li><strong>Non-deterministic</strong>: Same input → different outputs</li>
+  <li><strong>Subjective quality</strong>: What makes a “good” summary?</li>
+  <li><strong>Multidimensional</strong>: Accuracy, relevance, tone, safety, cost</li>
+  <li><strong>Context-dependent</strong>: Good output varies by use case</li>
+  <li><strong>Expensive</strong>: Can’t run thousands of tests cheaply</li>
+</ol>
+
+<h2 id="the-evaluation-framework">The Evaluation Framework</h2>
+
+<p>A complete evaluation strategy has four components:</p>
+
+<pre><code class="language-mermaid">graph TD
+    A[1. Test Set Creation&lt;br/&gt;Representative examples&lt;br/&gt;with ground truth] --&gt; B[2. Automated Metrics&lt;br/&gt;Quantitative measures&lt;br/&gt;of quality]
+    B --&gt; C[3. Human Evaluation&lt;br/&gt;Qualitative assessment&lt;br/&gt;by experts]
+    C --&gt; D[4. Production Monitoring&lt;br/&gt;Real-world performance&lt;br/&gt;tracking]
+</code></pre>
+
+<h2 id="component-1-building-test-sets">Component 1: Building Test Sets</h2>
+
+<h3 id="start-with-real-data">Start with Real Data</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">TestSetBuilder</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">create_test_set</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="sh">'</span><span class="s">production</span><span class="sh">'</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">500</span><span class="p">):</span>
+        <span class="sh">"""</span><span class="s">
+        Create representative test set from production data
+        </span><span class="sh">"""</span>
+        <span class="c1"># Sample diverse queries
+</span>        <span class="n">queries</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="nf">sample_queries</span><span class="p">(</span>
+            <span class="n">source</span><span class="o">=</span><span class="n">source</span><span class="p">,</span>
+            <span class="n">size</span><span class="o">=</span><span class="n">size</span><span class="p">,</span>
+            <span class="n">strategy</span><span class="o">=</span><span class="sh">'</span><span class="s">stratified</span><span class="sh">'</span><span class="p">,</span>  <span class="c1"># Ensure diversity
+</span>            <span class="n">criteria</span><span class="o">=</span><span class="p">{</span>
+                <span class="sh">'</span><span class="s">query_length</span><span class="sh">'</span><span class="p">:</span> <span class="p">[</span><span class="sh">'</span><span class="s">short</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">medium</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">long</span><span class="sh">'</span><span class="p">],</span>
+                <span class="sh">'</span><span class="s">query_type</span><span class="sh">'</span><span class="p">:</span> <span class="p">[</span><span class="sh">'</span><span class="s">factual</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">analytical</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">creative</span><span class="sh">'</span><span class="p">],</span>
+                <span class="sh">'</span><span class="s">difficulty</span><span class="sh">'</span><span class="p">:</span> <span class="p">[</span><span class="sh">'</span><span class="s">easy</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">medium</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">hard</span><span class="sh">'</span><span class="p">]</span>
+            <span class="p">}</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Generate or collect ground truth
+</span>        <span class="n">test_examples</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">query</span> <span class="ow">in</span> <span class="n">queries</span><span class="p">:</span>
+            <span class="n">example</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="sh">'</span><span class="s">input</span><span class="sh">'</span><span class="p">:</span> <span class="n">query</span><span class="p">,</span>
+                <span class="sh">'</span><span class="s">context</span><span class="sh">'</span><span class="p">:</span> <span class="n">self</span><span class="p">.</span><span class="nf">get_context</span><span class="p">(</span><span class="n">query</span><span class="p">),</span>
+                <span class="sh">'</span><span class="s">expected_output</span><span class="sh">'</span><span class="p">:</span> <span class="n">self</span><span class="p">.</span><span class="nf">get_ground_truth</span><span class="p">(</span><span class="n">query</span><span class="p">),</span>
+                <span class="sh">'</span><span class="s">metadata</span><span class="sh">'</span><span class="p">:</span> <span class="n">self</span><span class="p">.</span><span class="nf">classify_query</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+            <span class="p">}</span>
+            <span class="n">test_examples</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="n">example</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">test_examples</span>
+
+    <span class="k">def</span> <span class="nf">get_ground_truth</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">query</span><span class="p">):</span>
+        <span class="sh">"""</span><span class="s">
+        Obtain reference answer
+        </span><span class="sh">"""</span>
+        <span class="c1"># Option 1: Human labeling
+</span>        <span class="k">if</span> <span class="n">query</span><span class="p">.</span><span class="n">requires_expert</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">human_labeler</span><span class="p">.</span><span class="nf">label</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+
+        <span class="c1"># Option 2: Use production data (with human in loop)
+</span>        <span class="k">if</span> <span class="n">query</span><span class="p">.</span><span class="n">has_positive_feedback</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">production_db</span><span class="p">.</span><span class="nf">get_response</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+
+        <span class="c1"># Option 3: Generate with best available model
+</span>        <span class="k">return</span> <span class="n">gpt4</span><span class="p">.</span><span class="nf">generate_reference</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="test-set-composition">Test Set Composition</h3>
+
+<p>Aim for diverse coverage:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">test_set_composition</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="sh">'</span><span class="s">total</span><span class="sh">'</span><span class="p">:</span> <span class="mi">500</span><span class="p">,</span>
+
+    <span class="c1"># By query type
+</span>    <span class="sh">'</span><span class="s">by_type</span><span class="sh">'</span><span class="p">:</span> <span class="p">{</span>
+        <span class="sh">'</span><span class="s">factual</span><span class="sh">'</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>        <span class="c1"># "What is X?"
+</span>        <span class="sh">'</span><span class="s">analytical</span><span class="sh">'</span><span class="p">:</span> <span class="mi">150</span><span class="p">,</span>     <span class="c1"># "Why does X happen?"
+</span>        <span class="sh">'</span><span class="s">creative</span><span class="sh">'</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>       <span class="c1"># "Generate ideas for X"
+</span>        <span class="sh">'</span><span class="s">procedural</span><span class="sh">'</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span>      <span class="c1"># "How do I X?"
+</span>    <span class="p">},</span>
+
+    <span class="c1"># By difficulty
+</span>    <span class="sh">'</span><span class="s">by_difficulty</span><span class="sh">'</span><span class="p">:</span> <span class="p">{</span>
+        <span class="sh">'</span><span class="s">easy</span><span class="sh">'</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>   <span class="c1"># Clear answer, well-known topic
+</span>        <span class="sh">'</span><span class="s">medium</span><span class="sh">'</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span> <span class="c1"># Requires reasoning, less common
+</span>        <span class="sh">'</span><span class="s">hard</span><span class="sh">'</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>   <span class="c1"># Complex, ambiguous, rare
+</span>    <span class="p">},</span>
+
+    <span class="c1"># By expected failure modes
+</span>    <span class="sh">'</span><span class="s">edge_cases</span><span class="sh">'</span><span class="p">:</span> <span class="p">{</span>
+        <span class="sh">'</span><span class="s">ambiguous_queries</span><span class="sh">'</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span>
+        <span class="sh">'</span><span class="s">out_of_scope</span><span class="sh">'</span><span class="p">:</span> <span class="mi">25</span><span class="p">,</span>
+        <span class="sh">'</span><span class="s">adversarial</span><span class="sh">'</span><span class="p">:</span> <span class="mi">25</span><span class="p">,</span>
+        <span class="sh">'</span><span class="s">multilingual</span><span class="sh">'</span><span class="p">:</span> <span class="mi">25</span><span class="p">,</span>
+        <span class="sh">'</span><span class="s">very_long_context</span><span class="sh">'</span><span class="p">:</span> <span class="mi">25</span><span class="p">,</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="golden-test-sets">Golden Test Sets</h3>
+
+<p>Maintain a smaller, high-quality golden set:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">golden_set</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="sh">'</span><span class="s">size</span><span class="sh">'</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span>  <span class="c1"># Smaller, curated
+</span>    <span class="sh">'</span><span class="s">quality</span><span class="sh">'</span><span class="p">:</span> <span class="sh">'</span><span class="s">expert-labeled</span><span class="sh">'</span><span class="p">,</span>
+    <span class="sh">'</span><span class="s">purpose</span><span class="sh">'</span><span class="p">:</span> <span class="sh">'</span><span class="s">regression testing</span><span class="sh">'</span><span class="p">,</span>
+    <span class="sh">'</span><span class="s">update_frequency</span><span class="sh">'</span><span class="p">:</span> <span class="sh">'</span><span class="s">quarterly</span><span class="sh">'</span><span class="p">,</span>
+
+    <span class="c1"># Run before every deployment
+</span>    <span class="sh">'</span><span class="s">pass_threshold</span><span class="sh">'</span><span class="p">:</span> <span class="p">{</span>
+        <span class="sh">'</span><span class="s">accuracy</span><span class="sh">'</span><span class="p">:</span> <span class="mf">0.85</span><span class="p">,</span>
+        <span class="sh">'</span><span class="s">no_regressions</span><span class="sh">'</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>  <span class="c1"># All previously passing must still pass
+</span>    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="component-2-automated-metrics">Component 2: Automated Metrics</h2>
+
+<h3 id="reference-based-metrics">Reference-Based Metrics</h3>
+
+<p>When you have ground truth:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">ReferencedMetrics</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">exact_match</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">predicted</span><span class="p">,</span> <span class="n">reference</span><span class="p">):</span>
+        <span class="sh">"""</span><span class="s">
+        Exact string match (rarely useful for LLMs)
+        </span><span class="sh">"""</span>
+        <span class="k">return</span> <span class="n">predicted</span><span class="p">.</span><span class="nf">strip</span><span class="p">()</span> <span class="o">==</span> <span class="n">reference</span><span class="p">.</span><span class="nf">strip</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">semantic_similarity</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">predicted</span><span class="p">,</span> <span class="n">reference</span><span class="p">):</span>
+        <span class="sh">"""</span><span class="s">
+        Embedding-based similarity
+        </span><span class="sh">"""</span>
+        <span class="n">pred_emb</span> <span class="o">=</span> <span class="nf">embed</span><span class="p">(</span><span class="n">predicted</span><span class="p">)</span>
+        <span class="n">ref_emb</span> <span class="o">=</span> <span class="nf">embed</span><span class="p">(</span><span class="n">reference</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nf">cosine_similarity</span><span class="p">(</span><span class="n">pred_emb</span><span class="p">,</span> <span class="n">ref_emb</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">rouge_score</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">predicted</span><span class="p">,</span> <span class="n">reference</span><span class="p">):</span>
+        <span class="sh">"""</span><span class="s">
+        Overlap-based metric (good for summarization)
+        </span><span class="sh">"""</span>
+        <span class="kn">from</span> <span class="n">rouge</span> <span class="kn">import</span> <span class="n">Rouge</span>
+        <span class="n">rouge</span> <span class="o">=</span> <span class="nc">Rouge</span><span class="p">()</span>
+        <span class="n">scores</span> <span class="o">=</span> <span class="n">rouge</span><span class="p">.</span><span class="nf">get_scores</span><span class="p">(</span><span class="n">predicted</span><span class="p">,</span> <span class="n">reference</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="sh">'</span><span class="s">rouge-1</span><span class="sh">'</span><span class="p">:</span> <span class="n">scores</span><span class="p">[</span><span class="sh">'</span><span class="s">rouge-1</span><span class="sh">'</span><span class="p">][</span><span class="sh">'</span><span class="s">f</span><span class="sh">'</span><span class="p">],</span>  <span class="c1"># Unigram overlap
+</span>            <span class="sh">'</span><span class="s">rouge-2</span><span class="sh">'</span><span class="p">:</span> <span class="n">scores</span><span class="p">[</span><span class="sh">'</span><span class="s">rouge-2</span><span class="sh">'</span><span class="p">][</span><span class="sh">'</span><span class="s">f</span><span class="sh">'</span><span class="p">],</span>  <span class="c1"># Bigram overlap
+</span>            <span class="sh">'</span><span class="s">rouge-l</span><span class="sh">'</span><span class="p">:</span> <span class="n">scores</span><span class="p">[</span><span class="sh">'</span><span class="s">rouge-l</span><span class="sh">'</span><span class="p">][</span><span class="sh">'</span><span class="s">f</span><span class="sh">'</span><span class="p">],</span>  <span class="c1"># Longest common subsequence
+</span>        <span class="p">}</span>
+
+    <span class="k">def</span> <span class="nf">bleu_score</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">predicted</span><span class="p">,</span> <span class="n">reference</span><span class="p">):</span>
+        <span class="sh">"""</span><span class="s">
+        N-gram precision (good for translation)
+        </span><span class="sh">"""</span>
+        <span class="kn">from</span> <span class="n">nltk.translate.bleu_score</span> <span class="kn">import</span> <span class="n">sentence_bleu</span>
+        <span class="n">reference_tokens</span> <span class="o">=</span> <span class="p">[</span><span class="n">reference</span><span class="p">.</span><span class="nf">split</span><span class="p">()]</span>
+        <span class="n">predicted_tokens</span> <span class="o">=</span> <span class="n">predicted</span><span class="p">.</span><span class="nf">split</span><span class="p">()</span>
+        <span class="k">return</span> <span class="nf">sentence_bleu</span><span class="p">(</span><span class="n">reference_tokens</span><span class="p">,</span> <span class="n">predicted_tokens</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">bertscore</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">predicted</span><span class="p">,</span> <span class="n">reference</span><span class="p">):</span>
+        <span class="sh">"""</span><span class="s">
+        Contextual embedding similarity
+        </span><span class="sh">"""</span>
+        <span class="kn">from</span> <span class="n">bert_score</span> <span class="kn">import</span> <span class="n">score</span>
+        <span class="n">P</span><span class="p">,</span> <span class="n">R</span><span class="p">,</span> <span class="n">F1</span> <span class="o">=</span> <span class="nf">score</span><span class="p">([</span><span class="n">predicted</span><span class="p">],</span> <span class="p">[</span><span class="n">reference</span><span class="p">],</span> <span class="n">lang</span><span class="o">=</span><span class="sh">'</span><span class="s">en</span><span class="sh">'</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">F1</span><span class="p">.</span><span class="nf">item</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h3 id="reference-free-metrics">Reference-Free Metrics</h3>
+
+<p>When you don’t have ground truth:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">ReferenceFreeMetrics</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">perplexity</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">text</span><span class="p">):</span>
+        <span class="sh">"""</span><span class="s">
+        How </span><span class="sh">"</span><span class="s">surprising</span><span class="sh">"</span><span class="s"> is the text?
+        Lower = more fluent
+        </span><span class="sh">"""</span>
+        <span class="k">return</span> <span class="n">model</span><span class="p">.</span><span class="nf">perplexity</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">coherence_score</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">text</span><span class="p">):</span>
+        <span class="sh">"""</span><span class="s">
+        Is the text logically consistent?
+        </span><span class="sh">"""</span>
+        <span class="n">sentences</span> <span class="o">=</span> <span class="nf">sent_tokenize</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+        <span class="n">embeddings</span> <span class="o">=</span> <span class="p">[</span><span class="nf">embed</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">sentences</span><span class="p">]</span>
+
+        <span class="c1"># Average similarity between consecutive sentences
+</span>        <span class="n">coherence</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">mean</span><span class="p">([</span>
+            <span class="nf">cosine_similarity</span><span class="p">(</span><span class="n">embeddings</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">embeddings</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="nf">len</span><span class="p">(</span><span class="n">embeddings</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="p">])</span>
+
+        <span class="k">return</span> <span class="n">coherence</span>
+
+    <span class="k">def</span> <span class="nf">toxicity_score</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">text</span><span class="p">):</span>
+        <span class="sh">"""</span><span class="s">
+        Does the text contain harmful content?
+        </span><span class="sh">"""</span>
+        <span class="k">return</span> <span class="n">toxicity_classifier</span><span class="p">.</span><span class="nf">predict</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">factual_consistency</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+        <span class="sh">"""</span><span class="s">
+        Is the text consistent with the context?
+        (For RAG applications)
+        </span><span class="sh">"""</span>
+        <span class="c1"># Use NLI model
+</span>        <span class="n">premise</span> <span class="o">=</span> <span class="n">context</span>
+        <span class="n">hypothesis</span> <span class="o">=</span> <span class="n">text</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">nli_model</span><span class="p">.</span><span class="nf">predict</span><span class="p">(</span><span class="n">premise</span><span class="p">,</span> <span class="n">hypothesis</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">result</span><span class="p">[</span><span class="sh">'</span><span class="s">entailment_score</span><span class="sh">'</span><span class="p">]</span>
+</code></pre></div></div>
+
+<h3 id="task-specific-metrics">Task-Specific Metrics</h3>
+
+<p>For RAG systems:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">RAGMetrics</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">retrieval_precision_at_k</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">retrieved_docs</span><span class="p">,</span> <span class="n">relevant_docs</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+        <span class="sh">"""</span><span class="s">
+        What fraction of retrieved docs are relevant?
+        </span><span class="sh">"""</span>
+        <span class="n">retrieved_k</span> <span class="o">=</span> <span class="n">retrieved_docs</span><span class="p">[:</span><span class="n">k</span><span class="p">]</span>
+        <span class="n">relevant_retrieved</span> <span class="o">=</span> <span class="nf">len</span><span class="p">(</span><span class="nf">set</span><span class="p">(</span><span class="n">retrieved_k</span><span class="p">)</span> <span class="o">&amp;</span> <span class="nf">set</span><span class="p">(</span><span class="n">relevant_docs</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">relevant_retrieved</span> <span class="o">/</span> <span class="n">k</span>
+
+    <span class="k">def</span> <span class="nf">retrieval_recall_at_k</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">retrieved_docs</span><span class="p">,</span> <span class="n">relevant_docs</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+        <span class="sh">"""</span><span class="s">
+        What fraction of relevant docs were retrieved?
+        </span><span class="sh">"""</span>
+        <span class="n">retrieved_k</span> <span class="o">=</span> <span class="n">retrieved_docs</span><span class="p">[:</span><span class="n">k</span><span class="p">]</span>
+        <span class="n">relevant_retrieved</span> <span class="o">=</span> <span class="nf">len</span><span class="p">(</span><span class="nf">set</span><span class="p">(</span><span class="n">retrieved_k</span><span class="p">)</span> <span class="o">&amp;</span> <span class="nf">set</span><span class="p">(</span><span class="n">relevant_docs</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">relevant_retrieved</span> <span class="o">/</span> <span class="nf">len</span><span class="p">(</span><span class="n">relevant_docs</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">citation_accuracy</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">generated_text</span><span class="p">,</span> <span class="n">cited_sources</span><span class="p">,</span> <span class="n">retrieved_docs</span><span class="p">):</span>
+        <span class="sh">"""</span><span class="s">
+        Are citations valid and accurate?
+        </span><span class="sh">"""</span>
+        <span class="c1"># Extract citations from text
+</span>        <span class="n">citations</span> <span class="o">=</span> <span class="nf">extract_citations</span><span class="p">(</span><span class="n">generated_text</span><span class="p">)</span>
+
+        <span class="c1"># Check if each citation exists
+</span>        <span class="n">valid</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">citations</span> <span class="k">if</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">retrieved_docs</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">valid</span> <span class="o">/</span> <span class="nf">len</span><span class="p">(</span><span class="n">citations</span><span class="p">)</span> <span class="k">if</span> <span class="n">citations</span> <span class="k">else</span> <span class="mi">0</span>
+
+    <span class="k">def</span> <span class="nf">answer_relevance</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">question</span><span class="p">,</span> <span class="n">answer</span><span class="p">):</span>
+        <span class="sh">"""</span><span class="s">
+        Does the answer address the question?
+        </span><span class="sh">"""</span>
+        <span class="c1"># Use sentence similarity
+</span>        <span class="n">q_emb</span> <span class="o">=</span> <span class="nf">embed</span><span class="p">(</span><span class="n">question</span><span class="p">)</span>
+        <span class="n">a_emb</span> <span class="o">=</span> <span class="nf">embed</span><span class="p">(</span><span class="n">answer</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nf">cosine_similarity</span><span class="p">(</span><span class="n">q_emb</span><span class="p">,</span> <span class="n">a_emb</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">context_utilization</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">answer</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+        <span class="sh">"""</span><span class="s">
+        How much of the context was used?
+        </span><span class="sh">"""</span>
+        <span class="c1"># Find sentences in answer that appear in context
+</span>        <span class="n">answer_sents</span> <span class="o">=</span> <span class="nf">sent_tokenize</span><span class="p">(</span><span class="n">answer</span><span class="p">)</span>
+        <span class="n">context_sents</span> <span class="o">=</span> <span class="nf">sent_tokenize</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>
+
+        <span class="n">used</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="n">a_sent</span> <span class="ow">in</span> <span class="n">answer_sents</span>
+                  <span class="k">if</span> <span class="nf">any</span><span class="p">(</span><span class="nf">similarity</span><span class="p">(</span><span class="n">a_sent</span><span class="p">,</span> <span class="n">c_sent</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">0.8</span>
+                        <span class="k">for</span> <span class="n">c_sent</span> <span class="ow">in</span> <span class="n">context_sents</span><span class="p">))</span>
+
+        <span class="k">return</span> <span class="n">used</span> <span class="o">/</span> <span class="nf">len</span><span class="p">(</span><span class="n">answer_sents</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h2 id="component-3-llm-as-a-judge">Component 3: LLM-as-a-Judge</h2>
+
+<p>Use LLMs to evaluate LLM outputs:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">LLMJudge</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">judge_model</span><span class="o">=</span><span class="sh">'</span><span class="s">gpt-4</span><span class="sh">'</span><span class="p">):</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">judge</span> <span class="o">=</span> <span class="n">judge_model</span>
+
+    <span class="k">def</span> <span class="nf">evaluate_relevance</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">question</span><span class="p">,</span> <span class="n">answer</span><span class="p">):</span>
+        <span class="sh">"""</span><span class="s">
+        Is the answer relevant to the question?
+        </span><span class="sh">"""</span>
+        <span class="n">prompt</span> <span class="o">=</span> <span class="sa">f</span><span class="sh">"""</span><span class="s">
+        Evaluate if the answer is relevant to the question.
+
+        Question: </span><span class="si">{</span><span class="n">question</span><span class="si">}</span><span class="s">
+        Answer: </span><span class="si">{</span><span class="n">answer</span><span class="si">}</span><span class="s">
+
+        Rate relevance on a scale of 1-5:
+        1 - Completely irrelevant
+        2 - Slightly relevant
+        3 - Moderately relevant
+        4 - Mostly relevant
+        5 - Highly relevant
+
+        Provide ONLY the number, nothing else.
+        </span><span class="sh">"""</span>
+
+        <span class="n">score</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">judge</span><span class="p">.</span><span class="nf">complete</span><span class="p">(</span><span class="n">prompt</span><span class="p">,</span> <span class="n">temperature</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nf">int</span><span class="p">(</span><span class="n">score</span><span class="p">.</span><span class="nf">strip</span><span class="p">())</span>
+
+    <span class="k">def</span> <span class="nf">evaluate_correctness</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">question</span><span class="p">,</span> <span class="n">answer</span><span class="p">,</span> <span class="n">reference</span><span class="p">):</span>
+        <span class="sh">"""</span><span class="s">
+        Is the answer factually correct?
+        </span><span class="sh">"""</span>
+        <span class="n">prompt</span> <span class="o">=</span> <span class="sa">f</span><span class="sh">"""</span><span class="s">
+        Evaluate if the answer is factually correct compared to the reference.
+
+        Question: </span><span class="si">{</span><span class="n">question</span><span class="si">}</span><span class="s">
+        Reference Answer: </span><span class="si">{</span><span class="n">reference</span><span class="si">}</span><span class="s">
+        Generated Answer: </span><span class="si">{</span><span class="n">answer</span><span class="si">}</span><span class="s">
+
+        Rate correctness on a scale of 1-5:
+        1 - Completely incorrect
+        2 - Mostly incorrect
+        3 - Partially correct
+        4 - Mostly correct
+        5 - Completely correct
+
+        Provide ONLY the number, nothing else.
+        </span><span class="sh">"""</span>
+
+        <span class="n">score</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">judge</span><span class="p">.</span><span class="nf">complete</span><span class="p">(</span><span class="n">prompt</span><span class="p">,</span> <span class="n">temperature</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nf">int</span><span class="p">(</span><span class="n">score</span><span class="p">.</span><span class="nf">strip</span><span class="p">())</span>
+
+    <span class="k">def</span> <span class="nf">evaluate_with_reasoning</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">question</span><span class="p">,</span> <span class="n">answer</span><span class="p">,</span> <span class="n">criteria</span><span class="p">):</span>
+        <span class="sh">"""</span><span class="s">
+        Get both score and explanation
+        </span><span class="sh">"""</span>
+        <span class="n">prompt</span> <span class="o">=</span> <span class="sa">f</span><span class="sh">"""</span><span class="s">
+        Evaluate the answer based on these criteria:
+        </span><span class="si">{</span><span class="n">criteria</span><span class="si">}</span><span class="s">
+
+        Question: </span><span class="si">{</span><span class="n">question</span><span class="si">}</span><span class="s">
+        Answer: </span><span class="si">{</span><span class="n">answer</span><span class="si">}</span><span class="s">
+
+        Provide your evaluation in this format:
+        Score: [1-5]
+        Reasoning: [Brief explanation]
+        </span><span class="sh">"""</span>
+
+        <span class="n">response</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">judge</span><span class="p">.</span><span class="nf">complete</span><span class="p">(</span><span class="n">prompt</span><span class="p">,</span> <span class="n">temperature</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+        <span class="c1"># Parse response
+</span>        <span class="n">score</span> <span class="o">=</span> <span class="nf">extract_score</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+        <span class="n">reasoning</span> <span class="o">=</span> <span class="nf">extract_reasoning</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="p">{</span><span class="sh">'</span><span class="s">score</span><span class="sh">'</span><span class="p">:</span> <span class="n">score</span><span class="p">,</span> <span class="sh">'</span><span class="s">reasoning</span><span class="sh">'</span><span class="p">:</span> <span class="n">reasoning</span><span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="multi-dimensional-evaluation">Multi-Dimensional Evaluation</h3>
+
+<p>Evaluate across multiple dimensions:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">comprehensive_evaluation</span><span class="p">(</span><span class="n">test_example</span><span class="p">):</span>
+    <span class="sh">"""</span><span class="s">
+    Evaluate on all relevant dimensions
+    </span><span class="sh">"""</span>
+    <span class="n">question</span> <span class="o">=</span> <span class="n">test_example</span><span class="p">[</span><span class="sh">'</span><span class="s">input</span><span class="sh">'</span><span class="p">]</span>
+    <span class="n">generated</span> <span class="o">=</span> <span class="nf">generate_answer</span><span class="p">(</span><span class="n">question</span><span class="p">)</span>
+    <span class="n">reference</span> <span class="o">=</span> <span class="n">test_example</span><span class="p">[</span><span class="sh">'</span><span class="s">expected_output</span><span class="sh">'</span><span class="p">]</span>
+    <span class="n">context</span> <span class="o">=</span> <span class="n">test_example</span><span class="p">[</span><span class="sh">'</span><span class="s">context</span><span class="sh">'</span><span class="p">]</span>
+
+    <span class="n">scores</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="c1"># Factual accuracy
+</span>        <span class="sh">'</span><span class="s">correctness</span><span class="sh">'</span><span class="p">:</span> <span class="n">llm_judge</span><span class="p">.</span><span class="nf">evaluate_correctness</span><span class="p">(</span>
+            <span class="n">question</span><span class="p">,</span> <span class="n">generated</span><span class="p">,</span> <span class="n">reference</span>
+        <span class="p">),</span>
+
+        <span class="c1"># Relevance
+</span>        <span class="sh">'</span><span class="s">relevance</span><span class="sh">'</span><span class="p">:</span> <span class="n">llm_judge</span><span class="p">.</span><span class="nf">evaluate_relevance</span><span class="p">(</span>
+            <span class="n">question</span><span class="p">,</span> <span class="n">generated</span>
+        <span class="p">),</span>
+
+        <span class="c1"># Completeness
+</span>        <span class="sh">'</span><span class="s">completeness</span><span class="sh">'</span><span class="p">:</span> <span class="n">llm_judge</span><span class="p">.</span><span class="nf">evaluate_completeness</span><span class="p">(</span>
+            <span class="n">question</span><span class="p">,</span> <span class="n">generated</span><span class="p">,</span> <span class="n">reference</span>
+        <span class="p">),</span>
+
+        <span class="c1"># Coherence
+</span>        <span class="sh">'</span><span class="s">coherence</span><span class="sh">'</span><span class="p">:</span> <span class="nf">coherence_score</span><span class="p">(</span><span class="n">generated</span><span class="p">),</span>
+
+        <span class="c1"># Conciseness (length appropriateness)
+</span>        <span class="sh">'</span><span class="s">conciseness</span><span class="sh">'</span><span class="p">:</span> <span class="nf">evaluate_length_appropriateness</span><span class="p">(</span><span class="n">generated</span><span class="p">),</span>
+
+        <span class="c1"># Citation quality (for RAG)
+</span>        <span class="sh">'</span><span class="s">citation_accuracy</span><span class="sh">'</span><span class="p">:</span> <span class="nf">citation_accuracy</span><span class="p">(</span>
+            <span class="n">generated</span><span class="p">,</span> <span class="n">context</span>
+        <span class="p">),</span>
+
+        <span class="c1"># Safety
+</span>        <span class="sh">'</span><span class="s">toxicity</span><span class="sh">'</span><span class="p">:</span> <span class="nf">toxicity_score</span><span class="p">(</span><span class="n">generated</span><span class="p">),</span>
+
+        <span class="c1"># Semantic similarity to reference
+</span>        <span class="sh">'</span><span class="s">similarity</span><span class="sh">'</span><span class="p">:</span> <span class="nf">semantic_similarity</span><span class="p">(</span><span class="n">generated</span><span class="p">,</span> <span class="n">reference</span><span class="p">),</span>
+
+        <span class="c1"># Performance
+</span>        <span class="sh">'</span><span class="s">latency_ms</span><span class="sh">'</span><span class="p">:</span> <span class="n">test_example</span><span class="p">[</span><span class="sh">'</span><span class="s">latency</span><span class="sh">'</span><span class="p">],</span>
+        <span class="sh">'</span><span class="s">cost_usd</span><span class="sh">'</span><span class="p">:</span> <span class="n">test_example</span><span class="p">[</span><span class="sh">'</span><span class="s">cost</span><span class="sh">'</span><span class="p">],</span>
+    <span class="p">}</span>
+
+    <span class="c1"># Compute weighted overall score
+</span>    <span class="n">weights</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="sh">'</span><span class="s">correctness</span><span class="sh">'</span><span class="p">:</span> <span class="mf">0.3</span><span class="p">,</span>
+        <span class="sh">'</span><span class="s">relevance</span><span class="sh">'</span><span class="p">:</span> <span class="mf">0.25</span><span class="p">,</span>
+        <span class="sh">'</span><span class="s">completeness</span><span class="sh">'</span><span class="p">:</span> <span class="mf">0.2</span><span class="p">,</span>
+        <span class="sh">'</span><span class="s">coherence</span><span class="sh">'</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span>
+        <span class="sh">'</span><span class="s">conciseness</span><span class="sh">'</span><span class="p">:</span> <span class="mf">0.05</span><span class="p">,</span>
+        <span class="sh">'</span><span class="s">citation_accuracy</span><span class="sh">'</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span>
+    <span class="p">}</span>
+
+    <span class="n">overall_score</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span>
+        <span class="n">scores</span><span class="p">[</span><span class="n">metric</span><span class="p">]</span> <span class="o">*</span> <span class="n">weights</span><span class="p">[</span><span class="n">metric</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">metric</span> <span class="ow">in</span> <span class="n">weights</span>
+    <span class="p">)</span>
+
+    <span class="n">scores</span><span class="p">[</span><span class="sh">'</span><span class="s">overall</span><span class="sh">'</span><span class="p">]</span> <span class="o">=</span> <span class="n">overall_score</span>
+
+    <span class="k">return</span> <span class="n">scores</span>
+</code></pre></div></div>
+
+<h2 id="component-4-human-evaluation">Component 4: Human Evaluation</h2>
+
+<p>Automated metrics don’t tell the whole story:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">HumanEvaluation</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">create_evaluation_task</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">examples</span><span class="p">,</span> <span class="n">evaluators</span><span class="p">):</span>
+        <span class="sh">"""</span><span class="s">
+        Set up human evaluation
+        </span><span class="sh">"""</span>
+        <span class="n">tasks</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">for</span> <span class="n">example</span> <span class="ow">in</span> <span class="n">examples</span><span class="p">:</span>
+            <span class="n">task</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="sh">'</span><span class="s">question</span><span class="sh">'</span><span class="p">:</span> <span class="n">example</span><span class="p">[</span><span class="sh">'</span><span class="s">input</span><span class="sh">'</span><span class="p">],</span>
+                <span class="sh">'</span><span class="s">answer_a</span><span class="sh">'</span><span class="p">:</span> <span class="n">example</span><span class="p">[</span><span class="sh">'</span><span class="s">model_a_output</span><span class="sh">'</span><span class="p">],</span>
+                <span class="sh">'</span><span class="s">answer_b</span><span class="sh">'</span><span class="p">:</span> <span class="n">example</span><span class="p">[</span><span class="sh">'</span><span class="s">model_b_output</span><span class="sh">'</span><span class="p">],</span>
+                <span class="sh">'</span><span class="s">evaluation_criteria</span><span class="sh">'</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="sh">'</span><span class="s">correctness</span><span class="sh">'</span><span class="p">:</span> <span class="sh">'</span><span class="s">Is the answer factually correct?</span><span class="sh">'</span><span class="p">,</span>
+                    <span class="sh">'</span><span class="s">helpfulness</span><span class="sh">'</span><span class="p">:</span> <span class="sh">'</span><span class="s">Would this help the user?</span><span class="sh">'</span><span class="p">,</span>
+                    <span class="sh">'</span><span class="s">clarity</span><span class="sh">'</span><span class="p">:</span> <span class="sh">'</span><span class="s">Is it easy to understand?</span><span class="sh">'</span><span class="p">,</span>
+                    <span class="sh">'</span><span class="s">preference</span><span class="sh">'</span><span class="p">:</span> <span class="sh">'</span><span class="s">Which answer is better overall?</span><span class="sh">'</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+            <span class="n">tasks</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="n">task</span><span class="p">)</span>
+
+        <span class="c1"># Distribute to evaluators
+</span>        <span class="k">return</span> <span class="n">self</span><span class="p">.</span><span class="nf">distribute_tasks</span><span class="p">(</span><span class="n">tasks</span><span class="p">,</span> <span class="n">evaluators</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">analyze_inter_rater_agreement</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">evaluations</span><span class="p">):</span>
+        <span class="sh">"""</span><span class="s">
+        Check if human evaluators agree
+        </span><span class="sh">"""</span>
+        <span class="kn">from</span> <span class="n">sklearn.metrics</span> <span class="kn">import</span> <span class="n">cohen_kappa_score</span>
+
+        <span class="c1"># Extract ratings from pairs of evaluators
+</span>        <span class="n">rater1</span> <span class="o">=</span> <span class="p">[</span><span class="n">e</span><span class="p">[</span><span class="sh">'</span><span class="s">rater1_score</span><span class="sh">'</span><span class="p">]</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">evaluations</span><span class="p">]</span>
+        <span class="n">rater2</span> <span class="o">=</span> <span class="p">[</span><span class="n">e</span><span class="p">[</span><span class="sh">'</span><span class="s">rater2_score</span><span class="sh">'</span><span class="p">]</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">evaluations</span><span class="p">]</span>
+
+        <span class="c1"># Calculate agreement
+</span>        <span class="n">kappa</span> <span class="o">=</span> <span class="nf">cohen_kappa_score</span><span class="p">(</span><span class="n">rater1</span><span class="p">,</span> <span class="n">rater2</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">kappa</span> <span class="o">&lt;</span> <span class="mf">0.6</span><span class="p">:</span>
+            <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Warning: Low inter-rater agreement. Consider clarifying criteria.</span><span class="sh">"</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">kappa</span>
+</code></pre></div></div>
+
+<h2 id="putting-it-all-together">Putting It All Together</h2>
+
+<h3 id="evaluation-pipeline">Evaluation Pipeline</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">EvaluationPipeline</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">test_set</span><span class="p">,</span> <span class="n">metrics</span><span class="p">):</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">test_set</span> <span class="o">=</span> <span class="n">test_set</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">metrics</span> <span class="o">=</span> <span class="n">metrics</span>
+
+    <span class="k">def</span> <span class="nf">run_evaluation</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">model_version</span><span class="p">):</span>
+        <span class="sh">"""</span><span class="s">
+        Run complete evaluation
+        </span><span class="sh">"""</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">for</span> <span class="n">example</span> <span class="ow">in</span> <span class="n">self</span><span class="p">.</span><span class="n">test_set</span><span class="p">:</span>
+            <span class="c1"># Generate output
+</span>            <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="p">.</span><span class="nf">time</span><span class="p">()</span>
+            <span class="n">output</span> <span class="o">=</span> <span class="n">model_version</span><span class="p">.</span><span class="nf">generate</span><span class="p">(</span><span class="n">example</span><span class="p">[</span><span class="sh">'</span><span class="s">input</span><span class="sh">'</span><span class="p">])</span>
+            <span class="n">latency</span> <span class="o">=</span> <span class="p">(</span><span class="n">time</span><span class="p">.</span><span class="nf">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1000</span>
+
+            <span class="c1"># Compute all metrics
+</span>            <span class="n">scores</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="k">for</span> <span class="n">metric_name</span><span class="p">,</span> <span class="n">metric_fn</span> <span class="ow">in</span> <span class="n">self</span><span class="p">.</span><span class="n">metrics</span><span class="p">.</span><span class="nf">items</span><span class="p">():</span>
+                <span class="n">scores</span><span class="p">[</span><span class="n">metric_name</span><span class="p">]</span> <span class="o">=</span> <span class="nf">metric_fn</span><span class="p">(</span>
+                    <span class="n">predicted</span><span class="o">=</span><span class="n">output</span><span class="p">,</span>
+                    <span class="n">reference</span><span class="o">=</span><span class="n">example</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="sh">'</span><span class="s">expected_output</span><span class="sh">'</span><span class="p">),</span>
+                    <span class="n">context</span><span class="o">=</span><span class="n">example</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="sh">'</span><span class="s">context</span><span class="sh">'</span><span class="p">),</span>
+                    <span class="nb">input</span><span class="o">=</span><span class="n">example</span><span class="p">[</span><span class="sh">'</span><span class="s">input</span><span class="sh">'</span><span class="p">]</span>
+                <span class="p">)</span>
+
+            <span class="n">scores</span><span class="p">[</span><span class="sh">'</span><span class="s">latency_ms</span><span class="sh">'</span><span class="p">]</span> <span class="o">=</span> <span class="n">latency</span>
+            <span class="n">scores</span><span class="p">[</span><span class="sh">'</span><span class="s">cost_usd</span><span class="sh">'</span><span class="p">]</span> <span class="o">=</span> <span class="nf">estimate_cost</span><span class="p">(</span><span class="n">example</span><span class="p">[</span><span class="sh">'</span><span class="s">input</span><span class="sh">'</span><span class="p">],</span> <span class="n">output</span><span class="p">)</span>
+
+            <span class="n">results</span><span class="p">.</span><span class="nf">append</span><span class="p">({</span>
+                <span class="sh">'</span><span class="s">example</span><span class="sh">'</span><span class="p">:</span> <span class="n">example</span><span class="p">,</span>
+                <span class="sh">'</span><span class="s">output</span><span class="sh">'</span><span class="p">:</span> <span class="n">output</span><span class="p">,</span>
+                <span class="sh">'</span><span class="s">scores</span><span class="sh">'</span><span class="p">:</span> <span class="n">scores</span>
+            <span class="p">})</span>
+
+        <span class="c1"># Aggregate results
+</span>        <span class="k">return</span> <span class="n">self</span><span class="p">.</span><span class="nf">aggregate_results</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">aggregate_results</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">results</span><span class="p">):</span>
+        <span class="sh">"""</span><span class="s">
+        Compute summary statistics
+        </span><span class="sh">"""</span>
+        <span class="n">aggregated</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="c1"># Average scores across all examples
+</span>        <span class="k">for</span> <span class="n">metric</span> <span class="ow">in</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="sh">'</span><span class="s">scores</span><span class="sh">'</span><span class="p">].</span><span class="nf">keys</span><span class="p">():</span>
+            <span class="n">values</span> <span class="o">=</span> <span class="p">[</span><span class="n">r</span><span class="p">[</span><span class="sh">'</span><span class="s">scores</span><span class="sh">'</span><span class="p">][</span><span class="n">metric</span><span class="p">]</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">results</span><span class="p">]</span>
+            <span class="n">aggregated</span><span class="p">[</span><span class="n">metric</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="sh">'</span><span class="s">mean</span><span class="sh">'</span><span class="p">:</span> <span class="n">np</span><span class="p">.</span><span class="nf">mean</span><span class="p">(</span><span class="n">values</span><span class="p">),</span>
+                <span class="sh">'</span><span class="s">median</span><span class="sh">'</span><span class="p">:</span> <span class="n">np</span><span class="p">.</span><span class="nf">median</span><span class="p">(</span><span class="n">values</span><span class="p">),</span>
+                <span class="sh">'</span><span class="s">std</span><span class="sh">'</span><span class="p">:</span> <span class="n">np</span><span class="p">.</span><span class="nf">std</span><span class="p">(</span><span class="n">values</span><span class="p">),</span>
+                <span class="sh">'</span><span class="s">min</span><span class="sh">'</span><span class="p">:</span> <span class="n">np</span><span class="p">.</span><span class="nf">min</span><span class="p">(</span><span class="n">values</span><span class="p">),</span>
+                <span class="sh">'</span><span class="s">max</span><span class="sh">'</span><span class="p">:</span> <span class="n">np</span><span class="p">.</span><span class="nf">max</span><span class="p">(</span><span class="n">values</span><span class="p">),</span>
+                <span class="sh">'</span><span class="s">p95</span><span class="sh">'</span><span class="p">:</span> <span class="n">np</span><span class="p">.</span><span class="nf">percentile</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="mi">95</span><span class="p">),</span>
+            <span class="p">}</span>
+
+        <span class="c1"># Identify failure cases
+</span>        <span class="n">aggregated</span><span class="p">[</span><span class="sh">'</span><span class="s">failures</span><span class="sh">'</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="n">r</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">results</span>
+            <span class="k">if</span> <span class="n">r</span><span class="p">[</span><span class="sh">'</span><span class="s">scores</span><span class="sh">'</span><span class="p">][</span><span class="sh">'</span><span class="s">overall</span><span class="sh">'</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mf">0.6</span>
+        <span class="p">]</span>
+
+        <span class="k">return</span> <span class="n">aggregated</span>
+</code></pre></div></div>
+
+<h3 id="ab-testing-framework">A/B Testing Framework</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">ABTest</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">compare_models</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">model_a</span><span class="p">,</span> <span class="n">model_b</span><span class="p">,</span> <span class="n">test_set</span><span class="p">):</span>
+        <span class="sh">"""</span><span class="s">
+        Statistical comparison of two models
+        </span><span class="sh">"""</span>
+        <span class="c1"># Run both models
+</span>        <span class="n">results_a</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="nf">evaluate</span><span class="p">(</span><span class="n">model_a</span><span class="p">,</span> <span class="n">test_set</span><span class="p">)</span>
+        <span class="n">results_b</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="nf">evaluate</span><span class="p">(</span><span class="n">model_b</span><span class="p">,</span> <span class="n">test_set</span><span class="p">)</span>
+
+        <span class="c1"># Compare on each metric
+</span>        <span class="n">comparison</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="k">for</span> <span class="n">metric</span> <span class="ow">in</span> <span class="n">results_a</span><span class="p">[</span><span class="sh">'</span><span class="s">scores</span><span class="sh">'</span><span class="p">].</span><span class="nf">keys</span><span class="p">():</span>
+            <span class="n">scores_a</span> <span class="o">=</span> <span class="p">[</span><span class="n">r</span><span class="p">[</span><span class="sh">'</span><span class="s">scores</span><span class="sh">'</span><span class="p">][</span><span class="n">metric</span><span class="p">]</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">results_a</span><span class="p">]</span>
+            <span class="n">scores_b</span> <span class="o">=</span> <span class="p">[</span><span class="n">r</span><span class="p">[</span><span class="sh">'</span><span class="s">scores</span><span class="sh">'</span><span class="p">][</span><span class="n">metric</span><span class="p">]</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">results_b</span><span class="p">]</span>
+
+            <span class="c1"># Paired t-test
+</span>            <span class="kn">from</span> <span class="n">scipy.stats</span> <span class="kn">import</span> <span class="n">ttest_rel</span>
+            <span class="n">statistic</span><span class="p">,</span> <span class="n">p_value</span> <span class="o">=</span> <span class="nf">ttest_rel</span><span class="p">(</span><span class="n">scores_a</span><span class="p">,</span> <span class="n">scores_b</span><span class="p">)</span>
+
+            <span class="c1"># Effect size
+</span>            <span class="n">mean_a</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">mean</span><span class="p">(</span><span class="n">scores_a</span><span class="p">)</span>
+            <span class="n">mean_b</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">mean</span><span class="p">(</span><span class="n">scores_b</span><span class="p">)</span>
+            <span class="n">improvement</span> <span class="o">=</span> <span class="p">((</span><span class="n">mean_b</span> <span class="o">-</span> <span class="n">mean_a</span><span class="p">)</span> <span class="o">/</span> <span class="n">mean_a</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+
+            <span class="n">comparison</span><span class="p">[</span><span class="n">metric</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="sh">'</span><span class="s">model_a_mean</span><span class="sh">'</span><span class="p">:</span> <span class="n">mean_a</span><span class="p">,</span>
+                <span class="sh">'</span><span class="s">model_b_mean</span><span class="sh">'</span><span class="p">:</span> <span class="n">mean_b</span><span class="p">,</span>
+                <span class="sh">'</span><span class="s">improvement_pct</span><span class="sh">'</span><span class="p">:</span> <span class="n">improvement</span><span class="p">,</span>
+                <span class="sh">'</span><span class="s">p_value</span><span class="sh">'</span><span class="p">:</span> <span class="n">p_value</span><span class="p">,</span>
+                <span class="sh">'</span><span class="s">significant</span><span class="sh">'</span><span class="p">:</span> <span class="n">p_value</span> <span class="o">&lt;</span> <span class="mf">0.05</span>
+            <span class="p">}</span>
+
+        <span class="k">return</span> <span class="n">comparison</span>
+
+    <span class="k">def</span> <span class="nf">recommend_winner</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">comparison</span><span class="p">,</span> <span class="n">priorities</span><span class="p">):</span>
+        <span class="sh">"""</span><span class="s">
+        Determine which model to deploy
+        </span><span class="sh">"""</span>
+        <span class="c1"># Weight metrics by priority
+</span>        <span class="n">weighted_score_a</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">weighted_score_b</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="k">for</span> <span class="n">metric</span><span class="p">,</span> <span class="n">priority</span> <span class="ow">in</span> <span class="n">priorities</span><span class="p">.</span><span class="nf">items</span><span class="p">():</span>
+            <span class="n">weighted_score_a</span> <span class="o">+=</span> <span class="n">comparison</span><span class="p">[</span><span class="n">metric</span><span class="p">][</span><span class="sh">'</span><span class="s">model_a_mean</span><span class="sh">'</span><span class="p">]</span> <span class="o">*</span> <span class="n">priority</span>
+            <span class="n">weighted_score_b</span> <span class="o">+=</span> <span class="n">comparison</span><span class="p">[</span><span class="n">metric</span><span class="p">][</span><span class="sh">'</span><span class="s">model_b_mean</span><span class="sh">'</span><span class="p">]</span> <span class="o">*</span> <span class="n">priority</span>
+
+        <span class="c1"># Consider cost and latency
+</span>        <span class="k">if</span> <span class="n">comparison</span><span class="p">[</span><span class="sh">'</span><span class="s">cost_usd</span><span class="sh">'</span><span class="p">][</span><span class="sh">'</span><span class="s">improvement_pct</span><span class="sh">'</span><span class="p">]</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mi">20</span><span class="p">:</span>  <span class="c1"># 20% more expensive
+</span>            <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Warning: Model B is significantly more expensive</span><span class="sh">"</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">comparison</span><span class="p">[</span><span class="sh">'</span><span class="s">latency_ms</span><span class="sh">'</span><span class="p">][</span><span class="sh">'</span><span class="s">improvement_pct</span><span class="sh">'</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">50</span><span class="p">:</span>  <span class="c1"># 50% slower
+</span>            <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Warning: Model B is significantly slower</span><span class="sh">"</span><span class="p">)</span>
+
+        <span class="c1"># Make recommendation
+</span>        <span class="k">if</span> <span class="n">weighted_score_b</span> <span class="o">&gt;</span> <span class="n">weighted_score_a</span> <span class="ow">and</span> <span class="n">comparison</span><span class="p">[</span><span class="sh">'</span><span class="s">correctness</span><span class="sh">'</span><span class="p">][</span><span class="sh">'</span><span class="s">significant</span><span class="sh">'</span><span class="p">]:</span>
+            <span class="k">return</span> <span class="sh">'</span><span class="s">model_b</span><span class="sh">'</span>
+        <span class="k">return</span> <span class="sh">'</span><span class="s">model_a</span><span class="sh">'</span>
+</code></pre></div></div>
+
+<h2 id="real-world-example">Real-World Example</h2>
+
+<p>Here’s what we tracked for our RAG system:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">evaluation_results</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="sh">'</span><span class="s">model</span><span class="sh">'</span><span class="p">:</span> <span class="sh">'</span><span class="s">rag_v3</span><span class="sh">'</span><span class="p">,</span>
+    <span class="sh">'</span><span class="s">test_set_size</span><span class="sh">'</span><span class="p">:</span> <span class="mi">500</span><span class="p">,</span>
+    <span class="sh">'</span><span class="s">evaluation_date</span><span class="sh">'</span><span class="p">:</span> <span class="sh">'</span><span class="s">2026-01-15</span><span class="sh">'</span><span class="p">,</span>
+
+    <span class="sh">'</span><span class="s">metrics</span><span class="sh">'</span><span class="p">:</span> <span class="p">{</span>
+        <span class="c1"># Quality
+</span>        <span class="sh">'</span><span class="s">correctness</span><span class="sh">'</span><span class="p">:</span> <span class="p">{</span><span class="sh">'</span><span class="s">mean</span><span class="sh">'</span><span class="p">:</span> <span class="mf">0.87</span><span class="p">,</span> <span class="sh">'</span><span class="s">p95</span><span class="sh">'</span><span class="p">:</span> <span class="mf">0.95</span><span class="p">},</span>
+        <span class="sh">'</span><span class="s">relevance</span><span class="sh">'</span><span class="p">:</span> <span class="p">{</span><span class="sh">'</span><span class="s">mean</span><span class="sh">'</span><span class="p">:</span> <span class="mf">0.89</span><span class="p">,</span> <span class="sh">'</span><span class="s">p95</span><span class="sh">'</span><span class="p">:</span> <span class="mf">0.98</span><span class="p">},</span>
+        <span class="sh">'</span><span class="s">completeness</span><span class="sh">'</span><span class="p">:</span> <span class="p">{</span><span class="sh">'</span><span class="s">mean</span><span class="sh">'</span><span class="p">:</span> <span class="mf">0.82</span><span class="p">,</span> <span class="sh">'</span><span class="s">p95</span><span class="sh">'</span><span class="p">:</span> <span class="mf">0.92</span><span class="p">},</span>
+        <span class="sh">'</span><span class="s">citation_accuracy</span><span class="sh">'</span><span class="p">:</span> <span class="p">{</span><span class="sh">'</span><span class="s">mean</span><span class="sh">'</span><span class="p">:</span> <span class="mf">0.94</span><span class="p">,</span> <span class="sh">'</span><span class="s">p95</span><span class="sh">'</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">},</span>
+
+        <span class="c1"># Performance
+</span>        <span class="sh">'</span><span class="s">latency_ms</span><span class="sh">'</span><span class="p">:</span> <span class="p">{</span><span class="sh">'</span><span class="s">mean</span><span class="sh">'</span><span class="p">:</span> <span class="mi">1200</span><span class="p">,</span> <span class="sh">'</span><span class="s">p95</span><span class="sh">'</span><span class="p">:</span> <span class="mi">2800</span><span class="p">},</span>
+        <span class="sh">'</span><span class="s">cost_per_query</span><span class="sh">'</span><span class="p">:</span> <span class="p">{</span><span class="sh">'</span><span class="s">mean</span><span class="sh">'</span><span class="p">:</span> <span class="mf">0.032</span><span class="p">,</span> <span class="sh">'</span><span class="s">p95</span><span class="sh">'</span><span class="p">:</span> <span class="mf">0.085</span><span class="p">},</span>
+
+        <span class="c1"># Safety
+</span>        <span class="sh">'</span><span class="s">toxicity_rate</span><span class="sh">'</span><span class="p">:</span> <span class="mf">0.002</span><span class="p">,</span>  <span class="c1"># 0.2%
+</span>        <span class="sh">'</span><span class="s">pii_leakage_rate</span><span class="sh">'</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+    <span class="p">},</span>
+
+    <span class="sh">'</span><span class="s">pass_rate</span><span class="sh">'</span><span class="p">:</span> <span class="mf">0.84</span><span class="p">,</span>  <span class="c1"># 84% of queries scored &gt; 0.7
+</span>
+    <span class="sh">'</span><span class="s">failure_analysis</span><span class="sh">'</span><span class="p">:</span> <span class="p">{</span>
+        <span class="sh">'</span><span class="s">out_of_scope_queries</span><span class="sh">'</span><span class="p">:</span> <span class="mi">38</span><span class="p">,</span>
+        <span class="sh">'</span><span class="s">insufficient_context</span><span class="sh">'</span><span class="p">:</span> <span class="mi">24</span><span class="p">,</span>
+        <span class="sh">'</span><span class="s">ambiguous_questions</span><span class="sh">'</span><span class="p">:</span> <span class="mi">18</span><span class="p">,</span>
+        <span class="sh">'</span><span class="s">technical_errors</span><span class="sh">'</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span>
+    <span class="p">},</span>
+
+    <span class="sh">'</span><span class="s">comparison_to_baseline</span><span class="sh">'</span><span class="p">:</span> <span class="p">{</span>
+        <span class="sh">'</span><span class="s">correctness</span><span class="sh">'</span><span class="p">:</span> <span class="sh">'</span><span class="s">+8%</span><span class="sh">'</span><span class="p">,</span>
+        <span class="sh">'</span><span class="s">latency</span><span class="sh">'</span><span class="p">:</span> <span class="sh">'</span><span class="s">-15%</span><span class="sh">'</span><span class="p">,</span>
+        <span class="sh">'</span><span class="s">cost</span><span class="sh">'</span><span class="p">:</span> <span class="sh">'</span><span class="s">-22%</span><span class="sh">'</span><span class="p">,</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="best-practices">Best Practices</h2>
+
+<ol>
+  <li><strong>Automate early</strong>: Build evaluation into your dev workflow</li>
+  <li><strong>Test often</strong>: Run evals on every model change</li>
+  <li><strong>Track over time</strong>: Monitor for regressions</li>
+  <li><strong>Use multiple metrics</strong>: No single metric tells the whole story</li>
+  <li><strong>Include human eval</strong>: Especially for subjective tasks</li>
+  <li><strong>Analyze failures</strong>: Learn from what goes wrong</li>
+  <li><strong>Set thresholds</strong>: Define “good enough” for your use case</li>
+</ol>
+
+<h2 id="common-pitfalls">Common Pitfalls</h2>
+
+<ol>
+  <li><strong>Over-fitting to benchmarks</strong>: Public benchmarks ≠ your use case</li>
+  <li><strong>Ignoring edge cases</strong>: Test adversarially</li>
+  <li><strong>Not tracking latency/cost</strong>: Quality alone isn’t enough</li>
+  <li><strong>Inconsistent ground truth</strong>: Ensure labeling quality</li>
+  <li><strong>Small test sets</strong>: Need enough examples for statistical power</li>
+</ol>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Rigorous evaluation is what separates successful LLM deployments from failed ones.</p>
+
+<p>Key takeaways:</p>
+<ol>
+  <li>Build evaluation into your workflow from day 1</li>
+  <li>Use a combination of automated metrics and human judgment</li>
+  <li>Evaluate on multiple dimensions (quality, cost, latency, safety)</li>
+  <li>Test adversarially and track edge cases</li>
+  <li>Make data-driven decisions about model changes</li>
+</ol>
+
+<p>Remember: What you can measure, you can improve.</p>
+
+<h2 id="resources">Resources</h2>
+
+<ul>
+  <li><a href="https://github.com/explodinggradients/ragas">RAGAS Evaluation Framework</a></li>
+  <li><a href="https://github.com/openai/evals">OpenAI Evals</a></li>
+  <li><a href="https://python.langchain.com/docs/guides/evaluation/">LangChain Evaluation</a></li>
+</ul>
+
+<hr />
+
+<p><strong>How do you evaluate your LLM applications?</strong> Share your metrics and methodologies. Reach out via <a href="mailto:email4vishal@gmail.com">email</a> or <a href="https://www.linkedin.com/in/sharma-vishal/">LinkedIn</a>.</p>
+
+<hr />
+
+<p><strong>Disclaimer:</strong> The views, opinions, and technical approaches shared in this post are my own, based on my personal experience building production AI/ML systems. They do not represent the views of my current or former employers. Technology choices and evaluation methodologies should always be adapted to your specific use case and requirements.</p>
+
+<hr />
+
+<p><strong>Questions or experiences to share?</strong> I’d love to hear about your evaluation strategies and challenges.</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td><strong>Contact:</strong> <a href="https://www.linkedin.com/in/sharma-vishal/"><i class="fas fa-fw fa-link"></i> LinkedIn</a></td>
+      <td><a href="https://github.com/git4vishal"><i class="fab fa-fw fa-github"></i> GitHub</a></td>
+      <td><a href="https://x.com/twitt4vishal"><i class="fab fa-fw fa-twitter-square"></i> X</a></td>
+      <td><a href="mailto:email4vishal@gmail.com"><i class="fas fa-fw fa-envelope"></i> Email</a></td>
+    </tr>
+  </tbody>
+</table>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#best-practices" class="page__taxonomy-item p-category" rel="tag">Best Practices</a><span class="sep">, </span>
+    
+      <a href="/tags/#evaluation" class="page__taxonomy-item p-category" rel="tag">Evaluation</a><span class="sep">, </span>
+    
+      <a href="/tags/#llm" class="page__taxonomy-item p-category" rel="tag">LLM</a><span class="sep">, </span>
+    
+      <a href="/tags/#metrics" class="page__taxonomy-item p-category" rel="tag">Metrics</a><span class="sep">, </span>
+    
+      <a href="/tags/#production-ai" class="page__taxonomy-item p-category" rel="tag">Production AI</a><span class="sep">, </span>
+    
+      <a href="/tags/#quality-assurance" class="page__taxonomy-item p-category" rel="tag">Quality Assurance</a><span class="sep">, </span>
+    
+      <a href="/tags/#testing" class="page__taxonomy-item p-category" rel="tag">Testing</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#evaluation" class="page__taxonomy-item p-category" rel="tag">evaluation</a><span class="sep">, </span>
+    
+      <a href="/categories/#testing" class="page__taxonomy-item p-category" rel="tag">testing</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2025-12-15T12:00:00-06:00">December 15, 2025</time></p>
+
+      </footer>
+
+      
+
+      
+  <nav class="pagination">
+    
+      <a href="/governance/strategy/ai-governance-framework/" class="pagination--pager" title="Building an AI Governance Framework for Enterprise GenAI Adoption">Previous</a>
+    
+    
+      <a href="/genai/architecture/production-grade-rag-systems/" class="pagination--pager" title="Building Production-Grade RAG Systems: Architecture and Best Practices">Next</a>
+    
+  </nav>
+
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    
+<div class="page__related">
+  
+  <h2 class="page__related-title">You May Also Enjoy</h2>
+  <div class="grid__wrapper">
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/case-study/platform-engineering/genai-customer-analysis-case-study/" rel="permalink">Case Study: Production GenAI Platform Processing 2M+ Monthly Customer Interactions
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          4 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">How I architected a production GenAI platform processing 2M+ monthly call transcripts with 85% accuracy, delivering $1.2M annual retention value through serv...</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/genai/architecture/production-grade-rag-systems/" rel="permalink">Building Production-Grade RAG Systems: Architecture and Best Practices
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          8 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Lessons learned from building and scaling RAG systems in enterprise environments—moving from proof-of-concept demos to production-grade systems that handle m...</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/governance/strategy/ai-governance-framework/" rel="permalink">Building an AI Governance Framework for Enterprise GenAI Adoption
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          8 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">As enterprises rush to adopt GenAI, many overlook a critical question: How do we govern these systems responsibly?
+</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/optimization/cost/llm-cost-optimization/" rel="permalink">LLM Cost Optimization: Cutting Your AI Bill by 70% Without Sacrificing Quality
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          9 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">When we first deployed our RAG system to production, our LLM costs were $12,000/month for 50,000 queries. Six months later, we’re handling 200,000 queries at...</p>
+  </article>
+</div>
+
+    
+  </div>
+</div>
+
+  
+  
+</div>
+
+      
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';" role="search">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        
+
+<center>
+<div class="page__footer-follow">
+    <ul class="social-icons">
+        
+
+        <b>Contact: </b>
+        
+        
+        
+        <li><a href="https://www.linkedin.com/in/sharma-vishal/" rel="nofollow noopener noreferrer"><i
+                class="fas fa-fw fa-link" aria-hidden="true"></i> LinkedIn</a></li>
+        
+        
+        
+        <li><a href="https://github.com/git4vishal" rel="nofollow noopener noreferrer"><i
+                class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+        
+        
+        <li><a href="https://x.com/twitt4vishal" rel="nofollow noopener noreferrer"><i
+                class="fab fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
+        
+        
+        
+        <li><a href="mailto:email4vishal@gmail.com" rel="nofollow noopener noreferrer"><i
+                class="fab fa-fw fa-envelope" aria-hidden="true"></i> Email</a></li>
+        
+        
+        
+
+        
+        <li>
+            <a href="/feed.xml"><i
+                    class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+        
+    </ul>
+</div>
+
+
+<div class="page__footer-copyright">&copy;
+    
+    
+        2025 -
+    
+    2026
+    <a href="https://git4vishal.github.io">
+        Vishal Sharma | Enterprise Data &amp; AI Platform Leader
+    </a>.
+<!--    Powered by -->
+<!--    <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> -->
+<!--    &amp; -->
+<!--    <a href="https://mademistakes.com/work/jekyll-themes/minimal-mistakes/" rel="nofollow">Minimal Mistakes</a>.-->
+</div>
+</center>
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+
+
+  </body>
+</html>
