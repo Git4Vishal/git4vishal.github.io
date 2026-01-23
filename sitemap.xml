@@ -36,9 +36,6 @@
 <loc>https://git4vishal.github.io/about/</loc>
 </url>
 <url>
-<loc>https://git4vishal.github.io/posts/</loc>
-</url>
-<url>
 <loc>https://git4vishal.github.io/blog/</loc>
 </url>
 <url>
@@ -55,5 +52,11 @@
 </url>
 <url>
 <loc>https://git4vishal.github.io/posts_by_year/</loc>
+</url>
+<url>
+<loc>https://git4vishal.github.io/posts/</loc>
+</url>
+<url>
+<loc>https://git4vishal.github.io/posts/posts/page2/</loc>
 </url>
 </urlset>
